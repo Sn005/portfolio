@@ -1,7 +1,8 @@
-import fetchUser from '~/api/firebase/patial/fetchUser'
-async function user () {
-  const result = await fetchUser()
-  console.log(result)
+import users from '~/api/firebase/users'
+
+async function user ({ store }) {
+  const result = await users.show()
+  store.dispatch('user/setAccount', result)
 }
 
 export default user
