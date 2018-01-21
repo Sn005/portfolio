@@ -10,11 +10,13 @@ export default {
     const userDoc = usersCol.doc(user.uid)
     const userData = (await userDoc.get()).data()
     return {
-      isLogin: true,
-      uid: user.uid,
-      name: userData.name || user.displayName,
-      role: userData.role,
-      profilePicUrl: user.photoURL
+      auth: true,
+      account: {
+        uid: user.uid,
+        name: userData.name || user.displayName,
+        role: userData.role,
+        profilePicUrl: user.photoURL
+      }
     }
   }
 
