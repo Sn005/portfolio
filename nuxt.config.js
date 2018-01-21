@@ -79,5 +79,4 @@ module.exports = {
     firebaseStorageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
   }
-
 }
