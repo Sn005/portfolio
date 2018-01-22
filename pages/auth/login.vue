@@ -20,12 +20,25 @@
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('user')
+const { mapActions, mapState } = createNamespacedHelpers('user')
 
 export default {
+  middleware: 'is-authed',
   name: 'login',
+  computed: {
+    ...mapState({
+      auth: state => state.auth
+    })
+  },
   methods: {
     ...mapActions(['signInBySns'])
+  },
+  watch: {
+    auth () {
+      this.$router.push({
+        path: '/auth/login'
+      })
+    }
   }
 }
 </script>

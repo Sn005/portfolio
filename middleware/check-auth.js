@@ -1,8 +1,7 @@
 export default function ({ store, error }) {
-  console.log('test')
-  if (!store.state.user.account.isLogin) {
+  if (!store.state.user.auth) {
     error({
-      message: store.state.user.account.isLogin,
+      message: store.state.user.auth,
       statusCode: 403
     })
   }

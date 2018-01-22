@@ -40,3 +40,7 @@ export const actions = {
     commit('setAccount', result.account)
   }
 }
+
+export const getters = {
+  auth: state => state.auth
+}
