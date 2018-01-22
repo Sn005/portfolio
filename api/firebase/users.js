@@ -1,8 +1,11 @@
 import firebase from '~/plugins/firebase'
-import auth from './patial/auth'
+import { auth } from './patial/auth'
 const db = firebase.firestore()
 const usersCol = db.collection('users')
 
+/**
+ * 単体ユーザー情報取得
+ */
 export const fetch = async () => {
   const user = await auth()
   if (!user) return {}
