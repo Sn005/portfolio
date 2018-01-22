@@ -35,6 +35,7 @@ export default {
   },
   watch: {
     auth () {
+      console.log('test')
       this.$router.push({
         path: '/auth/login'
       })
