@@ -1,6 +1,10 @@
+import * as firebase from '~/api/firebase/partial/sign-in'
+import { fetch as usersFetch } from '~/api/firebase/users'
+
 export const state = () => ({
   auth: false,
-  account: {}
+  account: {},
+  errors: {}
 })
 
 export const mutations = {
@@ -9,6 +13,9 @@ export const mutations = {
   },
   setAccount (state, { account }) {
     state.account = account
+  },
+  setErrors (state, { errors }) {
+    state.errors = errors
   }
 }
 
@@ -18,5 +25,19 @@ export const actions = {
   },
   setAccount ({ commit }, account) {
     commit('setAccount', { account })
+  },
+  /**
+   * 各SNSアカウントを使用したログイン
+   * @param {*} param0
+   * @param {string} sns sns名称
+   */
+  async signInBySns ({ commit }, sns) {
+    console.log(sns)
+    await firebase.signInBySns(sns).catch(error => {
+      commit('setErrors', error)
+    })
+    const result = await usersFetch()
+    commit('setAuth', result.auth)
+    commit('setAccount', result.account)
   }
 }

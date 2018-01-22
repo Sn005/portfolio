@@ -1,5 +1,5 @@
 import firebase from '~/plugins/firebase'
-import { auth } from './patial/auth'
+import { auth } from './partial/auth'
 const db = firebase.firestore()
 const usersCol = db.collection('users')
 

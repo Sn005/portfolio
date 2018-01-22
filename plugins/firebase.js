@@ -1,2 +1,2 @@
-import firebaseInit from '~/api/firebase/patial/init'
+import firebaseInit from '~/api/firebase/partial/init'
 export default firebaseInit
