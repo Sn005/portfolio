@@ -32,7 +32,6 @@ export const actions = {
    * @param {string} sns sns名称
    */
   async signInBySns ({ commit }, sns) {
-    console.log(sns)
     await firebase.signInBySns(sns).catch(error => {
       commit('setErrors', error)
     })

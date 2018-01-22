@@ -25,10 +25,7 @@ const { mapActions } = createNamespacedHelpers('user')
 export default {
   name: 'login',
   methods: {
-    signInBySns (sns) {
-      console.log(sns)
-    }
-    // ...mapActions(['signInBySns'])
+    ...mapActions(['signInBySns'])
   }
 }
 </script>
