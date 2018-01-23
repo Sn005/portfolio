@@ -43,11 +43,11 @@
         clipped: false,
         drawer: true,
         fixed: false,
+        miniVariant: false,
         items: [
           { icon: 'apps', title: 'Dashboard', to: '/admin' },
           { icon: 'home', title: 'Home', to: '/' }
         ],
-        miniVariant: true,
         title: 'Vuetify.js'
       }
     }

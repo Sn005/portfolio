@@ -1,7 +1,7 @@
 import { auth } from '~/api/firebase/partial/auth'
 export default async function ({ redirect }) {
   const isAuthed = await auth()
-  if (!isAuthed) {
+  if (!Object.keys(isAuthed).length) {
     return redirect('/auth/login')
   }
 }
