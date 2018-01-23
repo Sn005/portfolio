@@ -7,6 +7,7 @@
 </template>
 <script>
 export default {
+  layout: 'admin',
   middleware: 'check-auth'
 }
 </script>
