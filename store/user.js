@@ -1,5 +1,6 @@
 import * as firebaseSignIn from '~/api/firebase/partial/sign-in'
 import { fetch as firebaseUsersFetch } from '~/api/firebase/users'
+import { signOut as firebaseSignOut } from '~/api/firebase/partial/sign-out'
 
 export const state = () => ({
   auth: 'true',
@@ -38,8 +39,14 @@ export const actions = {
     const result = await firebaseUsersFetch()
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
+  },
+  async signOut ({ commit }) {
+    await firebaseSignOut().catch(error => {
+      commit('setErrors', error)
+    })
+    commit('setAuth', false)
+    commit('setAccount', {})
   }
-  // async signOut
 }
 
 export const getters = {

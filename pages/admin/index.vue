@@ -15,10 +15,16 @@
           color="primary"
           flat 
           large
+          @click="signOut"
         ) ログアウト
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions } = createNamespacedHelpers('user')
 export default {
-  layout: 'admin'
+  layout: 'admin',
+  methods: {
+    ...mapActions(['signOut'])
+  }
 }
 </script>
