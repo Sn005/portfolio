@@ -5,14 +5,9 @@
 //     // return redirect('/admin')
 //   }
 // }
-export default function ({ store, redirect }) {
-  if (store.user.state.auth) {
+process.env.DEBUG = 'nuxt:*'
+export default function ({ store, redirect, error }) {
+  if (store.state.user.auth) {
     return redirect('/admin')
   }
-  // if (!store.state.user.auth) {
-  //   error({
-  //     message: store.state.user,
-  //     statusCode: 403
-  //   })
-  // }
 }

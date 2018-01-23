@@ -26,16 +26,14 @@ export default {
   middleware: 'is-authed',
   name: 'login',
   computed: {
-    ...mapState({
-      auth: state => state.auth
-    })
+    ...mapState(['auth', 'account'])
   },
   methods: {
     ...mapActions(['signInBySns'])
   },
   watch: {
-    auth () {
-      console.log('test')
+    async auth (promise) {
+      await promise
       this.$router.push({
         path: '/auth/login'
       })

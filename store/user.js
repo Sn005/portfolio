@@ -2,7 +2,7 @@ import * as firebase from '~/api/firebase/partial/sign-in'
 import { fetch as usersFetch } from '~/api/firebase/users'
 
 export const state = () => ({
-  auth: false,
+  auth: 'true',
   account: {},
   errors: {}
 })
@@ -42,5 +42,6 @@ export const actions = {
 }
 
 export const getters = {
-  auth: state => state.auth
+  auth: state => state.auth,
+  account: state => state.account
 }
