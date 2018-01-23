@@ -1,8 +1,7 @@
-export default function ({ store, error }) {
-  if (!store.state.user.auth) {
-    error({
-      message: store.state.user.auth,
-      statusCode: 403
-    })
+import { auth } from '~/api/firebase/partial/auth'
+export default async function ({ redirect }) {
+  const isAuthed = await auth()
+  if (!isAuthed) {
+    return redirect('/auth/login')
   }
 }
