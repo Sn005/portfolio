@@ -39,7 +39,6 @@ export default {
       // const method = this.email ? this.signInByEmail : this.signInBySns
       const method = this.signInBySns
       await method('google')
-      console.log('test')
       this.$router.push({
         path: '/admin'
       })
