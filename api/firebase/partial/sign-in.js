@@ -5,7 +5,7 @@ const auth = firebase.auth()
 /**
  * 各SNSアカウントを使用したログイン
  */
-export const signInBySns = async (sns) => {
+export const bySns = async (sns) => {
   const providers = {
     'google': new firebase.auth.GoogleAuthProvider(),
     'twitter': new firebase.auth.TwitterAuthProvider(),
@@ -18,7 +18,7 @@ export const signInBySns = async (sns) => {
 /**
  * e-mailアカウントによるログイン
  */
-export const signInByEmail = async (email, password) => {
+export const byEmail = async (email, password) => {
   const result = await auth.signInWithEmailAndPassword(email, password)
   return result
 }

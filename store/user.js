@@ -1,5 +1,5 @@
-import * as firebase from '~/api/firebase/partial/sign-in'
-import { fetch as usersFetch } from '~/api/firebase/users'
+import * as firebaseSignIn from '~/api/firebase/partial/sign-in'
+import { fetch as firebaseUsersFetch } from '~/api/firebase/users'
 
 export const state = () => ({
   auth: 'true',
@@ -32,13 +32,14 @@ export const actions = {
    * @param {string} sns sns名称
    */
   async signInBySns ({ commit }, sns) {
-    await firebase.signInBySns(sns).catch(error => {
+    await firebaseSignIn.bySns(sns).catch(error => {
       commit('setErrors', error)
     })
-    const result = await usersFetch()
+    const result = await firebaseUsersFetch()
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
   }
+  // async signOut
 }
 
 export const getters = {

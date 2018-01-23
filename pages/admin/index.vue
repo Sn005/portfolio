@@ -1,13 +1,24 @@
-<template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      admin
-    </v-flex>
-  </v-layout>
+<template lang="pug">
+  v-layout(
+    column
+    justify-center
+    align-center
+  )
+    v-flex(
+      xs12
+      sm8
+      md6
+    )
+      v-card
+        v-card-title.headline ログアウト
+        v-btn(
+          color="primary"
+          flat 
+          large
+        ) ログアウト
 </template>
 <script>
 export default {
-  layout: 'admin',
-  middleware: 'check-auth'
+  layout: 'admin'
 }
 </script>
