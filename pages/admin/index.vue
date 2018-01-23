@@ -20,9 +20,12 @@
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('user')
+const { mapActions, mapGetters } = createNamespacedHelpers('user')
 export default {
   layout: 'admin',
+  computed: {
+    ...mapGetters(['user/auth'])
+  },
   methods: {
     ...mapActions(['signOut'])
   }
