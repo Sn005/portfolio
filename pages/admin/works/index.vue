@@ -9,17 +9,29 @@
       sm8
       md6
     )
-      v-card
-        v-card-title.headline Works
+      v-toolbar
+        v-toolbar-title Works
+      v-list
+        v-list-tile(
+          router
+          :to="'works/' + item.id"
+          :key="i"
+          v-for="(item, i) in items"
+          exact
+        )
+          v-list-tile-action
+            v-icon(v-html="apps")
+          v-list-tile-content
+            v-list-tile-title(v-text="item.name")
 </template>
 <script>
-import { list as firebaseWorksList } from '~/api/firebase/works'
+import { items as firebaseWorksItems } from '~/api/firebase/works'
 export default {
   layout: 'admin',
   async asyncData () {
-    const list = await firebaseWorksList()
+    const items = await firebaseWorksItems()
     return {
-      list: list
+      items: items
     }
   }
 }
