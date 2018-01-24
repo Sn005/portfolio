@@ -13,7 +13,14 @@
         v-card-title.headline Works
 </template>
 <script>
+import { list as firebaseWorksList } from '~/api/firebase/works'
 export default {
-  layout: 'admin'
+  layout: 'admin',
+  async asyncData () {
+    const list = await firebaseWorksList()
+    return {
+      list: list
+    }
+  }
 }
 </script>
