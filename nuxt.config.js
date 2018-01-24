@@ -20,7 +20,6 @@ module.exports = {
   plugins: [
     '~/plugins/vuetify.js',
     '~/plugins/firebase.js',
-    '~/plugins/vuex-router-sync.js',
     '~/plugins/user.js'
   ],
   css: [
