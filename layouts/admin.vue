@@ -35,7 +35,7 @@
         miniVariant: false,
         items: [
           { icon: 'apps', title: 'Dashboard', to: '/admin' },
-          { icon: 'account_circle', title: 'ユーザー一覧', to: '/admin/users' },
+          { icon: 'build', title: 'Works', to: '/admin/works' },
           { icon: 'home', title: 'Home', to: '/' }
         ],
         title: 'Vuetify.js'
