@@ -15,13 +15,10 @@
           color="primary"
           flat 
           large
-          @click="signIn"
+          @click="signInBySns('google')"
         ) google
 </template>
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapActions, mapGetters } = createNamespacedHelpers('user')
-
 export default {
   middleware: 'is-authed',
   name: 'login',
@@ -30,26 +27,13 @@ export default {
       email: ''
     }
   },
-  computed: {
-    ...mapGetters(['auth', 'account'])
-  },
   methods: {
-    ...mapActions(['signInBySns']),
-    async signIn () {
-      // const method = this.email ? this.signInByEmail : this.signInBySns
-      const method = this.signInBySns
-      await method('google')
+    async signInBySns (sns) {
+      await this.$store.dispatch('user/signInBySns', sns)
       this.$router.push({
         path: '/admin'
       })
     }
   }
-  // watch: {
-  //   auth () {
-  //     this.$router.push({
-  //       path: '/auth/login'
-  //     })
-  //   }
-  // }
 }
 </script>
