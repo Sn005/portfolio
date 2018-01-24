@@ -18,7 +18,7 @@
           )
             v-checkbox(
               label="wordpress"
-              v-model="cat"
+              v-model="category"
               value="wordpress"
             )
           v-flex(
@@ -27,11 +27,11 @@
           )
             v-checkbox(
               label="hoge"
-              v-model="cat"
+              v-model="category"
               value="hoge"
             )
-      div.editor-wrapper.ma-4
-        vue-editor(v-model="desc")
+        div.editor-wrapper
+          vue-editor(v-model="content")
 </template>
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
@@ -43,8 +43,8 @@ export default {
     return {
       currentName: item.name,
       name: item.name,
-      desc: item.desc,
-      cat: Object.keys(item.cat)
+      content: item.content,
+      category: Object.keys(item.category)
     }
   },
   data () {
@@ -55,8 +55,8 @@ export default {
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
       ],
-      cat: [],
-      desc: ''
+      category: [],
+      content: ''
     }
   },
   components: {
