@@ -20,14 +20,19 @@
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions, mapGetters } = createNamespacedHelpers('user')
+const { mapGetters } = createNamespacedHelpers('user')
 export default {
   layout: 'admin',
   computed: {
-    ...mapGetters(['user/auth'])
+    ...mapGetters(['auth'])
   },
   methods: {
-    ...mapActions(['signOut'])
+    async signOut () {
+      await this.$store.dispatch('user/signOut')
+      this.$router.push({
+        path: '/'
+      })
+    }
   }
 }
 </script>
