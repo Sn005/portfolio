@@ -1,6 +1,6 @@
 <template lang="pug">
   v-layout(column)
-    v-toolbar()
+    v-toolbar
       v-toolbar-title Works
       v-spacer
       v-btn(

@@ -2,7 +2,15 @@
   v-layout(column)
     v-card
       v-toolbar
-        v-toolbar-title {{ item.name }}
+        v-toolbar-title {{ currentName }}
+      v-form.pa-4(v-model="valid")
+        v-text-field(
+          label="Name"
+          v-model="name"
+          :rules="nameRules"
+          :counter="20"
+          required
+        )
 </template>
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
@@ -11,7 +19,19 @@ export default {
   async asyncData ({ params, error }) {
     const item = await firebaseWorksItem(params.id)
     return {
-      item: item
+      currentName: item.name,
+      name: item.name,
+      desc: item.desc
+    }
+  },
+  data () {
+    return {
+      valid: false,
+      name: '',
+      nameRules: [
+        (v) => !!v || 'Name is required',
+        (v) => v.length <= 20 || 'Name must be less than 10 characters'
+      ]
     }
   }
 }

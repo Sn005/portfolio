@@ -11,7 +11,9 @@ import {
   VGrid,
   VToolbar,
   VDataTable,
-  VDialog
+  VDialog,
+  VForm,
+  VTextField
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -35,6 +37,8 @@ Vue.use(Vuetify, {
     VGrid,
     VToolbar,
     VDataTable,
-    VDialog
+    VDialog,
+    VForm,
+    VTextField
   }
 })
