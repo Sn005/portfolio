@@ -21,5 +21,13 @@ export const item = async (id) => {
   const item = await worksCol.doc(id).get().catch(error => {
     console.log(error)
   })
-  return item.data()
+  let result = item.data()
+  result.id = id
+  return result
+}
+
+export const send = async (id, payload) => {
+  await worksCol.doc(id).set(payload, { merge: true }).catch(error => {
+    console.log(error)
+  })
 }

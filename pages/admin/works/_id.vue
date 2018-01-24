@@ -8,7 +8,6 @@
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
 import TheFormWork from '~/components/TheFormWork'
-// import { VueEditor } from 'vue2-editor'
 export default {
   layout: 'admin',
   async asyncData ({ params, error }) {

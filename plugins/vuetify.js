@@ -14,7 +14,8 @@ import {
   VDialog,
   VForm,
   VTextField,
-  VCheckbox
+  VCheckbox,
+  VProgressLinear
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -41,6 +42,7 @@ Vue.use(Vuetify, {
     VDialog,
     VForm,
     VTextField,
-    VCheckbox
+    VCheckbox,
+    VProgressLinear
   }
 })
