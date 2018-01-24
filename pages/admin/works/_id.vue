@@ -12,7 +12,8 @@
           :counter="20"
           required
         )
-      vue-editor#editor(v-model="desc")
+      div.editor-wrapper.ma-4
+        vue-editor(v-model="desc")
 </template>
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
@@ -44,14 +45,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-  #editor {
-    // .ql-snow{
-    //   .ql-stroke{
-    //     stroke: #ccc;
-    //   }
-    // }
-    .ql-picker{
-      color: #efefef;
-    }
+.editor{
+  &-wrapper{
+    background : #1d1d1d;
   }
+}
 </style>
