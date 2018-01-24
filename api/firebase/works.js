@@ -13,3 +13,13 @@ export const items = async () => {
     return data
   })
 }
+
+/**
+ * 単体情報取得
+ */
+export const item = async (id) => {
+  const item = await worksCol.doc(id).get().catch(error => {
+    console.log(error)
+  })
+  return item.data()
+}
