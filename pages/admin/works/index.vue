@@ -1,7 +1,13 @@
 <template lang="pug">
   v-layout(column)
-    v-toolbar
+    v-toolbar()
       v-toolbar-title Works
+      v-spacer
+      v-btn(
+        icon
+        @click.native.stop="dialog.sort = true"
+      )
+        v-icon sort
     v-data-table(
       :headers="headers"
       :items="items"
@@ -27,9 +33,46 @@
             flat
             icon
             color="red lighten-1"
-            :to="'works/' + props.item.id"
+            @click.native.stop="dialog.delete = true"
           )
             v-icon delete
+    v-dialog(
+      v-model="dialog.delete"
+      persistent
+      max-width="290"
+    )
+      v-card
+        v-card-title このアイテムを削除しますか？
+        v-card-actions
+          v-spacer
+          v-btn(
+            flat
+            @click.native="dialog.delete = false"
+          ) いいえ
+          v-btn(
+            flat
+            @click.native="dialog.delete = false"
+          ) はい
+    v-dialog(
+      v-model="dialog.sort"
+      fullscreen
+      transition="dialog-bottom-transition"
+      :overlay=false
+      scrollable
+    )
+      v-card
+        v-toolbar
+          v-toolbar-title 表示順変更
+        v-card-actions
+          v-spacer
+          v-btn(
+            flat
+            @click.native="dialog.sort = false"
+          ) いいえ
+          v-btn(
+            flat
+            @click.native="dialog.sort = false"
+          ) はい
 </template>
 <script>
 import { items as firebaseWorksItems } from '~/api/firebase/works'
@@ -43,6 +86,10 @@ export default {
   },
   data () {
     return {
+      dialog: {
+        delete: false,
+        sort: false
+      },
       headers: [
         {
           text: 'Name',

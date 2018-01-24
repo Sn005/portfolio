@@ -10,7 +10,8 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  VDataTable
+  VDataTable,
+  VDialog
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -33,6 +34,7 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    VDataTable
+    VDataTable,
+    VDialog
   }
 })
