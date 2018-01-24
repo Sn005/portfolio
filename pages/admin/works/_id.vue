@@ -3,7 +3,6 @@
     v-card
       v-toolbar
         v-toolbar-title {{ currentName }}
-        | test
       v-form.pa-4(v-model="valid")
         v-text-field(
           label="Name"
@@ -12,6 +11,25 @@
           :counter="20"
           required
         )
+        v-layout(row)
+          v-flex(
+            xs6
+            md2
+          )
+            v-checkbox(
+              label="wordpress"
+              v-model="cat"
+              value="wordpress"
+            )
+          v-flex(
+            xs6
+            md2
+          )
+            v-checkbox(
+              label="hoge"
+              v-model="cat"
+              value="hoge"
+            )
       div.editor-wrapper.ma-4
         vue-editor(v-model="desc")
 </template>
@@ -25,7 +43,8 @@ export default {
     return {
       currentName: item.name,
       name: item.name,
-      desc: item.desc
+      desc: item.desc,
+      cat: Object.keys(item.cat)
     }
   },
   data () {
@@ -36,6 +55,7 @@ export default {
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
       ],
+      cat: [],
       desc: ''
     }
   },
