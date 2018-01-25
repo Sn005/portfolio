@@ -11,8 +11,7 @@ import TheFormWork from '~/components/TheFormWork'
 export default {
   layout: 'admin',
   async asyncData ({ params, error }) {
-    let item = await firebaseWorksItem(params.id)
-    item['category'] = Object.keys(item['category'])
+    const item = await firebaseWorksItem(params.id)
     return {
       name: item.name,
       item: item

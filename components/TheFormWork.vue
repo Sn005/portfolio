@@ -16,20 +16,13 @@
         v-flex(
           xs6
           md2
+          v-for="(value, key) in definedCategory"
+          :key="key"
         )
           v-checkbox(
-            label="wordpress"
+            :label="key"
             v-model="category"
-            value="wordpress"
-          )
-        v-flex(
-          xs6
-          md2
-        )
-          v-checkbox(
-            label="hoge"
-            v-model="category"
-            value="hoge"
+            :value="key"
           )
       div.editor-wrapper
         vue-editor(v-model="content")
@@ -54,12 +47,16 @@ export default {
       valid: false,
       id: this.item.id,
       name: this.item.name,
-      category: this.item.category,
+      category: Object.keys(this.item.category),
       content: this.item.content,
       nameRules: [
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
-      ]
+      ],
+      definedCategory: {
+        'wordpress': true,
+        'SPA': true
+      }
     }
   },
   methods: {
