@@ -1,4 +1,5 @@
 const nodeExternals = require('webpack-node-externals')
+const webpack = require('webpack')
 const resolve = (dir) => require('path').join(__dirname, dir)
 require('dotenv').config()
 module.exports = {
@@ -33,6 +34,11 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ],
     babel: {
       plugins: [
         ['transform-imports', {
@@ -44,7 +50,8 @@ module.exports = {
       ]
     },
     vendor: [
-      '~/plugins/vuetify.js'
+      '~/plugins/vuetify.js',
+      'vue2-editor'
     ],
     extractCSS: true,
     /*

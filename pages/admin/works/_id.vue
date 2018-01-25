@@ -1,8 +1,6 @@
 <template lang="pug">
   v-layout(column)
     v-card
-      v-toolbar
-        v-toolbar-title {{ name }}
       the-form-work(
         :item="item"
         :definedCategory="definedCategory"
@@ -14,11 +12,13 @@ import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCate
 import TheFormWork from '~/components/TheFormWork'
 export default {
   layout: 'admin',
+  components: {
+    TheFormWork
+  },
   async asyncData ({ params, error }) {
     const item = await firebaseWorksItem(params.id)
     const definedCategory = await firebaseDefinedCategoryItem()
     return {
-      name: item.name,
       item: item,
       definedCategory: definedCategory
     }
@@ -32,8 +32,10 @@ export default {
       }
     }
   },
-  components: {
-    TheFormWork
+  computed: {
+    isExits () {
+      return true
+    }
   }
 }
 </script>

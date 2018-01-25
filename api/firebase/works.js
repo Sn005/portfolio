@@ -27,7 +27,7 @@ export const item = async (id) => {
 }
 
 export const send = async (id, payload) => {
-  await worksCol.doc(id).set(payload, { merge: true }).catch(error => {
+  await worksCol.doc(id).set(payload).catch(error => {
     console.log(error)
   })
 }

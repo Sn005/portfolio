@@ -1,5 +1,7 @@
 <template lang='pug'>
   div
+    v-toolbar
+      v-toolbar-title {{ name }}
     v-progress-linear.mt-0(
       v-if="isSend"
       :indeterminate="true"
@@ -31,7 +33,8 @@
         color="primary"
         large
         @click="send"
-      ) 投稿する
+        v-html="isExits ? '更新する' : '登録する'"
+      )
 </template>
 <script>
 import { send as firebaseWorksSend } from '~/api/firebase/works'
@@ -44,6 +47,7 @@ export default {
   },
   data () {
     return {
+      title: this.item.id ? this.item.name : '新規登録',
       isSend: false,
       valid: false,
       id: this.item.id || '',
@@ -56,12 +60,24 @@ export default {
       ]
     }
   },
+  computed: {
+    isExits () {
+      return !!this.id
+    }
+  },
   methods: {
     async send () {
       this.isSend = true
+      let category = {}
+      if (this.category.length > 0) {
+        category = this.category.reduce(
+          (object, item) => Object.assign(object, {[item]: true}),
+          {}
+        )
+      }
       const sendItem = {
         name: this.name,
-        category: this.category,
+        category: category,
         content: this.content
       }
       await firebaseWorksSend(this.id, sendItem)
