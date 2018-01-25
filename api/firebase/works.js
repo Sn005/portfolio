@@ -2,6 +2,8 @@ import firebase from '~/plugins/firebase'
 const db = firebase.firestore()
 const worksCol = db.collection('works')
 
+// const storage = firebase.storage()
+
 /**
  * 一覧情報取得
  */
@@ -30,4 +32,9 @@ export const send = async (id, payload) => {
   await worksCol.doc(id).set(payload).catch(error => {
     console.log(error)
   })
+  // const storageRef = storage.ref(payload.eyecatch.name)
+  // const file = payload.eyecatch.blob
+  // storageRef.put(file).then(function (snapshot) {
+  //   console.log('Uploaded a blob or file!')
+  // })
 }

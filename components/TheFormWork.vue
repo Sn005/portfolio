@@ -26,6 +26,15 @@
             v-model="category"
             :value="key"
           )
+      v-btn
+        | upload
+        input.file-input(
+          type="file"
+          ref="image"
+          name="image"
+          accept="*"
+          @change="onFileChange($event, 'eyecatch')"
+        )
       div.editor-wrapper
         vue-editor(v-model="content")
     v-flex(offset-xs5)
@@ -57,7 +66,11 @@ export default {
       nameRules: [
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
-      ]
+      ],
+      eyecatch: {
+        name: '',
+        blob: ''
+      }
     }
   },
   computed: {
@@ -66,6 +79,26 @@ export default {
     }
   },
   methods: {
+    getFormData (files) {
+      const data = new FormData();
+      [...files].forEach(file => {
+        data.append('data', file, file.name)
+      })
+      return data
+    },
+    onFileChange (event, target) {
+      if (!event.target.files.length) return
+      const files = event.target.files || event.dataTransfer.files
+      if (files.length > 0) {
+        this[target].name = [...files].map(file => file.name).join(', ')
+      } else {
+        this[target].name = null
+      }
+      this[target].blob = new Blob([event.target.result], { type: 'image/*' })
+      // const form = this.getFormData(files)
+      // this[target].data = form
+    },
+
     async send () {
       this.isSend = true
       let category = {}
@@ -78,7 +111,8 @@ export default {
       const sendItem = {
         name: this.name,
         category: category,
-        content: this.content
+        content: this.content,
+        eyecatch: this.eyecatch
       }
       await firebaseWorksSend(this.id, sendItem)
       this.isSend = false
@@ -90,5 +124,23 @@ export default {
 @import "../assets/style/scss/modules/_m-editor.scss";
 .editor-wrapper{
   @extend %m-editor-wrapper;
+}
+.file{
+  &-btn{
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  &-input{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+  }
 }
 </style>
