@@ -39,24 +39,21 @@ import { VueEditor } from 'vue2-editor'
 export default {
   components: {VueEditor},
   props: {
-    item: Object
+    item: Object,
+    definedCategory: Object
   },
   data () {
     return {
       isSend: false,
       valid: false,
-      id: this.item.id,
+      id: this.item.id || '',
       name: this.item.name,
       category: Object.keys(this.item.category),
       content: this.item.content,
       nameRules: [
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
-      ],
-      definedCategory: {
-        'wordpress': true,
-        'SPA': true
-      }
+      ]
     }
   },
   methods: {
