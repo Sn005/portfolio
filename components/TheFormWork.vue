@@ -67,10 +67,7 @@ export default {
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
       ],
-      eyecatch: {
-        name: '',
-        blob: ''
-      }
+      eyecatch: []
     }
   },
   computed: {
@@ -87,16 +84,17 @@ export default {
       return data
     },
     onFileChange (event, target) {
-      if (!event.target.files.length) return
       const files = event.target.files || event.dataTransfer.files
-      if (files.length > 0) {
-        this[target].name = [...files].map(file => file.name).join(', ')
-      } else {
-        this[target].name = null
-      }
-      this[target].blob = new Blob([event.target.result], { type: 'image/*' })
-      // const form = this.getFormData(files)
-      // this[target].data = form
+      if (!event.target.files.length) return
+
+      const accept = 'image/*'
+
+      this[target] = [...files].map((file, index) => {
+        return {
+          name: file.name,
+          blob: new Blob([file.result], { type: accept })
+        }
+      })
     },
 
     async send () {

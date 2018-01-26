@@ -1,8 +1,8 @@
 import firebase from '~/plugins/firebase'
+import { send as storageSend } from './partial/storage'
+
 const db = firebase.firestore()
 const worksCol = db.collection('works')
-
-// const storage = firebase.storage()
 
 /**
  * 一覧情報取得
@@ -28,10 +28,16 @@ export const item = async (id) => {
   return result
 }
 
+/**
+ * 情報をfirebaseに送信する
+ * @param {string} id 対象記事のID
+ * @param {objext} payload 送信情報
+ */
 export const send = async (id, payload) => {
-  await worksCol.doc(id).set(payload).catch(error => {
-    console.log(error)
-  })
+  await storageSend(payload.eyecatch)
+  // await worksCol.doc(id).set(payload).catch(error => {
+  //   console.log(error)
+  // })
   // const storageRef = storage.ref(payload.eyecatch.name)
   // const file = payload.eyecatch.blob
   // storageRef.put(file).then(function (snapshot) {
