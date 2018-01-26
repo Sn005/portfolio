@@ -47,6 +47,7 @@
 </template>
 <script>
 import { send as firebaseWorksSend } from '~/api/firebase/works'
+import { send as storageSend } from '~/api/firebase/partial/storage'
 import { VueEditor } from 'vue2-editor'
 export default {
   components: {VueEditor},
@@ -106,13 +107,15 @@ export default {
           {}
         )
       }
-      const sendItem = {
+      await storageSend(this.eyecatch)
+
+      const payload = {
         name: this.name,
         category: category,
         content: this.content,
-        eyecatch: this.eyecatch
+        eyecatch: this.eyecatch.name
       }
-      await firebaseWorksSend(this.id, sendItem)
+      await firebaseWorksSend(this.id, payload)
       this.isSend = false
     }
   }
