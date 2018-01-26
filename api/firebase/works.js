@@ -35,6 +35,8 @@ export const item = async (id) => {
  */
 export const send = async (id, payload) => {
   await storageSend(payload.eyecatch)
+  // firebaseには画像名を登録するのでpayloadを変更する必要があるが
+  // スマートな形で実現したい
   // await worksCol.doc(id).set(payload).catch(error => {
   //   console.log(error)
   // })
