@@ -48,9 +48,7 @@ export const remove = async (id) => {
   const item = await doc.get().catch(error => {
     console.log(error)
   })
-  console.log(item.exists)
   if (!item.exists) return false
-  console.log(id)
   await doc.delete().catch(error => {
     console.log(error)
   })

@@ -125,13 +125,11 @@ export default {
   methods: {
     async remove (id) {
       const result = await firebaseWorksRemove(id)
-      console.log(result)
-      if (result) {
-        this.dialog.delete = false
-        this.items = this.items.filter(item => {
-          return item.id !== id
-        })
-      }
+      if (!result) return
+      this.dialog.delete = false
+      this.items = this.items.filter(item => {
+        return item.id !== id
+      })
     }
   }
 }
