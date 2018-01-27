@@ -22,6 +22,7 @@ export const item = async (id) => {
   const item = await col.doc(id).get().catch(error => {
     console.log(error)
   })
+  if (!item.exists) return false
   let result = item.data()
   result.id = id
   return result

@@ -8,6 +8,11 @@
         @click.native.stop="dialog.sort = true"
       )
         v-icon sort
+      v-btn(
+        icon
+        to="works/create"
+      )
+        v-icon note_add
     v-data-table(
       :headers="headers"
       :items="items"

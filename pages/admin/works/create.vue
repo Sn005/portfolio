@@ -7,7 +7,6 @@
       )
 </template>
 <script>
-import { item as firebaseWorksItem } from '~/api/firebase/works'
 import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
 import TheFormWork from '~/components/TheFormWork'
 export default {
@@ -16,30 +15,14 @@ export default {
     TheFormWork
   },
   async asyncData ({ params, error }) {
-    const item = await firebaseWorksItem(params.id)
-    if (!item) {
-      this.$router.push({
-        path: '/admin/works'
-      })
-    }
     const definedCategory = await firebaseDefinedCategoryItem()
     return {
-      item: item,
       definedCategory: definedCategory
     }
   },
   data () {
     return {
-      item: {
-        name: '',
-        category: [],
-        content: ''
-      }
-    }
-  },
-  computed: {
-    isExits () {
-      return true
+      item: {}
     }
   }
 }

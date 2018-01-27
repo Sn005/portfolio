@@ -5,7 +5,9 @@
       v-model="isPosted"
     ) 更新完了しました
     v-toolbar
-      v-toolbar-title {{ name }}
+      v-toolbar-title(
+        v-html="isExits ? name : '新規登録'"
+      )
     v-progress-linear.mt-0(
       v-if="isSend"
       :indeterminate="true"
@@ -133,27 +135,33 @@ export default {
   },
   data () {
     return {
+      isExits: !!this.item.id,
       isSend: false,
       valid: false,
       title: this.item.id ? this.item.name : '新規登録',
       id: this.item.id || '',
       name: this.item.name || '',
-      category: Object.keys(this.item.category) || [],
+      category: this.item.category ? Object.keys(this.item.category) : [],
       content: this.item.content || '',
-      nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => v.length <= 20 || 'Name must be less than 10 characters'
-      ],
       eyecatchs: this.item.eyecatchs || [],
       images: this.item.images || [],
       isShow: this.item.isShow || false,
-      order: this.item.order || 999
+      order: this.item.order || 999,
+      nameRules: [
+        (v) => !!v || '名称は必須です',
+        (v) => v.length <= 20 || '名称は20文字以内に収めてください'
+      ],
+      idRules: [
+        (v) => !!v || 'IDは必須です',
+        (v) => v.length <= 10 || 'IDは10文字以内に収めてください',
+        (v) => /^[a-zA-Z0-9]+$/.test(v) || '半角英数字のみ使用可能です'
+      ]
     }
   },
   computed: {
-    isExits () {
-      return !!this.id
-    },
+    // isExits () {
+    //   return !!this.id
+    // },
     isPosted () {
       return !!this.isSend
     },
