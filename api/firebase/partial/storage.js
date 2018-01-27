@@ -4,7 +4,6 @@ const storage = firebase.storage()
 export const send = async (datas) => {
   for (let data of datas) {
     const ref = storage.ref(data.name)
-    // const blob = data.blob
     const file = data.file
     await ref.put(file).catch(() => false)
   }

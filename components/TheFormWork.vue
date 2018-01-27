@@ -39,8 +39,7 @@
           @change="onFileChange($event, 'eyecatch')"
         )
       v-flex(
-        offset-xs5
-        xs6
+        xs8
         v-if="eyecatch"
       )
         img(
@@ -71,18 +70,21 @@ export default {
   },
   data () {
     return {
-      title: this.item.id ? this.item.name : '新規登録',
       isSend: false,
       valid: false,
+      title: this.item.id ? this.item.name : '新規登録',
       id: this.item.id || '',
-      name: this.item.name,
-      category: Object.keys(this.item.category),
-      content: this.item.content,
+      name: this.item.name || '',
+      category: Object.keys(this.item.category) || [],
+      content: this.item.content || '',
       nameRules: [
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
       ],
-      eyecatch: []
+      eyecatch: this.item.eyecatch || [],
+      images: this.item.images || [],
+      isShow: this.item.isShow || false,
+      order: this.item.order || 999
     }
   },
   computed: {
@@ -105,26 +107,23 @@ export default {
         }
       })
       const result = await storageSend(datas)
-      const imgUrls = result ? await storageFetchs(datas) : []
-      console.log(imgUrls[0])
-      this[target] = imgUrls
+      this[target] = result ? await storageFetchs(datas) : []
       this.isSend = false
     },
-
+    formatCategory (category) {
+      return category.reduce(
+        (object, item) => Object.assign(object, {[item]: true}),
+        {}
+      )
+    },
     async send () {
+      if (this.isSend) return
       this.isSend = true
-      let category = {}
-      if (this.category.length > 0) {
-        category = this.category.reduce(
-          (object, item) => Object.assign(object, {[item]: true}),
-          {}
-        )
-      }
       const payload = {
         name: this.name,
-        category: category,
+        category: this.formatCategory(this.category),
         content: this.content,
-        eyecatch: this.eyecatch.name
+        eyecatch: this.eyecatch
       }
       await firebaseWorksSend(this.id, payload)
       this.isSend = false
