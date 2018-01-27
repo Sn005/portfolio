@@ -1,5 +1,10 @@
 <template lang='pug'>
   div
+    v-snackbar(
+      timeout
+      top
+      v-model="isPosted"
+    ) 更新完了しました
     v-toolbar
       v-toolbar-title {{ name }}
     v-progress-linear.mt-0(
@@ -7,6 +12,24 @@
       :indeterminate="true"
     )
     v-form.pa-4(v-model="valid")
+      v-switch(
+        :label=`isShow ? "表示": "非表示"`
+        v-model="isShow"
+      )
+      v-text-field(
+        label="ID"
+        v-model="id"
+        disabled
+        v-if="isExits"
+      )
+      v-text-field(
+        label="ID"
+        v-model="id"
+        :rules="idRules"
+        :counter="20"
+        required
+        v-else
+      )
       v-text-field(
         label="Name"
         v-model="name"
@@ -47,6 +70,7 @@
           width="100%"
           :src="eyecatch[0]"
         )
+        
     v-flex(offset-xs5)
       v-btn(
         color="primary"
@@ -90,6 +114,9 @@ export default {
   computed: {
     isExits () {
       return !!this.id
+    },
+    isPosted () {
+      return !!this.isSend
     }
   },
   methods: {
@@ -120,7 +147,10 @@ export default {
       if (this.isSend) return
       this.isSend = true
       const payload = {
+        id: this.id,
         name: this.name,
+        isShow: this.isShow,
+        order: this.order,
         category: this.formatCategory(this.category),
         content: this.content,
         eyecatch: this.eyecatch

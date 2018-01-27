@@ -15,7 +15,9 @@ import {
   VForm,
   VTextField,
   VCheckbox,
-  VProgressLinear
+  VProgressLinear,
+  VSwitch,
+  VSnackbar
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -43,6 +45,8 @@ Vue.use(Vuetify, {
     VForm,
     VTextField,
     VCheckbox,
-    VProgressLinear
+    VProgressLinear,
+    VSwitch,
+    VSnackbar
   }
 })
