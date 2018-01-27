@@ -1,12 +1,23 @@
 import firebase from '~/plugins/firebase'
 const storage = firebase.storage()
 
-export const send = async (files) => {
-  for (let file of files) {
-    console.log(file.name)
-    const ref = storage.ref(file.name)
-    const blob = file.blob
-    await ref.put(blob).catch(() => false)
+export const send = async (datas) => {
+  for (let data of datas) {
+    const ref = storage.ref(data.name)
+    // const blob = data.blob
+    const file = data.file
+    await ref.put(file).catch(() => false)
   }
   return true
+}
+
+export const fetchs = async (datas) => {
+  let results = []
+  for (let data of datas) {
+    const ref = storage.ref(data.name)
+    const url = await ref.getDownloadURL()
+      .catch(error => console.log(error))
+    results = [...results, url]
+  }
+  return results
 }

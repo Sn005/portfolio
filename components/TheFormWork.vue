@@ -26,6 +26,9 @@
             v-model="category"
             :value="key"
           )
+      div.mb-4.editor-wrapper
+        vue-editor(v-model="content")
+      p.title アイキャッチ画像
       v-btn
         | upload
         input.file-input(
@@ -35,8 +38,16 @@
           accept="*"
           @change="onFileChange($event, 'eyecatch')"
         )
-      div.editor-wrapper
-        vue-editor(v-model="content")
+      v-flex(
+        offset-xs5
+        xs6
+        v-if="eyecatch"
+      )
+        img(
+          class="image"
+          width="100%"
+          :src="eyecatch[0]"
+        )
     v-flex(offset-xs5)
       v-btn(
         color="primary"
@@ -47,7 +58,10 @@
 </template>
 <script>
 import { send as firebaseWorksSend } from '~/api/firebase/works'
-import { send as storageSend } from '~/api/firebase/partial/storage'
+import {
+  send as storageSend,
+  fetchs as storageFetchs
+} from '~/api/firebase/partial/storage'
 import { VueEditor } from 'vue2-editor'
 export default {
   components: {VueEditor},
@@ -77,25 +91,24 @@ export default {
     }
   },
   methods: {
-    getFormData (files) {
-      const data = new FormData();
-      [...files].forEach(file => {
-        data.append('data', file, file.name)
-      })
-      return data
-    },
-    onFileChange (event, target) {
+    async onFileChange (event, target) {
+      this.isSend = true
       const files = event.target.files || event.dataTransfer.files
       if (!event.target.files.length) return
 
       const accept = 'image/*'
-
-      this[target] = [...files].map((file, index) => {
+      const datas = [...files].map((file, index) => {
         return {
-          name: file.name,
-          blob: new Blob([file.result], { type: accept })
+          name: `works/${this.id}/${file.name}`,
+          blob: new Blob([file.result], { type: accept }),
+          file: file
         }
       })
+      const result = await storageSend(datas)
+      const imgUrls = result ? await storageFetchs(datas) : []
+      console.log(imgUrls[0])
+      this[target] = imgUrls
+      this.isSend = false
     },
 
     async send () {
@@ -107,8 +120,6 @@ export default {
           {}
         )
       }
-      await storageSend(this.eyecatch)
-
       const payload = {
         name: this.name,
         category: category,
