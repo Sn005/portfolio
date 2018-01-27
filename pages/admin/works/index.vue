@@ -41,23 +41,23 @@
             @click.native.stop="dialog.delete = true"
           )
             v-icon delete
-    v-dialog(
-      v-model="dialog.delete"
-      persistent
-      max-width="290"
-    )
-      v-card
-        v-card-title このアイテムを削除しますか？
-        v-card-actions
-          v-spacer
-          v-btn(
-            flat
-            @click.native="dialog.delete = false"
-          ) いいえ
-          v-btn(
-            flat
-            @click.native="dialog.delete = false"
-          ) はい
+        v-dialog(
+          v-model="dialog.delete"
+          persistent
+          max-width="290"
+        )
+          v-card
+            v-card-title このアイテムを削除しますか？
+            v-card-actions
+              v-spacer
+              v-btn(
+                flat
+                @click.native="dialog.delete = false"
+              ) いいえ
+              v-btn(
+                flat
+                @click="remove(props.item.id)"
+              ) はい
     v-dialog(
       v-model="dialog.sort"
       fullscreen
@@ -80,7 +80,10 @@
           ) はい
 </template>
 <script>
-import { items as firebaseWorksItems } from '~/api/firebase/works'
+import {
+  items as firebaseWorksItems,
+  remove as firebaseWorksRemove
+} from '~/api/firebase/works'
 export default {
   layout: 'admin',
   async asyncData () {
@@ -117,6 +120,18 @@ export default {
           sortable: false
         }
       ]
+    }
+  },
+  methods: {
+    async remove (id) {
+      const result = await firebaseWorksRemove(id)
+      console.log(result)
+      if (result) {
+        this.dialog.delete = false
+        this.items = this.items.filter(item => {
+          return item.id !== id
+        })
+      }
     }
   }
 }

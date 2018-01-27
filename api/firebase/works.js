@@ -38,3 +38,21 @@ export const send = async (id, payload) => {
     console.log(error)
   })
 }
+
+/**
+ * 対象アイテムを削除する
+ * @param {string} id 対象記事のID
+ */
+export const remove = async (id) => {
+  const doc = col.doc(id)
+  const item = await doc.get().catch(error => {
+    console.log(error)
+  })
+  console.log(item.exists)
+  if (!item.exists) return false
+  console.log(id)
+  await doc.delete().catch(error => {
+    console.log(error)
+  })
+  return true
+}

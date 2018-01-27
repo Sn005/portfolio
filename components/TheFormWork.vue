@@ -218,7 +218,6 @@ export default {
       this.images = this.images.filter(value => {
         return value.path !== path
       })
-      console.log(this.images)
       await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     }

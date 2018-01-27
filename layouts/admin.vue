@@ -43,3 +43,9 @@
     }
   }
 </script>
+<style lang="scss">
+@import "../assets/style/scss/modules/_m-app-body.scss";
+html,body{
+  @extend %m-app-body--is-admin;
+}
+</style>
