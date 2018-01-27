@@ -1,22 +1,41 @@
 import firebase from '~/plugins/firebase'
 const storage = firebase.storage()
 
+/**
+ * firebase storageへの画像アップロードを行う
+ * @param {array} datas 対象の画像情報群
+ */
+
 export const send = async (datas) => {
   for (let data of datas) {
-    const ref = storage.ref(data.name)
+    const ref = storage.ref(data.path)
     const file = data.file
     await ref.put(file).catch(() => false)
   }
   return true
 }
 
+/**
+ * 引数で受け取った画像情報群の表示URLを返す
+ * @param {array} datas 対象の画像情報群
+ */
 export const fetchs = async (datas) => {
   let results = []
   for (let data of datas) {
-    const ref = storage.ref(data.name)
+    const ref = storage.ref(data.path)
     const url = await ref.getDownloadURL()
       .catch(error => console.log(error))
-    results = [...results, url]
+    const item = {
+      path: data.path,
+      url: url
+    }
+    results = [...results, item]
   }
   return results
+}
+
+export const remove = async (path) => {
+  await storage.ref(path)
+    .delete()
+    .catch(error => console.log(error))
 }

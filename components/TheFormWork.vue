@@ -1,7 +1,6 @@
 <template lang='pug'>
   div
     v-snackbar(
-      timeout
       top
       v-model="isPosted"
     ) 更新完了しました
@@ -57,20 +56,59 @@
         input.file-input(
           type="file"
           ref="image"
-          name="image"
+          name="eyecatchs"
           accept="*"
-          @change="onFileChange($event, 'eyecatch')"
+          @change="onFileChange($event, 'eyecatchs')"
         )
       v-flex(
         xs8
-        v-if="eyecatch"
+        v-if="eyecatchs"
+        v-for="(eyecatch, index) in eyecatchs"
+        :key="index"
       )
         img(
-          class="image"
           width="100%"
-          :src="eyecatch[0]"
+          :src="eyecatch.url"
         )
-        
+      p.title.mt-4 ポートフォリオ画像
+      v-btn
+        | upload
+        input.file-input(
+          type="file"
+          ref="image"
+          name="images"
+          accept="*"
+          multiple="multiple"
+          @change="onFileChange($event, 'images')"
+        )
+      v-container(
+        fluid
+        grid-list-lg
+      )
+        v-layout(
+          row
+          wrap
+        )
+          v-flex(
+            xs4
+            v-if="images"
+            v-for="(image, index) in images"
+            :key="index"
+          )
+            v-card(
+              flat
+              tile
+            )
+              v-card-media.text-xs-right(
+                :src="image.url"
+                height="150px"
+              )
+                v-btn(
+                  icon
+                  offset-md2
+                  @click="deleteImage(image.path)"
+                )
+                  v-icon delete
     v-flex(offset-xs5)
       v-btn(
         color="primary"
@@ -83,6 +121,7 @@
 import { send as firebaseWorksSend } from '~/api/firebase/works'
 import {
   send as storageSend,
+  remove as storageRemove,
   fetchs as storageFetchs
 } from '~/api/firebase/partial/storage'
 import { VueEditor } from 'vue2-editor'
@@ -105,7 +144,7 @@ export default {
         (v) => !!v || 'Name is required',
         (v) => v.length <= 20 || 'Name must be less than 10 characters'
       ],
-      eyecatch: this.item.eyecatch || [],
+      eyecatchs: this.item.eyecatchs || [],
       images: this.item.images || [],
       isShow: this.item.isShow || false,
       order: this.item.order || 999
@@ -117,24 +156,39 @@ export default {
     },
     isPosted () {
       return !!this.isSend
+    },
+    formData () {
+      return {
+        id: this.id,
+        name: this.name,
+        isShow: this.isShow,
+        order: this.order,
+        category: this.formatCategory(this.category),
+        content: this.content,
+        eyecatchs: this.eyecatchs,
+        images: this.images
+      }
     }
   },
   methods: {
     async onFileChange (event, target) {
       this.isSend = true
       const files = event.target.files || event.dataTransfer.files
-      if (!event.target.files.length) return
-
-      const accept = 'image/*'
+      if (!files.length) return
       const datas = [...files].map((file, index) => {
         return {
-          name: `works/${this.id}/${file.name}`,
-          blob: new Blob([file.result], { type: accept }),
+          path: `works/${this.id}/${file.name}`,
           file: file
         }
       })
       const result = await storageSend(datas)
-      this[target] = result ? await storageFetchs(datas) : []
+      if (target === 'images') {
+        const newImages = result ? await storageFetchs(datas) : []
+        this[target] = [...this[target], ...newImages]
+      } else {
+        this[target] = result ? await storageFetchs(datas) : []
+      }
+      await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     },
     formatCategory (category) {
@@ -146,16 +200,18 @@ export default {
     async send () {
       if (this.isSend) return
       this.isSend = true
-      const payload = {
-        id: this.id,
-        name: this.name,
-        isShow: this.isShow,
-        order: this.order,
-        category: this.formatCategory(this.category),
-        content: this.content,
-        eyecatch: this.eyecatch
-      }
-      await firebaseWorksSend(this.id, payload)
+      await firebaseWorksSend(this.id, this.formData)
+      this.isSend = false
+    },
+    async deleteImage (path) {
+      if (this.isSend) return
+      this.isSend = true
+      await storageRemove(path)
+      this.images = this.images.filter(value => {
+        return value.path !== path
+      })
+      console.log(this.images)
+      await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     }
   }
