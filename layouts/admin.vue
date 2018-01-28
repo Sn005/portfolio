@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app(dark)
+  v-app.app-body(dark)
     v-navigation-drawer(
       :mini-variant.sync="miniVariant"
       :clipped="clipped"
@@ -45,7 +45,7 @@
 </script>
 <style lang="scss">
 @import "../assets/style/scss/modules/_m-app-body.scss";
-html,body{
+.app-body{
   @extend %m-app-body--is-admin;
 }
 </style>
