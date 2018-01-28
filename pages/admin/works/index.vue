@@ -24,8 +24,8 @@
         slot-scope="props"
       )
         td {{ props.item.name }}
-        td.text-xs-right {{ props.item.id }}
-        td.text-xs-right {{ props.item.created }}
+        td {{ props.item.id }}
+        td.text-xs-right {{ props.item.order }}
         td.text-xs-right
           v-btn(
             flat
@@ -128,11 +128,12 @@ export default {
         {
           text: 'Id',
           value: 'id',
+          align: 'left',
           sortable: false
         },
         {
-          text: 'Created',
-          value: 'created'
+          text: '表示順',
+          value: 'order'
         },
         {
           text: 'Action',
