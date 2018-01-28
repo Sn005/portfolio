@@ -10,7 +10,7 @@ export const send = async (datas) => {
   for (let data of datas) {
     const ref = storage.ref(data.path)
     const file = data.file
-    await ref.put(file).catch(() => false)
+    await ref.put(file).catch(error => console.log(error))
   }
   return true
 }
