@@ -82,7 +82,8 @@
             @end="dragEnd"
           )
             v-list-tile.px-4(
-              v-for="item in items"
+              v-for="(item, index) in items"
+              :key="index"
               @click=""
             )
               v-list-tile-content(v-text="item.name")

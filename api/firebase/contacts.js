@@ -7,8 +7,8 @@ const col = db.collection('contacts')
  * 一覧情報取得
  */
 export const items = async () => {
-  const snapshot = await col.get()
-  return snapshot.docs.map(function (doc) {
+  const colData = await col.get()
+  return colData.docs.map(function (doc) {
     let data = doc.data()
     data['id'] = doc.id
     return data

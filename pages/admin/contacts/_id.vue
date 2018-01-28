@@ -1,45 +1,37 @@
 <template lang="pug">
   v-layout(column)
     v-card
-      the-form-work(
-        :item="item"
-        :definedCategory="definedCategory"
-      )
+      v-toolbar
+        v-toolbar-title {{ item.title }}
+      div.pa-4
+        div.mb-4
+          p.title タイトル
+          p {{item.title}}
+        div.mb-4
+          p.title メールアドレス
+          p {{item.email}}
+        div.mb-4
+          p.title 本文
+          p {{item.content}}
+        div
+          p.title 投稿日
+          p {{item.created}}
 </template>
 <script>
-import { item as firebaseWorksItem } from '~/api/firebase/works'
-import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
-import TheFormWork from '~/components/TheFormWork'
+import * as firebaseContacts from '~/api/firebase/contacts'
 export default {
   layout: 'admin',
-  components: {
-    TheFormWork
-  },
   async asyncData ({ params, error }) {
-    const item = await firebaseWorksItem(params.id)
-    if (!item) {
-      this.$router.push({
-        path: '/admin/works'
+    const item = await firebaseContacts.item(params.id)
+    return {
+      item: item
+    }
+  },
+  moutend () {
+    if (!Object.keys(this.item).length) {
+      this.$route.push({
+        path: '/admin/contacts'
       })
-    }
-    const definedCategory = await firebaseDefinedCategoryItem()
-    return {
-      item: item,
-      definedCategory: definedCategory
-    }
-  },
-  data () {
-    return {
-      item: {
-        name: '',
-        category: [],
-        content: ''
-      }
-    }
-  },
-  computed: {
-    isExits () {
-      return true
     }
   }
 }
