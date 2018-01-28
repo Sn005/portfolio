@@ -18,6 +18,11 @@
             v-icon(v-html="item.icon")
           v-list-tile-content
             v-list-tile-title(v-text="item.title")
+        v-list-tile(@click="signOut")
+          v-list-tile-action
+            v-icon reply_all
+          v-list-tile-content
+            v-list-tile-title Sign out
     v-toolbar(
       fixed
       app
@@ -46,6 +51,14 @@
           { icon: 'home', title: 'Home', to: '/' }
         ],
         title: 'Vuetify.js'
+      }
+    },
+    methods: {
+      async signOut () {
+        await this.$store.dispatch('user/signOut')
+        this.$router.push({
+          path: '/'
+        })
       }
     }
   }
