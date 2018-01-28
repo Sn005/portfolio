@@ -1,8 +1,7 @@
 <template lang="pug">
   v-app.app-body(dark)
     v-navigation-drawer(
-      :mini-variant.sync="miniVariant"
-      :clipped="clipped"
+      clipped
       v-model="drawer"
       fixed
       app
@@ -19,6 +18,12 @@
             v-icon(v-html="item.icon")
           v-list-tile-content
             v-list-tile-title(v-text="item.title")
+    v-toolbar(
+      fixed
+      app
+      clipped-left
+    )
+      v-toolbar-title ns-port管理画面
     v-content
       v-container
         nuxt
