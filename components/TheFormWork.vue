@@ -196,7 +196,7 @@ export default {
       } else {
         this[target] = result ? await storageFetchs(datas) : []
       }
-      await firebaseWorksSend(this.id, this.formData)
+      this.isExits && await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     },
     formatCategory (category) {
