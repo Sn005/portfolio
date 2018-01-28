@@ -37,6 +37,7 @@
           { icon: 'apps', title: 'Dashboard', to: '/admin' },
           { icon: 'build', title: 'Works', to: '/admin/works' },
           { icon: 'perm_identity', title: 'About', to: '/admin/about' },
+          { icon: 'contacts', title: 'Contacts', to: '/admin/contacts' },
           { icon: 'home', title: 'Home', to: '/' }
         ],
         title: 'Vuetify.js'
