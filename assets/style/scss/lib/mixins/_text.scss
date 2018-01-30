@@ -1,0 +1,23 @@
+
+@mixin fz($size: 14) {
+    font-size: $size + px;
+    font-size: ($size / 10) + rem;
+}
+
+//-----------------------------------------------
+//　fontawesome
+//-----------------------------------------------
+@mixin fa($ico) {
+    content: $ico;
+    font-family: FontAwesome;
+}
+
+//-----------------------------------------------
+//　text-ellipsis
+//-----------------------------------------------
+@mixin text-ellipsis() {
+    display: block;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

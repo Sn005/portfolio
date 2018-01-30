@@ -1,3 +1,10 @@
+// ベースフォント
 $font-min: Georgia, '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E',
   'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
-$base-font: "Helvetica", "Arial", YuGothic,"Yu Gothic","Hiragino Sans","ヒラギノ角ゴシック","メイリオ", Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif,
+$base-font: "Helvetica", "Arial", YuGothic,"Yu Gothic","Hiragino Sans","ヒラギノ角ゴシック","メイリオ", Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif,;
+
+// 各種パス
+$dir-img: '/images/';
+
+// ページ全体の横幅
+$base-width: 1180px;

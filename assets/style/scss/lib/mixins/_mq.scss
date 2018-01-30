@@ -1,0 +1,74 @@
+
+//-----------------------------------------------
+//Media Queries
+//-----------------------------------------------
+
+// Width
+$width-pcl: $base-width;
+$width-pc: 960px;
+$width-tab: 768px;
+$width-sp: 480px;
+$width-sp-min: 350px;
+$width-scrollbar: 20px;
+
+@mixin mq-pcl {
+  @media only screen and (min-width: $width-pcl + $width-scrollbar) {
+    @content;
+  }
+}
+@mixin mq-pc {
+  @media only screen and (min-width: $width-pc + $width-scrollbar) {
+    @content;
+  }
+}
+
+@mixin mq-tabl {
+  @media only screen and (min-width: $width-tab + $width-scrollbar) and (max-width: $width-pc + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mq-tab {
+  @media only screen and (min-width: $width-sp + $width-scrollbar) and (max-width: $width-tab + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mq-sp {
+  @media only screen and (max-width: $width-sp + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mq-sp-min {
+  @media only screen and (max-width: $width-sp-min + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mq-pc-pcl {
+  @media only screen and (min-width: $width-pc + $width-scrollbar) and (max-width: $width-pcl + $width-scrollbar - 1) {
+    @content;
+  }
+}
+@mixin mq-tab-pc {
+  @media only screen and (min-width: $width-sp + $width-scrollbar) {
+    @content;
+  }
+}
+@mixin mq-tabl-pcl {
+  @media only screen and (min-width: $width-tab + $width-scrollbar) {
+    @content;
+  }
+}
+@mixin mq-tabl-pc {
+  @media only screen and (min-width: $width-tab + $width-scrollbar) and (max-width: $width-pcl + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mq-tab-sp {
+  @media only screen and (max-width: $width-tab + $width-scrollbar - 1) {
+    @content;
+  }
+}
