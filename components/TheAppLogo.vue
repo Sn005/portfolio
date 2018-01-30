@@ -12,6 +12,8 @@
   width: 100vw;
   height: 100vh;
   &__title{
+    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Bilbo', cursive;
     font-size: 2rem;
     color: $true-white;
   }
