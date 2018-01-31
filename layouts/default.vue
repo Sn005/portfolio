@@ -1,15 +1,18 @@
 <template lang="pug">
   v-app(
     id="app"
-  )
-    div.app-body
-      the-app-logo
+    :class="this.$route.name"
+  ) 
+    v-content
+      v-container
+        nuxt
+    the-page-overlay
 </template>
 <script>
-import TheAppLogo from '~/components/TheAppLogo'
+import ThePageOverlay from '~/components/ThePageOverlay'
 export default {
   components: {
-    TheAppLogo
+    ThePageOverlay
   }
 }
 </script>
@@ -19,16 +22,8 @@ export default {
 #app{
   @extend %m-app-body;
   background : $bg-body;
-  animation: appBg 20s $ease-in-out infinite;
-  &:after{
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    width: 100vw;
-    height: 100vh;
-    background:  url(#{$dir-img}bg-body.png);
-    opacity: 0.042;
+  &.index{
+    animation: appBg 20s $ease-in-out infinite;
   }
 }
 @keyframes appBg {

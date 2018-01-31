@@ -1,7 +1,7 @@
 <template lang="pug">
   div.app-logo
     section.app-logo__content
-      //- h1.app-logo__title portfolio
+      h1.app-logo__title portfolio
       //- img(src="/images/icon-app.png" width="180px")
 </template>
 <style lang="scss">
