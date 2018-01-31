@@ -6,13 +6,16 @@
     v-content
       v-container
         nuxt
+    the-page-border
     the-page-overlay
 </template>
 <script>
 import ThePageOverlay from '~/components/ThePageOverlay'
+import ThePageBorder from '~/components/ThePageBorder'
 export default {
   components: {
-    ThePageOverlay
+    ThePageOverlay,
+    ThePageBorder
   }
 }
 </script>

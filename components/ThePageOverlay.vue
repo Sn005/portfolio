@@ -8,8 +8,8 @@
   top: 0;
   left: 0;
   content: '';
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background:  url(#{$dir-img}bg-body.png);
   opacity: 0.042;
 }
