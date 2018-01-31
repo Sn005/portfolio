@@ -18,22 +18,15 @@ export default {
 @import "../assets/style/scss/modules/_m-app-body";
 #app{
   @extend %m-app-body;
-  background : $bg-body;
-  animation: bg 10s $ease-in-out infinite;
-  &:after{
-    content: '';
-    width: 100vw;
-    height: 100vh;
-    background:  url(#{$dir-img}bg-body.png);
-    opacity: 0.035;
-  }
+  background : $bg-body-primary;
+  animation: appBg 20s $ease-in-out infinite;
 }
-@keyframes bg {
+@keyframes appBg {
   0% {
-    background : $bg-body;
+    background :$bg-body;
   }
   50% {
-    background :darken($darken-red , 24%);
+    background :darken($bg-body-secondary , 5%);
   }
   100% {
     background : $bg-body;
