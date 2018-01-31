@@ -7,14 +7,14 @@
       v-container
         nuxt
     the-page-border
-    the-page-overlay
+    the-page-texture
 </template>
 <script>
-import ThePageOverlay from '~/components/ThePageOverlay'
+import ThePageTexture from '~/components/ThePageTexture'
 import ThePageBorder from '~/components/ThePageBorder'
 export default {
   components: {
-    ThePageOverlay,
+    ThePageTexture,
     ThePageBorder
   }
 }
