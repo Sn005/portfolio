@@ -1,7 +1,12 @@
 <template lang="pug">
   div.app-logo
     h1.app-logo__title
-      span.app-logo__text narihara portfolio
+      span.app-logo__text.is-sp
+        | narihara
+        br
+        | portfolio
+      span.app-logo__text.is-pc
+        | narihara portfolio
     the-app-logo-icon
 </template>
 <script>
@@ -18,20 +23,20 @@ export default {
 .app-logo{
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   width: 100%;
   height: calc(96vh - 16px);
   &__title{
+    display: flex;
+    align-items: center;
     position: relative;
-    width: 100%;
+    width: 95%;
     text-align: center;
-    &:before{
+    &:before,
+    &:after{
+      flex: 50%;
       content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      display: inline-block;
-      width: 100%;
       height: 6px;
       border-top: solid 1px rgba($primary-white, 0.25);
       border-bottom: solid 1px rgba($primary-white, 0.25);
@@ -40,28 +45,29 @@ export default {
   }
   &__text{
     position: relative;
-    display: inline-block;
     padding: 0 8px;
-    background : $bg-body;
     z-index: index($z, index-title);
-
     font-family: 'Josefin Slab', serif;
     font-weight:100;
     letter-spacing: 0.1em;
     font-size: 2rem;
     color: $true-white;
-    animation: indexTitleBg 20s $ease-in-out infinite;
-  }
-}
-@keyframes indexTitleBg {
-  0% {
-    background :$bg-body;
-  }
-  50% {
-    background :lighten($bg-body-secondary , 1%);
-  }
-  100% {
-    background : $bg-body;
+      &.is-pc{
+        @include mq-tabl-pcl{
+          width: 18em;
+        }
+        @include mq-tab-sp{
+          display: none;
+        }
+      }
+      &.is-sp{
+        @include mq-tabl-pcl{
+          display: none;
+        }
+        @include mq-tab-sp{
+          width: 9em;
+        }
+      }
   }
 }
 </style>
