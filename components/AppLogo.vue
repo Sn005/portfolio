@@ -10,8 +10,8 @@
     the-app-logo-icon
 </template>
 <style scoped lang="scss">
+// @import "../assets/style/scss/variables/_init-animate";
 @import "../assets/style/scss/_all";
-
 .app-logo{
   display: flex;
   align-items: center;
