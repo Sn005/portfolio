@@ -1,12 +1,12 @@
 <template lang="pug">
   div
-    the-app-logo
+    app-logo
 </template>
 <script>
-import TheAppLogo from '~/components/TheAppLogo'
+import AppLogo from '~/components/AppLogo'
 export default {
   components: {
-    TheAppLogo
+    AppLogo
   }
 }
 </script>

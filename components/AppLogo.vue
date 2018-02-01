@@ -1,12 +1,12 @@
 <template lang="pug">
   div.app-logo
     h1.app-logo__title
-      span.app-logo__text.is-sp
-        | narihara
-        br
-        | portfolio
+      //- span.app-logo__text.is-sp
+      //-   | narihara
+      //-   br
+      //-   | portfolio
       span.app-logo__text.is-pc
-        | narihara portfolio
+        //- | narihara portfolio
     the-app-logo-icon
 </template>
 <style scoped lang="scss">
