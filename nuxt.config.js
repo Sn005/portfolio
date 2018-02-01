@@ -24,6 +24,7 @@ module.exports = {
     '~/plugins/user.js'
   ],
   css: [
+    'animate-sass',
     '~/assets/style/app.styl'
   ],
   /*

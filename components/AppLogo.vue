@@ -1,10 +1,10 @@
 <template lang="pug">
   div.app-logo
-    h1.app-logo__title
-      //- span.app-logo__text.is-sp
-      //-   | narihara
-      //-   br
-      //-   | portfolio
+    h1.app-logo__title.animated.fadeIn
+      span.app-logo__text.is-sp
+        | narihara
+        br
+        | portfolio
       span.app-logo__text.is-pc
         //- | narihara portfolio
     the-app-logo-icon
