@@ -9,14 +9,6 @@
         | narihara portfolio
     the-app-logo-icon
 </template>
-<script>
-import TheAppLogoIcon from '~/components/TheAppLogoIcon'
-export default {
-  components: {
-    TheAppLogoIcon
-  }
-}
-</script>
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 
