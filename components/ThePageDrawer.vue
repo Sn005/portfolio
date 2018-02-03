@@ -35,14 +35,14 @@
 .page-drawer{
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(darken($primary-color, 20%), 0.95);
   z-index: index($z, the-page-drawer);
   visibility: hidden;
   opacity: 0;
-  transition: all 0.5s $ease;
+  transition: all 0.5s $easeInOutQuad;
   &.active{
     visibility: visible;
     opacity: 1;
@@ -53,8 +53,8 @@
   &__trigger{
     display: block;
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 32px;
+    right: 32px;
     z-index: index($z, the-page-drawer__trigger);
   }
 }
