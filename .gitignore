@@ -19,6 +19,5 @@ dist
 # .vscode
 .vscode/
 
-
 # css
 static/css
