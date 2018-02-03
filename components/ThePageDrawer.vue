@@ -1,19 +1,28 @@
 <template lang="pug">
-  div.page-drawer
-    a(@click.prevent="toggleDrawer") test
-    app-gnav.page-drawer__inner
+  div
+    div.page-drawer__trigger(
+      @click="toggleDrawer"
+    )
+      btn-menu(
+        :flg="isDrawer"
+      )
+    div.page-drawer(
+      :class="{ active: isDrawer }"
+    )
+      app-gnav.page-drawer__inner
 </template>
 <script>
-  import AppGnav from '~/components/AppGnav'
   import { createNamespacedHelpers } from 'vuex'
+  import AppGnav from '~/components/AppGnav'
+  import BtnMenu from '~/components/BtnMenu'
   const { mapGetters, mapActions } = createNamespacedHelpers('app')
-  
   export default {
     components: {
-      AppGnav
+      AppGnav,
+      BtnMenu
     },
     computed: {
-      ...mapGetters(['drawer'])
+      ...mapGetters(['isDrawer'])
     },
     methods: {
       ...mapActions(['toggleDrawer'])
@@ -25,13 +34,28 @@
 
 .page-drawer{
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(darken($primary-color, 20%), 0.95);
   z-index: index($z, the-page-drawer);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s $ease;
+  &.active{
+    visibility: visible;
+    opacity: 1;
+  }
   &__inner{
     @include set-mid-mid();
   }
+  &__trigger{
+    display: block;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: index($z, the-page-drawer__trigger);
+  }
 }
-
 </style>

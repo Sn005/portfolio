@@ -2,8 +2,8 @@
   nav.app-gnav
     ul
       li.app-gnav__item(
-        v-for="item in items"
-        :key="item"
+        v-for="(item , i) in items"
+        :key="i"
       )
         nuxt-link.app-gnav__link(
           :to="item.to"

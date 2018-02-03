@@ -1,19 +1,19 @@
 export const state = () => ({
-  drawer: false
+  isDrawer: false
 })
 
 export const mutations = {
   toggleDrawer (state) {
-    state.drawer = !state.drawer
+    state.isDrawer = !state.isDrawer
   }
 }
 
 export const actions = {
-  toggleDrawer ({ commit }, result) {
-    commit('toggleDrawer', { drawer: result })
+  toggleDrawer ({ commit }) {
+    commit('toggleDrawer')
   }
 }
 
 export const getters = {
-  drawer: state => state.drawer
+  isDrawer: state => state.isDrawer
 }

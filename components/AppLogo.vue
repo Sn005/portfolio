@@ -7,7 +7,6 @@
         | portfolio
       span.app-logo__text.is-pc
         | narihara portfolio
-    the-app-logo-icon
 </template>
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
@@ -31,8 +30,8 @@
       flex: 50%;
       content: '';
       height: 6px;
-      border-top: solid 1px rgba($primary-white, 0.25);
-      border-bottom: solid 1px rgba($primary-white, 0.25);
+      border-top: solid 1px $hr-color;
+      border-bottom: solid 1px $hr-color;
       z-index: index($z, index-title-border);
     }
   }
@@ -76,4 +75,5 @@
     transform: translate3d(0, 0, 0);
   }
 }
+
 </style>

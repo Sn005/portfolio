@@ -7,13 +7,13 @@
 
 $duration: 1s;
 $delay: 0.5s;
-$borderValue: solid 1px rgba($primary-white, 0.25);
+$borderValue: solid 1px $hr-color;
 .page-border{
   position: absolute;
-  top: 2%;
-  left: 2%;
-  width: 96%;
-  height: 96%;
+  top: 16px;
+  left: 8px;
+  width: calc(100% -16px);
+  height: calc(100% -32px);
   overflow: hidden;
   &:before,
   &:after{
