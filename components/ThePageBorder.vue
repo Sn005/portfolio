@@ -5,7 +5,8 @@
 <style scoped lang="scss">
 @import "../assets/style/scss/variables/_all";
 
-$duration: 500ms;
+$duration: 1s;
+$delay: 0.5s;
 $borderValue: solid 1px rgba($primary-white, 0.25);
 .page-border{
   position: absolute;
@@ -13,6 +14,7 @@ $borderValue: solid 1px rgba($primary-white, 0.25);
   left: 2%;
   width: 96%;
   height: 96%;
+  overflow: hidden;
   &:before,
   &:after{
     position: absolute;
@@ -22,16 +24,19 @@ $borderValue: solid 1px rgba($primary-white, 0.25);
     content: '';
   }
   &:before{
+    left: 1px;
+    content: '';
     height: 100%;
     border-top: $borderValue;
     border-bottom: $borderValue;
-    animation: width $duration $easeOutQuad forwards;
+    animation: width $duration $delay $easeOutQuad forwards;
   }
   &:after{
+    top: 1px;
     width: 100%;
     border-left: $borderValue;
     border-right: $borderValue;
-    animation: height $duration $easeInQuad forwards;
+    animation: height $duration $delay $easeOutQuad forwards;
   }
 }
 @keyframes width {
