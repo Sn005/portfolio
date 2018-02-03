@@ -6,7 +6,7 @@
         br
         | portfolio
       span.app-logo__text.is-pc
-        //- | narihara portfolio
+        | narihara portfolio
     the-app-logo-icon
 </template>
 <style scoped lang="scss">
@@ -25,6 +25,8 @@
     position: relative;
     width: 95%;
     text-align: center;
+    opacity: 0;
+    animation: appLogo 0.8s $easeInQuad forwards;
     &:before,
     &:after{
       flex: 50%;
@@ -60,6 +62,19 @@
           width: 9em;
         }
       }
+  }
+}
+@keyframes appLogo {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 </style>
