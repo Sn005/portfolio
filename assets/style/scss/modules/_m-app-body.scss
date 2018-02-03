@@ -1,6 +1,7 @@
 @import '../variables/_setting.scss';
 %m-app-body{
   font-family: $font-min;
+  letter-spacing: 0.1em;
   &--is-admin{
     font-family: $base-font;
   }

@@ -3,7 +3,7 @@
     div.page-border__inner
 </template>
 <style scoped lang="scss">
-@import "../assets/style/scss/variables/_all";
+@import "../assets/style/scss/_all";
 
 $duration: 1s;
 $delay: 0.5s;
@@ -17,11 +17,12 @@ $borderValue: solid 1px rgba($primary-white, 0.25);
   overflow: hidden;
   &:before,
   &:after{
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
-    content: '';
+    z-index: index($z, the-page-border);
+    pointer-events: none;
   }
   &:before{
     left: 1px;

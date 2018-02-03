@@ -2,7 +2,7 @@
   div.page-texture
 </template>
 <style scoped lang="scss">
-@import "../assets/style/scss/variables/_all";
+@import "../assets/style/scss/_all";
 .page-texture{
   position: absolute;
   top: 0;
@@ -13,5 +13,6 @@
   background:  url(#{$dir-img}bg-body.png);
   opacity: 0.042;
   z-index: index($z, the-page-texture);
+  pointer-events: none;
 }
 </style>
