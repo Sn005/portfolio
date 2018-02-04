@@ -5,6 +5,7 @@
         v-for="(item , i) in items"
         :key="i"
         :class="{ active: isDrawer }"
+        @click="toggleDrawer"
       )
         nuxt-link.app-gnav__link(
           :to="item.to"
@@ -12,7 +13,7 @@
 </template>
 <script>
   import { createNamespacedHelpers } from 'vuex'
-  const { mapGetters } = createNamespacedHelpers('app')
+  const { mapGetters, mapActions } = createNamespacedHelpers('app')
   export default{
     data () {
       return {
@@ -26,6 +27,9 @@
     },
     computed: {
       ...mapGetters(['isDrawer'])
+    },
+    methods: {
+      ...mapActions(['toggleDrawer'])
     }
   }
 </script>
