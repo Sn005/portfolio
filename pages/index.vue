@@ -26,6 +26,12 @@ $deg: 30deg !default;
     bottom: -93vh;
     background: darken($primary-white, 10%);
     box-shadow: 0 4px 10px rgba($true-black, 0.3) inset;
+    @include mq-tabl-pcl{
+      bottom: -105vh;
+    }
+    @include mq-tab-sp{
+      bottom: -93vh;
+    }
   }
   &:before{
     left: 0;
