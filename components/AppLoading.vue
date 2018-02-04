@@ -1,12 +1,13 @@
 <template lang="pug">
   div.app-loading(
-    v-if="loading"
+    :class="{ loading: loading }"
   )
-    img(
-      src="/images/icon-drawing.png"
-      width="300px"
-    )
-    p Loading...
+    div.app-loading__inner
+      img(
+        src="/images/icon-drawing.png"
+        width="300px"
+      )
+      p Loading...
 </template>
 
 <script>
@@ -19,9 +20,10 @@ export default {
       this.loading = true
     },
     finish () {
+      // this.loading = false
       setTimeout(() => {
         this.loading = false
-      }, 1000)
+      }, 2000)
     }
   }
 }
@@ -37,11 +39,20 @@ export default {
   width: 100vw;
   height: 100vh;
   background: darken($primary-white, 10%);
-  text-align: center;
-  padding-top: 200px;
-  font-size: 2rem;
   z-index:index( $z, app-loading);
-  @include text-title();
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.5s $easeOutQuad;
+  &.loading{
+    opacity: 1;
+    visibility: visible;
+  }
+  &__inner{
+    font-size: 2rem;
+    text-align: center;
+    @include set-mid-mid();
+    @include text-title();
+  }
 }
-
 </style>
