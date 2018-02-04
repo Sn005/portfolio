@@ -57,12 +57,10 @@
     }
   }
   &__link{
-    font-family: 'Josefin Slab', serif;
-    font-weight:100;
-    letter-spacing: 0.1em;
     color: $true-white;
     font-size: 2.4rem;
     text-decoration: none;
+    @include text-title();
   }
 }
 

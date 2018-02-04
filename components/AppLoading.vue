@@ -39,11 +39,9 @@ export default {
   background: darken($primary-white, 10%);
   text-align: center;
   padding-top: 200px;
-  font-family: 'Josefin Slab', serif;
-  font-weight:100;
   font-size: 2rem;
-  letter-spacing: 0.1em;
   z-index:index( $z, app-loading);
+  @include text-title();
 }
 
 </style>

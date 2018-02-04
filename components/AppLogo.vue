@@ -39,11 +39,9 @@
     position: relative;
     padding: 0 8px;
     z-index: index($z, index-title);
-    font-family: 'Josefin Slab', serif;
-    font-weight:100;
-    letter-spacing: 0.1em;
     font-size: 2rem;
     color: $true-white;
+    @include text-title();
       &.is-pc{
         @include mq-tabl-pcl{
           width: 18em;
