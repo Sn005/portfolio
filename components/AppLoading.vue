@@ -1,28 +1,36 @@
 <template lang="pug">
   div.app-loading(
-    :class="{ loading: loading }"
+    :class="status"
   )
     div.app-loading__inner
       img(
         src="/images/icon-drawing.png"
         width="300px"
       )
-      p Loading...
+      p
+        span.app-loading__text(
+          v-for="(text , i) in texts"
+          :class="status"
+          :key="i"
+        ) {{ text }}
 </template>
 
 <script>
 export default {
   data: () => ({
-    loading: false
+    status: 'before',
+    texts: 'Loading...'
   }),
   methods: {
     start () {
-      this.loading = true
+      this.status = 'entry'
     },
     finish () {
-      // this.loading = false
       setTimeout(() => {
-        this.loading = false
+        this.status = 'end'
+      }, 1000)
+      setTimeout(() => {
+        this.status = 'before'
       }, 2000)
     }
   }
@@ -43,16 +51,61 @@ export default {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.5s $easeOutQuad;
-  &.loading{
+  transform: scale(0.9);
+  transition: all 1s $easeOutQuad;
+  &.entry{
+    transform: scale(1);
     opacity: 1;
     visibility: visible;
+  }
+  &.end{
+    animation: loadingEnd 1s $easeOutQuad forwards;
   }
   &__inner{
     font-size: 2rem;
     text-align: center;
     @include set-mid-mid();
     @include text-title();
+  }
+  &__text{
+    &.entry{
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}){
+          $delay: 1 + 0.4 * $i + s;
+          animation: loadingText 1.5s ($delay) $easeOutQuad infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes loadingEnd {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    transform: scale(1.1);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loadingText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
