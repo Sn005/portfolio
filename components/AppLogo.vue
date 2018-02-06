@@ -24,7 +24,7 @@
     width: 95%;
     text-align: center;
     opacity: 0;
-    animation: appLogo 0.8s $easeInQuad forwards;
+    animation: appLogo 0.8s 1s $easeInQuad forwards;
     &:before,
     &:after{
       flex: 50%;

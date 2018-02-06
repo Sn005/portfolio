@@ -1,19 +1,38 @@
 <template lang="pug">
-  div.page-border
-    div.page-border__inner
+  div.page-border(:class="status")
+    div.page-border__inner(:class="status")
 </template>
+<script>
+import AppLogo from '~/components/AppLogo'
+export default {
+  data () {
+    return {
+      status: 'before'
+    }
+  },
+  components: {
+    AppLogo
+  },
+  mounted () {
+    this.status = 'entry'
+  }
+}
+</script>
+
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 
-$duration: 1s;
-$delay: 0.5s;
-$borderValue: solid 1px $hr-color;
 .page-border{
+  $duration: 0.5s;
+  $delay: $duration;
+  $easing: $easeOutQuad;
+  $borderValue: solid 1px $hr-color;
+
   position: absolute;
-  top: 16px;
+  top: 8px;
   left: 8px;
   width: calc(100% -16px);
-  height: calc(100% -32px);
+  height: calc(100% -16px);
   overflow: hidden;
   &:before,
   &:after{
@@ -21,39 +40,28 @@ $borderValue: solid 1px $hr-color;
     position: absolute;
     top: 0;
     left: 0;
+    width: 0;
+    height: 0;
     z-index: index($z, the-page-border);
     pointer-events: none;
   }
-  &:before{
-    left: 1px;
-    content: '';
-    height: 100%;
-    border-top: $borderValue;
-    border-bottom: $borderValue;
-    animation: width $duration $delay $easeOutQuad forwards;
-  }
-  &:after{
-    top: 1px;
-    width: 100%;
-    border-left: $borderValue;
-    border-right: $borderValue;
-    animation: height $duration $delay $easeOutQuad forwards;
-  }
-}
-@keyframes width {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
+  &.entry{
+    &:before,
+    &:after{
+      width: 100%;
+      height: 100%;
+    }
+    &:before{
+      border-top: $borderValue;
+      border-right: $borderValue;
+      transition: width $duration $easing, height $duration $delay $easing;
+    }
+    &:after{
+      border-bottom: $borderValue;
+      border-left: $borderValue;
+      transition: height $duration $easing, width $duration $delay $easing;
+    }
   }
 }
-@keyframes height {
-  0% {
-    height: 0%;
-  }
-  100% {
-    height: 100%;
-  }
-}
+
 </style>
