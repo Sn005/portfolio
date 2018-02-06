@@ -1,6 +1,10 @@
 <template lang="pug">
   div.app-logo
-    h1.app-logo__title.animated.fadeIn
+    p(v-if="status=== 'before'") loading
+    h1.app-logo__title(
+      v-else
+      :class="status"
+    )
       span.app-logo__text.is-sp
         | narihara
         br
@@ -8,6 +12,19 @@
       span.app-logo__text.is-pc
         | narihara portfolio
 </template>
+<script>
+export default {
+  data () {
+    return {
+      status: 'before'
+    }
+  },
+  mounted () {
+    this.status = 'entry'
+  }
+}
+</script>
+
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .app-logo{
@@ -24,7 +41,9 @@
     width: 95%;
     text-align: center;
     opacity: 0;
-    animation: appLogo 0.8s 1s $easeInQuad forwards;
+    &.entry{
+      animation: appLogo 0.8s 1s $easeInQuad forwards;
+    }
     &:before,
     &:after{
       flex: 50%;
