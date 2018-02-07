@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.page-border(:class="status")
+  div.page-border(
+    :class="status"
+  )
     div.page-border__inner(:class="status")
 </template>
 <script>
@@ -27,6 +29,7 @@ export default {
   $duration: $delay;
   $easing: $easeOutQuad;
   $borderValue: solid 1px $hr-color;
+  $root: &;
 
   position: absolute;
   top: 8px;
@@ -45,12 +48,21 @@ export default {
     z-index: index($z, the-page-border);
     pointer-events: none;
   }
-  &.entry{
+  &-enter{
+    &:before,
+    &:after{
+      width: 0;
+      height: 0;
+    }
+  }
+  &-enter-to{
     &:before,
     &:after{
       width: 100%;
       height: 100%;
     }
+  }
+  &-enter-active{
     &:before{
       border-top: $borderValue;
       border-right: $borderValue;
@@ -62,6 +74,26 @@ export default {
       transition: height $duration $easing, width $duration $delay $easing;
     }
   }
+  // &.entry{
+  //   &:before,
+  //   &:after{
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  //   &:before{
+  //     border-top: $borderValue;
+  //     border-right: $borderValue;
+  //     transition: width $duration $easing, height $duration $delay $easing;
+  //   }
+  //   &:after{
+  //     border-bottom: $borderValue;
+  //     border-left: $borderValue;
+  //     transition: height $duration $easing, width $duration $delay $easing;
+  //   }
+  // }
 }
+
+
+
 
 </style>
