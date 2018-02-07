@@ -23,8 +23,8 @@ export default {
 @import "../assets/style/scss/_all";
 
 .page-border{
-  $duration: 0.5s;
-  $delay: $duration;
+  $delay: map-get($top-quee, pageBorder);
+  $duration: $delay;
   $easing: $easeOutQuad;
   $borderValue: solid 1px $hr-color;
 

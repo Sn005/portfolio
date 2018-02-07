@@ -60,13 +60,15 @@
     @include set-mid-mid();
   }
   &__trigger{
+    $delay: map-get($top-quee, pageDrawerTrigger);
+
     display: block;
     position: fixed;
     top: 32px;
     right: 32px;
     z-index: index($z, the-page-drawer__trigger);
     opacity: 0;
-    transition: all 0.5s 2s $easeInOutQuad;
+    transition: all 0.5s $delay $easeInOutQuad;
     &.entry{
       opacity: 1;
     }

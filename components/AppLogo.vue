@@ -28,6 +28,7 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .app-logo{
+  $delay: map-get($top-quee, appLogo);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +43,7 @@ export default {
     text-align: center;
     opacity: 0;
     &.entry{
-      animation: appLogo 0.8s 1s $easeInQuad forwards;
+      animation: appLogo 0.8s $delay $easeInQuad forwards;
     }
     &:before,
     &:after{
