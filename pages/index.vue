@@ -1,6 +1,7 @@
 <template lang="pug">
-  div.page-index
-    app-logo
+  v-content
+    v-container
+      app-logo
 </template>
 <script>
 import AppLogo from '~/components/AppLogo'

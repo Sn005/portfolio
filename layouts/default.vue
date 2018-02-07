@@ -2,10 +2,8 @@
   v-app(
     id="app"
     :class="this.$route.name"
-  ) 
-    v-content
-      v-container
-        nuxt
+  )
+    nuxt
     the-page-border
     the-page-drawer
     the-page-texture
