@@ -1,18 +1,21 @@
 <template lang="pug">
-  div.app-loading(
-    :class="status"
+  transition(
+    name="app-loading"
   )
-    div.app-loading__inner
-      img(
-        src="/images/icon-drawing.png"
-        width="300px"
-      )
-      p
-        span.app-loading__text(
-          v-for="(text , i) in texts"
-          :class="status"
-          :key="i"
-        ) {{ text }}
+    div.app-loading(
+      :class="status"
+    )
+      div.app-loading__inner
+        img(
+          src="/images/icon-drawing.png"
+          width="300px"
+        )
+        p
+          span.app-loading__text(
+            v-for="(text , i) in texts"
+            :class="status"
+            :key="i"
+          ) {{ text }}
 </template>
 
 <script>
@@ -23,7 +26,7 @@ export default {
   }),
   methods: {
     start () {
-      this.status = 'entry'
+      this.status = 'enter'
     },
     finish () {
       setTimeout(() => {
@@ -53,7 +56,7 @@ export default {
   pointer-events: none;
   transform: scale(0.9);
   transition: all 1s $easeOutQuad;
-  &.entry{
+  &.enter{
     transform: scale(1);
     opacity: 1;
     visibility: visible;
@@ -68,7 +71,7 @@ export default {
     @include text-title();
   }
   &__text{
-    &.entry{
+    &.enter{
       @for $i from 1 through 20 {
         &:nth-child(#{$i}){
           $delay: 1 + 0.4 * $i + s;
