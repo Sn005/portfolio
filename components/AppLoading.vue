@@ -1,21 +1,18 @@
 <template lang="pug">
-  transition(
-    name="app-loading"
+  div.app-loading(
+    :class="status"
   )
-    div.app-loading(
-      :class="status"
-    )
-      div.app-loading__inner
-        img(
-          src="/images/icon-drawing.png"
-          width="300px"
-        )
-        p
-          span.app-loading__text(
-            v-for="(text , i) in texts"
-            :class="status"
-            :key="i"
-          ) {{ text }}
+    div.app-loading__inner
+      img(
+        src="/images/icon-drawing.png"
+        width="300px"
+      )
+      p
+        span.app-loading__text(
+          v-for="(text , i) in texts"
+          :class="status"
+          :key="i"
+        ) {{ text }}
 </template>
 
 <script>
