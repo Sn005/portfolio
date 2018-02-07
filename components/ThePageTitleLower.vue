@@ -19,23 +19,22 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-lower{
   $deg: 30deg;
-
   position: relative;
-  perspective: 2000px;
-  // width: 100vw;
-  // height: 100vw;
-  // background: darken($primary-white, 10%);
-  // transform: rotate(45deg);
+  width: 100%;
+  height: 160px;
+  background: darken($primary-color, 10%);
   &:before{
+    $size: 200px;
     content: '';
     position: absolute;
-    top: -100vw;
-    width: 100vw;
-    height: 100vw;
-    background: darken($primary-white, 10%);
-    transform: rotate(45deg) translate3d(0, 150px, 100px);
-    // transform: translate3d(0, 150px, 100px);
-    // transform: skew(10deg) rotate(45deg);
+    bottom: - ($size / 2) ;
+    left: 50%;
+    margin-left: -($size / 2);
+    width: $size;
+    height: $size;
+    background: darken($primary-color, 10%);
+    transform: rotate(45deg);
+    z-index: 1;
   }
   // &:before,
   // &:after{

@@ -1,18 +1,22 @@
 <template lang="pug">
-  div.app-loading(
-    :class="status"
+  transition(
+    name="app-loading"
   )
-    div.app-loading__inner
-      img(
-        src="/images/icon-drawing.png"
-        width="300px"
-      )
-      p
-        span.app-loading__text(
-          v-for="(text , i) in texts"
-          :class="status"
-          :key="i"
-        ) {{ text }}
+    div.app-loading(
+      v-show="loading"
+      :class="status"
+    )
+      div.app-loading__inner
+        img(
+          src="/images/icon-drawing.png"
+          width="300px"
+        )
+        p
+          span.app-loading__text(
+            v-for="(text , i) in texts"
+            :class="status"
+            :key="i"
+          ) {{ text }}
 </template>
 
 <script>
@@ -23,9 +27,11 @@ export default {
   }),
   methods: {
     start () {
+      this.loading = true
       this.status = 'enter'
     },
     finish () {
+      this.loading = false
       setTimeout(() => {
         this.status = 'end'
       }, 1000)
@@ -53,14 +59,33 @@ export default {
   pointer-events: none;
   transform: scale(0.9);
   transition: all 1s $easeOutQuad;
-  &.enter{
+  &-enter-active,
+  &-leave-active { 
+    transition: all 1s $easeOutQuad;
+  }
+  &-enter { 
+    transform: scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+  }
+  &-enter-to { 
     transform: scale(1);
     opacity: 1;
     visibility: visible;
   }
-  &.end{
-    animation: loadingEnd 1s $easeOutQuad forwards;
+  &-leave { 
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
   }
+  &-leave-to { 
+    transform: scale(1.1);
+    opacity: 0;
+    visibility: hidden;
+  }
+  // &-leave-active { 
+  //   animation: loadingEnd 1s $easeOutQuad forwards;
+  // }
   &__inner{
     font-size: 2rem;
     text-align: center;

@@ -74,23 +74,23 @@ export default {
       transition: height $duration $easing, width $duration $delay $easing;
     }
   }
-  // &.entry{
-  //   &:before,
-  //   &:after{
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  //   &:before{
-  //     border-top: $borderValue;
-  //     border-right: $borderValue;
-  //     transition: width $duration $easing, height $duration $delay $easing;
-  //   }
-  //   &:after{
-  //     border-bottom: $borderValue;
-  //     border-left: $borderValue;
-  //     transition: height $duration $easing, width $duration $delay $easing;
-  //   }
-  // }
+  &.entry{
+    &:before,
+    &:after{
+      width: 100%;
+      height: 100%;
+    }
+    &:before{
+      border-top: $borderValue;
+      border-right: $borderValue;
+      transition: width $duration $easing, height $duration $delay $easing;
+    }
+    &:after{
+      border-bottom: $borderValue;
+      border-left: $borderValue;
+      transition: height $duration $easing, width $duration $delay $easing;
+    }
+  }
 }
 
 
