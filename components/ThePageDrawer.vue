@@ -2,6 +2,7 @@
   div
     div.page-drawer__trigger(
       @click="toggleDrawer"
+      :class="status"
     )
       btn-menu(
         :flg="isDrawer"
@@ -17,6 +18,11 @@
   import BtnMenu from '~/components/BtnMenu'
   const { mapGetters, mapActions } = createNamespacedHelpers('app')
   export default {
+    data () {
+      return {
+        status: 'before'
+      }
+    },
     components: {
       AppGnav,
       BtnMenu
@@ -26,6 +32,9 @@
     },
     methods: {
       ...mapActions(['toggleDrawer'])
+    },
+    mounted () {
+      this.status = 'entry'
     }
   }
 </script>
@@ -56,6 +65,11 @@
     top: 32px;
     right: 32px;
     z-index: index($z, the-page-drawer__trigger);
+    opacity: 0;
+    transition: all 0.5s 2s $easeInOutQuad;
+    &.entry{
+      opacity: 1;
+    }
   }
 }
 </style>
