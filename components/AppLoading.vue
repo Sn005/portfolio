@@ -22,6 +22,7 @@
 <script>
 export default {
   data: () => ({
+    loading: false,
     status: 'before',
     texts: 'Loading...'
   }),
@@ -31,13 +32,9 @@ export default {
       this.status = 'enter'
     },
     finish () {
-      this.loading = false
       setTimeout(() => {
-        this.status = 'end'
+        this.loading = false
       }, 1000)
-      setTimeout(() => {
-        this.status = 'before'
-      }, 2000)
     }
   }
 }
