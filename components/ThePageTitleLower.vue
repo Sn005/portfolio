@@ -1,6 +1,7 @@
 <template lang="pug">
   header.page-title-lower
-    h1.page-title-lower__text WORKS
+    h1.page-title-lower__text
+      slot
 </template>
 <script>
 export default {
