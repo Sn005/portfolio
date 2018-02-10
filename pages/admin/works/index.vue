@@ -98,6 +98,7 @@ import {
 } from '~/api/firebase/works'
 import draggable from 'vuedraggable'
 export default {
+  transition: 'admin',
   layout: 'admin',
   async asyncData () {
     const items = await firebaseWorksItems()

@@ -9,6 +9,7 @@
 import { createNamespacedHelpers } from 'vuex'
 const { mapGetters } = createNamespacedHelpers('user')
 export default {
+  transition: 'admin',
   layout: 'admin',
   computed: {
     ...mapGetters(['auth'])

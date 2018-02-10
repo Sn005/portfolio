@@ -14,6 +14,7 @@
 </template>
 <script>
 export default {
+  transition: 'admin',
   layout: 'admin'
 }
 </script>

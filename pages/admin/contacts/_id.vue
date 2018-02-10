@@ -20,6 +20,7 @@
 <script>
 import * as firebaseContacts from '~/api/firebase/contacts'
 export default {
+  transition: 'admin',
   layout: 'admin',
   async asyncData ({ params, error }) {
     const item = await firebaseContacts.item(params.id)

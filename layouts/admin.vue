@@ -1,5 +1,8 @@
 <template lang="pug">
-  v-app.app-body(dark)
+  v-app.app-body(
+    id="admin"
+    dark
+  )
     v-navigation-drawer(
       clipped
       v-model="drawer"
@@ -65,7 +68,7 @@
 </script>
 <style lang="scss">
 @import "../assets/style/scss/modules/_m-app-body.scss";
-.app-body{
+#admin{
   @extend %m-app-body--is-admin;
 }
 </style>

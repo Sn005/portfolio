@@ -24,6 +24,7 @@
 <script>
 import * as firebaseAbout from '~/api/firebase/about'
 export default {
+  transition: 'admin',
   layout: 'admin',
   async asyncData ({ params, error }) {
     const item = await firebaseAbout.item()

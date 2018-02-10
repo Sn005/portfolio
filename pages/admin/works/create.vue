@@ -10,6 +10,7 @@
 import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
 import TheFormWork from '~/components/TheFormWork'
 export default {
+  transition: 'admin',
   layout: 'admin',
   components: {
     TheFormWork

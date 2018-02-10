@@ -20,6 +20,7 @@
 </template>
 <script>
 export default {
+  layout: 'auth',
   middleware: 'is-authed',
   name: 'login',
   data () {
