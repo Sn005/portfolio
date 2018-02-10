@@ -2,7 +2,6 @@
   div.page-border(
     :class="status"
   )
-    div.page-border__inner(:class="status")
 </template>
 <script>
 import AppLogo from '~/components/AppLogo'
@@ -16,7 +15,7 @@ export default {
     AppLogo
   },
   mounted () {
-    this.status = 'entry'
+    this.status = 'enter'
   }
 }
 </script>
@@ -48,33 +47,7 @@ export default {
     z-index: index($z, the-page-border);
     pointer-events: none;
   }
-  &-enter{
-    &:before,
-    &:after{
-      width: 0;
-      height: 0;
-    }
-  }
-  &-enter-to{
-    &:before,
-    &:after{
-      width: 100%;
-      height: 100%;
-    }
-  }
-  &-enter-active{
-    &:before{
-      border-top: $borderValue;
-      border-right: $borderValue;
-      transition: width $duration $easing, height $duration $delay $easing;
-    }
-    &:after{
-      border-bottom: $borderValue;
-      border-left: $borderValue;
-      transition: height $duration $easing, width $duration $delay $easing;
-    }
-  }
-  &.entry{
+  &.enter{
     &:before,
     &:after{
       width: 100%;

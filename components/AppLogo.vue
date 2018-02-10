@@ -1,26 +1,27 @@
 <template lang="pug">
   div.app-logo
-    p(v-if="status=== 'before'") loading
-    h1.app-logo__title(
-      v-else
-      :class="status"
+    transition(
+      name="app-logo__title"
     )
-      span.app-logo__text.is-sp
-        | narihara
-        br
-        | portfolio
-      span.app-logo__text.is-pc
-        | narihara portfolio
+      h1.app-logo__title(
+        v-if="enter"
+      )
+        span.app-logo__text.is-sp
+          | narihara
+          br
+          | portfolio
+        span.app-logo__text.is-pc
+          | narihara portfolio
 </template>
 <script>
 export default {
   data () {
     return {
-      status: 'before'
+      enter: false
     }
   },
   mounted () {
-    this.status = 'entry'
+    this.enter = true
   }
 }
 </script>
@@ -28,7 +29,6 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .app-logo{
-  $delay: map-get($top-quee, appLogo);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,15 +36,13 @@ export default {
   width: 100%;
   height: calc(96vh - 16px);
   &__title{
+    $delay: map-get($top-quee, appLogo);
+
     display: flex;
     align-items: center;
     position: relative;
     width: 95%;
     text-align: center;
-    opacity: 0;
-    &.entry{
-      animation: appLogo 0.8s $delay $easeInQuad forwards;
-    }
     &:before,
     &:after{
       flex: 50%;
@@ -54,6 +52,18 @@ export default {
       border-bottom: solid 1px $hr-color;
       z-index: index($z, index-title-border);
     }
+    &-enter,
+    &-leave{
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+    &-enter-to{
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    &-enter-active{
+      transition: all 1s $delay $easeInQuad;
+    }
   }
   &__text{
     position: relative;
@@ -62,36 +72,22 @@ export default {
     font-size: 2rem;
     color: $true-white;
     @include text-title();
-      &.is-pc{
-        @include mq-tabl-pcl{
-          width: 18em;
-        }
-        @include mq-tab-sp{
-          display: none;
-        }
+    &.is-pc{
+      @include mq-tabl-pcl{
+        width: 18em;
       }
-      &.is-sp{
-        @include mq-tabl-pcl{
-          display: none;
-        }
-        @include mq-tab-sp{
-          width: 9em;
-        }
+      @include mq-tab-sp{
+        display: none;
       }
+    }
+    &.is-sp{
+      @include mq-tabl-pcl{
+        display: none;
+      }
+      @include mq-tab-sp{
+        width: 9em;
+      }
+    }
   }
 }
-@keyframes appLogo {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 </style>
