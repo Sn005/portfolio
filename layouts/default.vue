@@ -33,8 +33,8 @@ export default {
 #app{
   @extend %m-app-body;
   background : $bg-body;
-  animation: appBg 20s $easeInOut infinite;
   &.index{
+    animation: appBg 20s $easeInOut infinite;
   }
 }
 @keyframes appBg {

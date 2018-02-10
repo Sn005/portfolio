@@ -99,24 +99,6 @@ export default {
   }
 }
 
-// @keyframes loadingEnd {
-//   0% {
-//     transform: scale(1);
-//     opacity: 1;
-//     visibility: visible;
-//   }
-//   95% {
-//     transform: scale(1.1);
-//     opacity: 0;
-//     visibility: hidden;
-//   }
-//   100% {
-//     transform: scale(1);
-//     opacity: 0;
-//     visibility: hidden;
-//   }
-// }
-
 @keyframes loadingText {
   0% {
     opacity: 1;

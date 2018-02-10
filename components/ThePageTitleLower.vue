@@ -19,7 +19,8 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-lower{
   $deg: 30deg;
-  $bg: darken($primary-color, 60%);
+  // $bg: darken($primary-white, 80%);
+  $bg: darken($primary-color, 30%);
   $height: 120px;
 
   position: relative;
@@ -45,7 +46,6 @@ export default {
     position: relative;
     margin: 0 auto;
     line-height: $height;
-    font-size: 2rem;
     text-align: center;
     color: $true-white;
     z-index: index($z, lower-title);
@@ -53,17 +53,28 @@ export default {
     animation: pageTitleText 1s 1s $easeOutQuad forwards;
     @include text-title();
     @include mq-tabl-pcl{
+      font-size: 2rem;
       width: 40%;
+    }
+    @include mq-tab-sp{
+      width: 90%;
+      padding-top: 16px;
+      font-size: 1.8rem;
     }
     &:before,
     &:after{
       flex: 50%;
       content: '';
-      margin:0 16px;
       height: 6px;
       border-top: solid 1px $hr-color;
       border-bottom: solid 1px $hr-color;
       z-index: index($z, index-title-border);
+      @include mq-tabl-pcl{
+        margin:0 16px;
+      }
+      @include mq-tab-sp{
+        margin:0 4px;
+      }
     }
   }
 }
