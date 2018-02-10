@@ -2,7 +2,7 @@
   div
     div.page-drawer__trigger(
       @click="toggleDrawer"
-      :class="status"
+      :class="[status,this.$route.name]"
     )
       btn-menu(
         :flg="isDrawer"
@@ -34,7 +34,7 @@
       ...mapActions(['toggleDrawer'])
     },
     mounted () {
-      this.status = 'entry'
+      this.status = 'enter'
     }
   }
 </script>
@@ -67,10 +67,12 @@
     top: 32px;
     right: 32px;
     z-index: index($z, the-page-drawer__trigger);
-    opacity: 0;
-    transition: all 0.5s $delay $easeInOutQuad;
-    &.entry{
-      opacity: 1;
+    &.index{
+      opacity: 0;
+      transition: all 0.5s $delay $easeInOutQuad;
+      &.enter{
+        opacity: 1;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
   div.page-border(
-    :class="status"
+    :class="[status,this.$route.name]"
   )
 </template>
 <script>
@@ -42,31 +42,44 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
+    width: 100%;
+    height: 100%;
     z-index: index($z, the-page-border);
     pointer-events: none;
   }
-  &.enter{
+  &:before{
+    border-top: $borderValue;
+    border-right: $borderValue;
+  }
+  &:after{
+    border-bottom: $borderValue;
+    border-left: $borderValue;
+  }
+  &.index{
     &:before,
     &:after{
-      width: 100%;
-      height: 100%;
+      width: 0;
+      height: 0;
+      border: none;
     }
-    &:before{
-      border-top: $borderValue;
-      border-right: $borderValue;
-      transition: width $duration $easing, height $duration $delay $easing;
-    }
-    &:after{
-      border-bottom: $borderValue;
-      border-left: $borderValue;
-      transition: height $duration $easing, width $duration $delay $easing;
+    &.enter{
+      &:before,
+      &:after{
+        width: 100%;
+        height: 100%;
+      }
+      &:before{
+        border-top: $borderValue;
+        border-right: $borderValue;
+        transition: width $duration $easing, height $duration $delay $easing;
+      }
+      &:after{
+        border-bottom: $borderValue;
+        border-left: $borderValue;
+        transition: height $duration $easing, width $duration $delay $easing;
+      }
     }
   }
 }
-
-
-
 
 </style>
