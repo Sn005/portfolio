@@ -19,20 +19,21 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-lower{
   $deg: 30deg;
+  $bg: darken($primary-color, 60%);
   position: relative;
   width: 100%;
   height: 160px;
-  background: darken($primary-color, 10%);
+  background: $bg;
   &:before{
     $size: 200px;
     content: '';
     position: absolute;
-    bottom: - ($size / 2) ;
+    bottom: - ($size / 4) ;
     left: 50%;
     margin-left: -($size / 2);
     width: $size;
     height: $size;
-    background: darken($primary-color, 10%);
+    background: $bg;
     transform: rotate(45deg);
     z-index: 1;
   }

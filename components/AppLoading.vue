@@ -83,9 +83,7 @@ export default {
     opacity: 0;
     visibility: hidden;
   }
-  // &-leave-active { 
-  //   animation: loadingEnd 1s $easeOutQuad forwards;
-  // }
+
   &__inner{
     font-size: 2rem;
     text-align: center;
@@ -104,23 +102,23 @@ export default {
   }
 }
 
-@keyframes loadingEnd {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-    visibility: visible;
-  }
-  95% {
-    transform: scale(1.1);
-    opacity: 0;
-    visibility: hidden;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-    visibility: hidden;
-  }
-}
+// @keyframes loadingEnd {
+//   0% {
+//     transform: scale(1);
+//     opacity: 1;
+//     visibility: visible;
+//   }
+//   95% {
+//     transform: scale(1.1);
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+//   100% {
+//     transform: scale(1);
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+// }
 
 @keyframes loadingText {
   0% {
