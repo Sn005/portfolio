@@ -36,6 +36,7 @@ export default {
   width: calc(100% -16px);
   height: calc(100% -16px);
   overflow: hidden;
+  pointer-events: none;
   &:before,
   &:after{
     content: '';

@@ -52,26 +52,48 @@
           )
       div.mb-4.editor-wrapper
         vue-editor(v-model="content")
-      p.title アイキャッチ画像
-      v-btn
-        | upload
-        input.file-input(
-          type="file"
-          ref="image"
-          name="eyecatchs"
-          accept="*"
-          @change="onFileChange($event, 'eyecatchs')"
+      div
+        p.title アイキャッチ画像
+        v-btn
+          | upload
+          input.file-input(
+            type="file"
+            ref="image"
+            name="eyecatchs"
+            accept="*"
+            @change="onFileChange($event, 'eyecatchs')"
+          )
+        v-flex(
+          xs8
+          v-if="eyecatchs"
+          v-for="(eyecatch, index) in eyecatchs"
+          :key="index"
         )
-      v-flex(
-        xs8
-        v-if="eyecatchs"
-        v-for="(eyecatch, index) in eyecatchs"
-        :key="index"
-      )
-        img(
-          width="100%"
-          :src="eyecatch.url"
+          img(
+            width="100%"
+            :src="eyecatch.url"
+          )
+      div.mt-4
+        p.title サムネイル画像
+        v-btn
+          | upload
+          input.file-input(
+            type="file"
+            ref="image"
+            name="thumbnails"
+            accept="*"
+            @change="onFileChange($event, 'thumbnails')"
+          )
+        v-flex(
+          xs8
+          v-if="thumbnails"
+          v-for="(thumbnail, i) in thumbnails"
+          :key="i"
         )
+          img(
+            width="100%"
+            :src="thumbnail.url"
+          )
       p.title.mt-4 ポートフォリオ画像
       v-btn
         | upload
@@ -137,7 +159,6 @@ export default {
     return {
       isExits: !!this.item.id,
       isSend: false,
-      isPosted: false,
       valid: false,
       title: this.item.id ? this.item.name : '新規登録',
       id: this.item.id || '',
@@ -145,6 +166,7 @@ export default {
       category: this.item.category ? Object.keys(this.item.category) : [],
       content: this.item.content || '',
       eyecatchs: this.item.eyecatchs || [],
+      thumbnails: this.item.thumbnails || [],
       images: this.item.images || [],
       isShow: this.item.isShow || false,
       order: this.item.order || 999,
@@ -175,6 +197,7 @@ export default {
         category: this.formatCategory(this.category),
         content: this.content,
         eyecatchs: this.eyecatchs,
+        thumbnails: this.thumbnails,
         images: this.images
       }
     }

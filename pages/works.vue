@@ -39,10 +39,11 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .list-works{
-  display: flex;
   &__item{
     width: calc(100% / 3 -16px);
+    height: auto;
     opacity: 0;
+    list-style-type: none;
       @for $i from 1 through 20 {
         &:nth-child(#{$i}){
           $delay: 1.5 + 0.4 * $i + s;
@@ -54,14 +55,15 @@ export default {
 @keyframes listWorks {
   0% {
     opacity: 0;
-    // transform: translate3d(0, 20px, 0);
+    visibility: hidden;
   }
   50% {
     opacity: 0.3;
   }
   100% {
     opacity: 1;
-    // transform: translate3d(0, 0, 0);
+    
+    visibility: visible;
   }
 }
 </style>
