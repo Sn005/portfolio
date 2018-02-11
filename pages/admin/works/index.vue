@@ -47,7 +47,7 @@
           max-width="290"
         )
           v-card
-            v-card-title このアイテムを削除しますか？
+            v-card-title {{ props.item.name }}を削除しますか？
             v-card-actions
               v-spacer
               v-btn(

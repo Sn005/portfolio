@@ -137,6 +137,7 @@ export default {
     return {
       isExits: !!this.item.id,
       isSend: false,
+      isPosted: false,
       valid: false,
       title: this.item.id ? this.item.name : '新規登録',
       id: this.item.id || '',
