@@ -20,7 +20,7 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-lower{
   $deg: 30deg;
-  // $bg: darken($primary-white, 80%);
+  // $bg: darken($primary-white, 10%);
   $bg: darken($primary-color, 30%);
   $height: 120px;
 
@@ -28,6 +28,7 @@ export default {
   width: 100%;
   height: $height;
   background: $bg;
+  margin-bottom: 88px;
   &:before{
     $size: 200px;
     content: '';
