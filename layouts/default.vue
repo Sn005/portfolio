@@ -12,19 +12,11 @@
 import ThePageTexture from '~/components/ThePageTexture'
 import ThePageBorder from '~/components/ThePageBorder'
 import ThePageDrawer from '~/components/ThePageDrawer'
-import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('app')
 export default {
   components: {
     ThePageTexture,
     ThePageBorder,
     ThePageDrawer
-  },
-  methods: {
-    ...mapActions(['setVisit'])
-  },
-  mounted () {
-    this.setVisit()
   }
 }
 </script>
