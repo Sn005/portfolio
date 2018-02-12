@@ -1,6 +1,7 @@
 <template lang="pug">
-  header.page-title-works(:style="styleObject")
-    h1.page-title-works__text {{ item.name }}
+  header.page-title-work(:style="styleObject")
+    div.page-title-work__inner
+      h1.page-title-work__text {{ item.name }}
 </template>
 <script>
 export default {
@@ -23,7 +24,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
-.page-title-works{
+.page-title-work{
   $bg: darken($primary-color, 30%);
   $headerH: 160px;
   $arrowH: 72px;
@@ -53,6 +54,26 @@ export default {
   &:after{
     right: $arrowSpacer;
     transform:skewX(- $deg);
+  }
+  &__inner{
+    position: relative;
+    height: 100%;
+    &:before,
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 10%;
+      height: $arrowH;
+      background: $bg-body;
+      z-index: 3;
+    }
+    &:before{
+      left: 0;
+    }
+    &:after{
+      right: 0;
+    }
   }
   &__text{
     background-size: cover;
