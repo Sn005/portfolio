@@ -1,7 +1,6 @@
 <template lang="pug">
   v-content
     v-container
-      a(href="test") test
       app-logo
 </template>
 <script>

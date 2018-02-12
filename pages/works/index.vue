@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/style/scss/_all";
+@import "../../assets/style/scss/_all";
 .list-works{
   &__item{
     width: calc(100% / 3 -16px);
