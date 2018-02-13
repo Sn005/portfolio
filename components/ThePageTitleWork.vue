@@ -1,7 +1,8 @@
 <template lang="pug">
   header.page-title-work(:style="styleObject")
-    div.page-title-work__inner
-      h1.page-title-work__text {{ item.name }}
+    h1.page-title-work__text {{ item.name }}
+    div.page-title-work__arrow--left
+    div.page-title-work__arrow--right
 </template>
 <script>
 export default {
@@ -25,10 +26,10 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .page-title-work{
-  $bg: darken($primary-color, 30%);
-  $headerH: 160px;
-  $arrowH: 72px;
-  $textH: $headerH - $arrowH;
+  $bg: $bg-body;
+  $headerH: 200px;
+  $arrowSize: 80px;
+  $textH: $headerH - $arrowSize;
   $deg: 44deg;
   $arrowSpacer: -3%;
 
@@ -37,44 +38,38 @@ export default {
   height: $headerH;
   background: $bg;
   margin-bottom: 88px;
-  &:before,
-  &:after{
-    content: '';
+  &__arrow--left,
+  &__arrow--right{
     position: absolute;
     bottom: 0;
-    width: 50%;
-    height: $arrowH;
-    background: $bg-body;
+    width: calc(50% - #{$arrowSize});
+    height: $arrowSize;
+    background: $bg;
     z-index: 3;
-  }
-  &:before{
-    left: $arrowSpacer;
-    transform:skewX($deg);
-  }
-  &:after{
-    right: $arrowSpacer;
-    transform:skewX(- $deg);
-  }
-  &__inner{
-    position: relative;
-    height: 100%;
-    &:before,
     &:after{
       content: '';
       position: absolute;
-      bottom: 0;
-      width: 10%;
-      height: $arrowH;
-      background: $bg-body;
-      z-index: 3;
-    }
-    &:before{
-      left: 0;
-    }
-    &:after{
-      right: 0;
+      top: 0;
+      border: $arrowSize / 2 solid transparent;
     }
   }
+  &__arrow--left{
+    left: 0;
+    &:after{
+      right: - $arrowSize;
+      border-left-color: $bg;
+      border-bottom-color: $bg;
+    }
+  }
+  &__arrow--right{
+    right: 0;
+    &:after{
+      left: - $arrowSize;
+      border-right-color: $bg;
+      border-bottom-color: $bg;
+    }
+  }
+
   &__text{
     background-size: cover;
     line-height: $textH;
