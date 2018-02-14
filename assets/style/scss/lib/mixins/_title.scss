@@ -1,0 +1,73 @@
+/**
+/ page-title
+/ page-title-lowerとpage-title-workにて使用
+*/
+@mixin page-title() {
+  $bg: darken($primary-color, 30%);
+  $arrowBg: $bg-body;
+  $headerHeight: 200px;
+  $arrowSize: 80px;
+  $textHeight: $headerHeight - $arrowSize;
+
+  $deg: 44deg;
+  $arrowSpacer: -3%;
+  position: relative;
+  width: 100%;
+  height: $headerHeight;
+  background: $bg;
+  margin-bottom: 16px;
+  &__arrow--left,
+  &__arrow--right{
+    position: absolute;
+    bottom: 0;
+    width: calc(50% - #{$arrowSize});
+    height: $arrowSize;
+    background: $arrowBg;
+    z-index: 3;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      border: $arrowSize / 2 solid transparent;
+    }
+  }
+  &__arrow--left{
+    left: 0;
+    &:after{
+      right: - $arrowSize;
+      border-left-color: $arrowBg;
+      border-bottom-color: $arrowBg;
+    }
+  }
+  &__arrow--right{
+    right: 0;
+    &:after{
+      left: - $arrowSize;
+      border-right-color: $arrowBg;
+      border-bottom-color: $arrowBg;
+    }
+  }
+  &__text{
+    text-align: center;
+    line-height: $textHeight;
+    color: $true-white;
+    z-index: index($z, lower-title);
+    opacity: 0;
+    animation: pageTitleText 1s 1s $easeOutQuad forwards;
+    @include text-title();
+  }
+
+  @keyframes pageTitleText {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
