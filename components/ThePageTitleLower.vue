@@ -28,13 +28,13 @@ export default {
     position: relative;
     margin: 0 auto;
     @include mq-tabl-pcl{
-      font-size: 2rem;
+      font-size: 2.8rem;
       width: 40%;
     }
     @include mq-tab-sp{
       width: 90%;
       padding-top: 16px;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
     }
     &:before,
     &:after{

@@ -48,7 +48,7 @@ nuxt-link.card-work(
     height: 100%;
     background: rgba($true-black, 0.4);
     color: $primary-white;
-    font-size: 1.6rem;
+    font-size: 2rem;
     transition: all .5s $easeOutQuad;
     opacity: 0;
     @include text-title();

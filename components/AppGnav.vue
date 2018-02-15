@@ -58,7 +58,7 @@
   }
   &__link{
     color: $true-white;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     text-decoration: none;
     @include text-title();
   }

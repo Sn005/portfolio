@@ -42,10 +42,10 @@ export default {
   &__text{
     @include text-title();
     @include mq-tab-sp{
-      font-size: 1.6rem;
+      font-size: 2.2rem;
     }
     @include mq-tabl-pcl{
-      font-size: 1.8rem;
+      font-size: 2.8rem;
     }
   }
 }
