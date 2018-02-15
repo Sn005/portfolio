@@ -17,7 +17,8 @@ import {
   VCheckbox,
   VProgressLinear,
   VSwitch,
-  VSnackbar
+  VSnackbar,
+  VCarousel
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -47,6 +48,7 @@ Vue.use(Vuetify, {
     VCheckbox,
     VProgressLinear,
     VSwitch,
-    VSnackbar
+    VSnackbar,
+    VCarousel
   }
 })

@@ -4,16 +4,37 @@
     v-content
       v-container
         card-article
+          v-flex.mb-5(
+            md6
+            xs10
+            offset-xs2
+            offset-md3
+          )
+            carousel(
+              :perPage="1"
+              :perPageCustom="[[1600, 1]]"
+            )
+              slide(
+                v-for="(image, i) in item.images"
+                :key="i"
+              )
+                img(
+                  :src="image.url"
+                  width="100%"
+                )
           card-article-content
             | test
 </template>
 <script>
+import { Carousel, Slide } from 'vue-carousel'
 import ThePageTitleWork from '~/components/ThePageTitleWork'
 import CardArticle from '~/components/CardArticle'
 import CardArticleContent from '~/components/CardArticleContent'
 import * as firebaseWorks from '~/api/firebase/works'
 export default {
   components: {
+    Carousel,
+    Slide,
     ThePageTitleWork,
     CardArticle,
     CardArticleContent
