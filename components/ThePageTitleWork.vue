@@ -24,9 +24,11 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-work{
   @include page-title();
+  overflow: hidden;
   // page-transitionの際に背景画像が線のようにチラつくので
   // 下記border設定で塗りつぶし対処
-  border-bottom: 10px solid $bg-body;
+  height: 220px;
+  border-bottom: 20px solid $bg-body;
   &__inner{
     position: absolute;
     top: 0;
@@ -34,6 +36,7 @@ export default {
     width: 100%;
     height: calc(100% + 10px);
     opacity: 0.4;
+    filter: blur(8px);
     background-size: cover;
   }
   &__text{
