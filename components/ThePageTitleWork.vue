@@ -34,10 +34,16 @@ export default {
     width: 100%;
     height: calc(100% + 10px);
     opacity: 0.4;
+    background-size: cover;
   }
   &__text{
-    background-size: cover;
     @include text-title();
+    @include mq-tab-sp{
+      font-size: 1.6rem;
+    }
+    @include mq-tabl-pcl{
+      font-size: 1.8rem;
+    }
   }
 }
 </style>
