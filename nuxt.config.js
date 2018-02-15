@@ -41,6 +41,11 @@ module.exports = {
         '_': 'lodash'
       })
     ],
+    postcss: [
+      require('autoprefixer')({
+        browsers: ['> 5%']
+      })
+    ],
     babel: {
       plugins: [
         ['transform-imports', {

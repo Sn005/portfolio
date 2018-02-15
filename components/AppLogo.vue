@@ -69,7 +69,7 @@ export default {
     position: relative;
     padding: 0 8px;
     z-index: index($z, index-title);
-    font-size: 2rem;
+    font-size: 3.2rem;
     color: $true-white;
     @include text-title();
     &.is-pc{
