@@ -27,7 +27,9 @@ export default {
 @import "../assets/style/scss/_all";
 .page-title-work{
   @include page-title();
-
+  // page-transitionの際に背景画像が線のようにチラつくので
+  // 下記border設定で塗りつぶし対処
+  border-bottom: 10px solid $bg-body;
   &__text{
     background-size: cover;
     @include text-title();
