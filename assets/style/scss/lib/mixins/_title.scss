@@ -23,7 +23,7 @@
     width: calc(50% - #{$arrowSize});
     height: $arrowSize;
     background: $arrowBg;
-    z-index: 3;
+    z-index: index($z, lower-title-arrow);
     &:after{
       content: '';
       position: absolute;
