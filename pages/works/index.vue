@@ -40,16 +40,24 @@ export default {
 @import "../../assets/style/scss/_all";
 .list-works{
   &__item{
-    width: calc(100% / 3 - 16px);
     height: auto;
     opacity: 0;
     list-style-type: none;
-      @for $i from 1 through 20 {
-        &:nth-child(#{$i}){
-          $delay: 1.5 + 0.4 * $i + s;
-          animation: listWorks .5s ($delay) $easeOutQuad forwards;
-        }
+    @include mq-tabl-pcl{
+      width: calc(100% / 3 - 16px);
+    }
+    @include mq-tab{
+      width: calc(100% / 2 - 8px);
+    }
+    @include mq-sp{
+      width: 100%;
+    }
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}){
+        $delay: 1.5 + 0.4 * $i + s;
+        animation: listWorks .5s ($delay) $easeOutQuad forwards;
       }
+    }
   }
 }
 @keyframes listWorks {

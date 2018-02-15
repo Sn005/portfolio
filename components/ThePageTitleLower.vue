@@ -48,7 +48,7 @@ export default {
         margin:0 16px;
       }
       @include mq-tab-sp{
-        margin:0 4px;
+        margin:0 8px;
       }
     }
   }
