@@ -64,8 +64,8 @@
 
     display: block;
     position: fixed;
-    top: 32px;
-    right: 32px;
+    top: 24px;
+    right: 24px;
     z-index: index($z, the-page-drawer__trigger);
     &.index{
       opacity: 0;
