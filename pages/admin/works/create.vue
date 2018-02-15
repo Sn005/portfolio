@@ -8,7 +8,7 @@
 </template>
 <script>
 import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
-import TheFormWork from '~/components/TheFormWork'
+import TheFormWork from '~/components/admin/TheFormWork'
 export default {
   transition: 'admin',
   layout: 'admin',

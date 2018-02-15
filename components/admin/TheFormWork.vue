@@ -50,8 +50,22 @@
             v-model="category"
             :value="key"
           )
-      div.mb-4.editor-wrapper
-        vue-editor(v-model="content")
+      v-text-field(
+        label="本文"
+        v-model="content"
+        textarea
+        required
+      )
+      v-text-field(
+        label="担当領域"
+        v-model="role"
+        required
+      )
+      v-text-field(
+        label="使用スキル"
+        v-model="skill"
+        required
+      )
       div
         p.title アイキャッチ画像
         v-btn
@@ -165,6 +179,8 @@ export default {
       name: this.item.name || '',
       category: this.item.category ? Object.keys(this.item.category) : [],
       content: this.item.content || '',
+      role: this.item.role || '',
+      skill: this.item.skill || '',
       eyecatchs: this.item.eyecatchs || [],
       thumbnails: this.item.thumbnails || [],
       images: this.item.images || [],
@@ -196,6 +212,8 @@ export default {
         order: this.order,
         category: this.formatCategory(this.category),
         content: this.content,
+        role: this.role,
+        skill: this.skill,
         eyecatchs: this.eyecatchs,
         thumbnails: this.thumbnails,
         images: this.images
@@ -220,7 +238,6 @@ export default {
       } else {
         this[target] = result ? await storageFetchs(datas) : []
       }
-      this.isExits && await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     },
     formatCategory (category) {
@@ -249,7 +266,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "../assets/style/scss/modules/_m-editor.scss";
+@import "../../assets/style/scss/modules/_m-editor.scss";
 .editor-wrapper{
   @extend %m-editor-wrapper;
 }
