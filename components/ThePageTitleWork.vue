@@ -12,14 +12,10 @@ export default {
   },
   data () {
     return {
-      status: 'before',
       styleObject: {
         backgroundImage: 'url(' + this.item.thumbnails[0].url + ')'
       }
     }
-  },
-  mounted () {
-    this.status = 'entry'
   }
 }
 </script>
