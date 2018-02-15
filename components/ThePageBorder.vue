@@ -33,8 +33,8 @@ export default {
   position: absolute;
   top: 8px;
   left: 8px;
-  width: calc(100% -16px);
-  height: calc(100% -16px);
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
   overflow: hidden;
   pointer-events: none;
   &:before,

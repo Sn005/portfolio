@@ -69,8 +69,13 @@ export default {
     position: relative;
     padding: 0 8px;
     z-index: index($z, index-title);
-    font-size: 3.2rem;
     color: $true-white;
+    @include mq-tabl-pcl{
+      font-size: 3.2rem;
+    }
+    @include mq-tab-sp{
+      font-size: 2.8rem;
+    }
     @include text-title();
     &.is-pc{
       @include mq-tabl-pcl{
