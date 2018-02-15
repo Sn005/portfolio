@@ -7,7 +7,7 @@
           v-flex.mb-5(
             md6
             xs10
-            offset-xs2
+            offset-xs1
             offset-md3
           )
             carousel(
@@ -22,8 +22,15 @@
                   :src="image.url"
                   width="100%"
                 )
-          card-article-content
-            | test
+          v-flex(
+            md10
+            xs12
+            offset-md1
+          )
+            card-article-content
+              p {{ item.content }}
+              p 担当領域:{{ item.role }}
+              p 使用スキル,ツール:{{ item.skill }}
 </template>
 <script>
 import { Carousel, Slide } from 'vue-carousel'

@@ -4,6 +4,12 @@
 </template>
 <style scoped lang="scss">
 .card-article-content{
-  white-space: pre;
+  font-size: 1.6rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  // p + p {
+  //   margin-top: 16px;
+  // }
 }
 </style>
