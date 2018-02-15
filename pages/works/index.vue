@@ -40,7 +40,7 @@ export default {
 @import "../../assets/style/scss/_all";
 .list-works{
   &__item{
-    width: calc(100% / 3 -16px);
+    width: calc(100% / 3 - 16px);
     height: auto;
     opacity: 0;
     list-style-type: none;

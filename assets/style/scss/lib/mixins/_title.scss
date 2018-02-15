@@ -15,7 +15,12 @@
   width: 100%;
   height: $headerHeight;
   background: $bg;
-  margin-bottom: 16px;
+  @include mq-tabl-pcl{
+    margin-bottom: 16px;
+  }
+  @include mq-tab-sp{
+    margin-bottom: 0;
+  }
   &__arrow--left,
   &__arrow--right{
     position: absolute;

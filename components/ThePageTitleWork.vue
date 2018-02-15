@@ -25,9 +25,9 @@ export default {
 .page-title-work{
   @include page-title();
   overflow: hidden;
+  height: 220px;
   // page-transitionの際に背景画像が線のようにチラつくので
   // 下記border設定で塗りつぶし対処
-  height: 220px;
   border-bottom: 20px solid $bg-body;
   &__inner{
     position: absolute;
