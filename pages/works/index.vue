@@ -20,7 +20,7 @@ import CardWork from '~/components/CardWork'
 import * as firebaseWorks from '~/api/firebase/works'
 export default {
   async asyncData () {
-    const items = await firebaseWorks.items()
+    const items = await firebaseWorks.all()
     return {
       items: items.sort((a, b) => {
         if (a.order < b.order) return -1

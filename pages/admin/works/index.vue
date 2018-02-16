@@ -91,17 +91,13 @@
                 v-icon open_with
 </template>
 <script>
-import {
-  items as firebaseWorksItems,
-  send as firebaseWorksSend,
-  remove as firebaseWorksRemove
-} from '~/api/firebase/works'
+import * as firebaseWorks from '~/api/firebase/works'
 import draggable from 'vuedraggable'
 export default {
   transition: 'admin',
   layout: 'admin',
   async asyncData () {
-    const items = await firebaseWorksItems()
+    const items = await firebaseWorks.all()
     return {
       items: items.sort((a, b) => {
         if (a.order < b.order) return -1
@@ -147,7 +143,7 @@ export default {
   },
   methods: {
     async remove (id) {
-      const result = await firebaseWorksRemove(id)
+      const result = await firebaseWorks.remove(id)
       if (!result) return
       this.dialog.delete = false
       this.items = this.items.filter(item => {
@@ -161,7 +157,7 @@ export default {
         return item
       })
       for (let item of newItems) {
-        await firebaseWorksSend(item.id, item)
+        await firebaseWorks.send(item.id, item)
       }
       this.isSend = false
       this.items = newItems

@@ -6,7 +6,7 @@ const col = db.collection('works')
 /**
  * 一覧情報取得
  */
-export const items = async () => {
+export const all = async () => {
   const snapshot = await col.get()
   return snapshot.docs.map(function (doc) {
     let data = doc.data()
