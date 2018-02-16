@@ -97,7 +97,7 @@ export default {
   transition: 'admin',
   layout: 'admin',
   async asyncData () {
-    const items = await firebaseWorks.all()
+    const items = await firebaseWorks.items()
     return {
       items: items.sort((a, b) => {
         if (a.order < b.order) return -1
