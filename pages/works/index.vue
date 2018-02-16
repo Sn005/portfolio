@@ -39,6 +39,8 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/style/scss/_all";
 .list-works{
+  display: flex;
+  justify-content: space-between;
   &__item{
     height: auto;
     opacity: 0;
