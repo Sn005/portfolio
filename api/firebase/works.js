@@ -35,13 +35,10 @@ export const item = async (id) => {
  */
 export const fetchItemByOrder = async (order) => {
   const results = await col.where('order', '==', order).get()
-  const item = results.docs.map(doc => {
-    console.log(doc.exists)
-    if (!doc.exists) return false
+  return results.docs.map(doc => {
+    if (!doc.exists) return {}
     return doc.data()
   })
-  console.log(Object.assign(item, {}))
-  return item[0]
 }
 
 /**

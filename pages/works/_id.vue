@@ -53,15 +53,18 @@ export default {
         path: '/works'
       })
     }
-    let result = { item: item }
-    const fetchItemByOrder = async order => {
-      const item = await firebaseWorks.fetchItemByOrder(order)
-      if (!item) return {}
-      return item
+    // const fetchItemByOrder = async order => {
+    //   const item = await firebaseWorks.fetchItemByOrder(order)
+    //   if (!item) return {}
+    //   return item
+    // }
+    const [prevItem] = await firebaseWorks.fetchItemByOrder(item.order - 1)
+    const [nextItem] = await firebaseWorks.fetchItemByOrder(item.order + 1)
+    return {
+      item: item,
+      prevItem: prevItem,
+      nextItem: nextItem
     }
-    result['prev'] = await fetchItemByOrder(item.order - 1)
-    result['next'] = await fetchItemByOrder(item.order + 1)
-    return result
   }
 }
 </script>
