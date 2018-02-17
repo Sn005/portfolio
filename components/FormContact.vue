@@ -70,7 +70,6 @@
 </template>
 <script>
 import * as firebaseContacts from '~/api/firebase/contacts'
-import moment from 'moment'
 export default{
   data () {
     return {
@@ -104,9 +103,7 @@ export default{
       this.checked = true
     },
     async send () {
-      let formData = this.formData
-      formData.created = moment().unix()
-      const result = await firebaseContacts.send(formData)
+      const result = await firebaseContacts.send(this.formDatarmData)
       if (result) this.checked = false
     }
   }
