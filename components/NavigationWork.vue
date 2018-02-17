@@ -4,12 +4,12 @@
       li.navitation-work__item
         nuxt-link.navitation-work__prev(
           v-if="prev.id"
-          :to= "prev.id"
+          :to= "prev.id + '?direction=prev'"
         ) {{ prev.name }}
       li.navitation-work__item
         nuxt-link.navitation-work__next(
           v-if="next.id"
-          :to= "next.id"
+          :to= "next.id + '?direction=next'"
         ) {{ next.name }}
 </template>
 <script>
