@@ -62,22 +62,18 @@ export default {
     transition: all 1s $easeOutQuad;
   }
   &-enter { 
-    transform: scale(0.9);
     opacity: 0;
     visibility: hidden;
   }
   &-enter-to { 
-    transform: scale(1);
     opacity: 1;
     visibility: visible;
   }
   &-leave { 
-    transform: scale(1);
     opacity: 1;
     visibility: visible;
   }
   &-leave-to { 
-    transform: scale(1.1);
     opacity: 0;
     visibility: hidden;
   }
