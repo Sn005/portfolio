@@ -8,7 +8,7 @@
   background: $primary-white;
   box-shadow:0 3px 2px 1px rgba($true-black, 0.9);
   opacity: 0;
-  animation: cardArticle 1s 1.5s $easeOutQuad forwards;
+  animation: fadeInUp 1s 1.5s $easeOutQuad forwards;
   @include mq-tab-sp{
     padding: 16px;
   }
