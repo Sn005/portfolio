@@ -31,12 +31,22 @@
               p {{ item.content }}
               p 担当領域:{{ item.role }}
               p 使用スキル,ツール:{{ item.skill }}
+          v-flex(
+            md6
+            xs12
+            offset-md3
+          )
+            navigation-work(
+              :prev="prev"
+              :next="next"
+            )
 </template>
 <script>
 import { Carousel, Slide } from 'vue-carousel'
 import ThePageTitleWork from '~/components/ThePageTitleWork'
 import CardArticle from '~/components/CardArticle'
 import CardArticleContent from '~/components/CardArticleContent'
+import NavigationWork from '~/components/NavigationWork'
 import * as firebaseWorks from '~/api/firebase/works'
 export default {
   components: {
@@ -44,7 +54,8 @@ export default {
     Slide,
     ThePageTitleWork,
     CardArticle,
-    CardArticleContent
+    CardArticleContent,
+    NavigationWork
   },
   async asyncData ({ params, error }) {
     const item = await firebaseWorks.item(params.id)
@@ -53,17 +64,12 @@ export default {
         path: '/works'
       })
     }
-    // const fetchItemByOrder = async order => {
-    //   const item = await firebaseWorks.fetchItemByOrder(order)
-    //   if (!item) return {}
-    //   return item
-    // }
-    const [prevItem] = await firebaseWorks.fetchItemByOrder(item.order - 1)
-    const [nextItem] = await firebaseWorks.fetchItemByOrder(item.order + 1)
+    const [prev = {}] = await firebaseWorks.fetchItemByOrder(item.order - 1)
+    const [next = {}] = await firebaseWorks.fetchItemByOrder(item.order + 1)
     return {
       item: item,
-      prevItem: prevItem,
-      nextItem: nextItem
+      prev: prev,
+      next: next
     }
   }
 }
