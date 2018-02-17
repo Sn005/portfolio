@@ -27,6 +27,7 @@
   $color: $darken-gray;
   display: flex;
   justify-content: space-between;
+  margin: 24px 0;
   &__item{
     width: calc( 50% - 32px);
     list-style-type: none;
