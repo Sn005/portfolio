@@ -1,6 +1,11 @@
 <template lang="pug">
-  div.card-article
-    slot
+  v-flex(
+    md10
+    xs12
+    offset-md1
+  )
+    div.card-article
+      slot
 </template>
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
@@ -16,14 +21,4 @@
     padding: 24px;
   }
 }
-  @keyframes cardArticle {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 20px, 0);
-    }
-    100% {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
 </style>
