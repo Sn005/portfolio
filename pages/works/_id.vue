@@ -57,6 +57,17 @@ export default {
     CardArticleContent,
     NavigationWork
   },
+  watchQuery: ['page'],
+  key: (to) => to.fullPath,
+  transition (to, from) {
+    const direction = to.query.direction
+    if (!direction) return 'page'
+    if (direction === 'next') {
+      return 'slide-right'
+    } else {
+      return 'slide-left'
+    }
+  },
   async asyncData ({ params, error }) {
     const item = await firebaseWorks.item(params.id)
     if (!item) {
