@@ -58,7 +58,8 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      'vue2-editor'
+      'vue2-editor',
+      'moment'
     ],
     extractCSS: true,
     /*

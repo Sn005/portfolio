@@ -14,12 +14,14 @@
 <script>
 import ThePageTitleLower from '~/components/ThePageTitleLower'
 import CardArticle from '~/components/CardArticle'
+import CardArticleContent from '~/components/CardArticleContent'
 import FormContact from '~/components/FormContact'
 // import * as firebaseAbout from '~/api/firebase/about'
 export default {
   components: {
     ThePageTitleLower,
     CardArticle,
+    CardArticleContent,
     FormContact
   }
 }

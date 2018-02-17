@@ -33,7 +33,21 @@ export const item = async (id) => {
  * @param {string} id 対象記事のID
  * @param {objext} payload 送信情報
  */
-export const send = async (id, payload) => {
+export const send = async (payload) => {
+  payload.created = firebase.firestore.FieldValue.serverTimestamp()
+  const result = await col.add(payload).catch(error => {
+    console.log(error)
+    return false
+  })
+  return result
+}
+
+/**
+ * 情報を更新する
+ * @param {string} id 対象記事のID
+ * @param {objext} payload 送信情報
+ */
+export const update = async (id, payload) => {
   await col.doc(id).set(payload).catch(error => {
     console.log(error)
   })
