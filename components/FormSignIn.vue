@@ -44,11 +44,21 @@ export default {
       passwordEnter: true
     }
   },
+  computed: {
+    formData () {
+      return {
+        email: this.email,
+        password: this.password
+      }
+    }
+  },
   methods: {
     async signIn () {
       if (!this.$refs.form.validate()) return
-      console.log('tedddst')
-      // this.checked = true
+      await this.$store.dispatch('user/signInByEmail', this.formData)
+      this.$router.push({
+        path: '/admin'
+      })
     }
   }
 }

@@ -1,5 +1,5 @@
 import * as firebaseSignIn from '~/api/firebase/partial/sign-in'
-import { fetch as firebaseUsersFetch } from '~/api/firebase/users'
+import * as firebaseUsers from '~/api/firebase/users'
 import { signOut as firebaseSignOut } from '~/api/firebase/partial/sign-out'
 
 export const state = () => ({
@@ -36,10 +36,27 @@ export const actions = {
     await firebaseSignIn.bySns(sns).catch(error => {
       commit('setErrors', error)
     })
-    const result = await firebaseUsersFetch()
+    const result = await firebaseUsers.item()
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
   },
+
+  /**
+   * 各SNSアカウントを使用したログイン
+   * @param {*} param0
+   * @param {object} payload ログイン情報
+   */
+  async signInByEmail ({ commit }, payload) {
+    await firebaseSignIn
+      .byEmail(payload.email, payload.password)
+      .catch(error => {
+        commit('setErrors', error)
+      })
+    const result = await firebaseUsers.item()
+    commit('setAuth', result.auth)
+    commit('setAccount', result.account)
+  },
+
   async signOut ({ commit }) {
     await firebaseSignOut().catch(error => {
       commit('setErrors', error)

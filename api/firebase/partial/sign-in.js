@@ -17,6 +17,8 @@ export const bySns = async (sns) => {
 
 /**
  * e-mailアカウントによるログイン
+ * @param {string} email メールアドレス
+ * @param {string} password パスワード
  */
 export const byEmail = async (email, password) => {
   const result = await auth.signInWithEmailAndPassword(email, password)

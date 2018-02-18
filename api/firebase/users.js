@@ -6,18 +6,17 @@ const usersCol = db.collection('users')
 /**
  * 単体ユーザー情報取得
  */
-export const fetch = async () => {
+export const item = async () => {
   const user = await auth()
   if (!user) return {}
   const userDoc = usersCol.doc(user.uid)
   const userData = (await userDoc.get()).data()
+  const role = userData ? userData.role : 'guest'
   return {
     auth: true,
     account: {
       uid: user.uid,
-      name: userData.name || user.displayName,
-      role: userData.role,
-      profilePicUrl: user.photoURL
+      role: role
     }
   }
 }
