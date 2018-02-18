@@ -15,7 +15,7 @@
         label="件名"
         v-model="subject"
         :rules="subjectRules"
-        :counter="20"
+        :counter="30"
         required
       )
       v-text-field(
@@ -84,9 +84,10 @@
           br
           | 申し訳ありませんが、再送信お願い致します。
 </template>
+
 <script>
-// import * as firebaseContacts from '~/api/firebase/contacts'
-export default{
+import * as firebaseContacts from '~/api/firebase/contacts'
+export default {
   data () {
     return {
       valid: true,
@@ -95,13 +96,13 @@ export default{
       error: false,
       subject: '',
       subjectRules: [
-        (v) => !!v || '件名は必須です',
-        (v) => v.length <= 20 || '件名は20文字以内に収めてください'
+        v => !!v || '件名は必須です',
+        v => (v && v.length <= 30) || '件名は30文字以内に収めてください'
       ],
       email: '',
       emailRules: [
-        (v) => !!v || 'メールアドレスは必須です',
-        (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'メールアドレスの形式が間違えています'
+        v => !!v || 'メールアドレスは必須です',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'メールアドレスの形式が間違えています'
       ],
       content: ''
     }
@@ -117,19 +118,19 @@ export default{
   },
   methods: {
     clear () {
-      console.log(this.$refs.form.reset)
+      this.$refs.form.reset()
     },
     check () {
       if (!this.$refs.form.validate()) return
       this.checked = true
     },
     async send () {
-      // const result = await firebaseContacts.send(this.formData)
-      const result = true
+      const result = await firebaseContacts.send(this.formData)
       this.sended = true
       if (!result) this.error = true
       setTimeout(() => {
         this.checked = false
+        this.$refs.form.reset()
       }, 1000)
       setTimeout(() => {
         this.sended = false
@@ -139,10 +140,3 @@ export default{
   }
 }
 </script>
-<style lang="scss" scoped>
-.check-content{
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-</style>
-
