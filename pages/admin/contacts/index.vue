@@ -11,7 +11,7 @@
         slot="items"
         slot-scope="props"
       )
-        td {{ props.item.title }}
+        td {{ props.item.subject }}
         td.text-xs-right {{ props.item.created }}
         td.text-xs-right
           v-btn(
@@ -36,18 +36,20 @@ export default {
     return {
       headers: [
         {
-          text: 'Title',
-          value: 'title',
+          text: '件名',
+          value: 'subject',
           align: 'left',
           sortable: false
         },
         {
           text: '投稿日',
+          align: 'right',
           value: 'created'
         },
         {
           text: 'Action',
           value: 'action',
+          align: 'right',
           sortable: false
         }
       ]
