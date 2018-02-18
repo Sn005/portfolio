@@ -1,31 +1,32 @@
 <template lang="pug">
-  v-layout(
-    column
-     justify-center
-     align-center
-  )
+div
+  v-card
+    v-toolbar
+      v-toolbar-title ログイン
+    div.pa-3
+      form-sign-in
     v-flex(
-      xs12
-      sm8
-      md6
+      text-xs-center
     )
-      v-card
-        v-card-title.headline ログイン
-        v-btn(
-          color="primary"
-          flat 
-          large
-          @click="signInBySns('google')"
-        ) google
+      v-btn(
+        flat 
+        large
+        @click="signInBySns('google')"
+      ) Googleでログイン/登録
 </template>
 <script>
+import FormSignIn from '~/components/FormSignIn'
 export default {
   layout: 'auth',
   middleware: 'is-authed',
   name: 'login',
+  components: {
+    FormSignIn
+  },
   data () {
     return {
-      email: ''
+      email: '',
+      password: ''
     }
   },
   methods: {

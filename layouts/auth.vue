@@ -2,7 +2,16 @@
   v-app.app-body(dark)
     v-content
       v-container
-        nuxt
+        v-layout(
+          row 
+          justify-center
+          align-center
+        )
+          v-flex(
+            md8
+            xs12
+          )
+            nuxt
 </template>
 
 <style lang="scss">
