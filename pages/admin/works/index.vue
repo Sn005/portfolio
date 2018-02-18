@@ -95,7 +95,7 @@ import * as firebaseWorks from '~/api/firebase/works'
 import * as helperAdmin from '~/helper/admin'
 import draggable from 'vuedraggable'
 import { createNamespacedHelpers } from 'vuex'
-const { mapGetters } = createNamespacedHelpers('user')
+const { mapState } = createNamespacedHelpers('user')
 export default {
   transition: 'admin',
   layout: 'admin',
@@ -146,7 +146,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['role'])
+    ...mapState(['account'])
   },
   methods: {
     async remove (id) {
