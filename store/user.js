@@ -3,6 +3,7 @@ import * as firebaseUsers from '~/api/firebase/users'
 import { signOut as firebaseSignOut } from '~/api/firebase/partial/sign-out'
 
 export const state = () => ({
+  test: 'test',
   auth: 'true',
   account: {},
   errors: {}
@@ -68,6 +69,7 @@ export const actions = {
 }
 
 export const getters = {
+  test: state => state.test,
   auth: state => state.auth,
   account: state => state.account
 }
