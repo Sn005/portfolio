@@ -11,12 +11,10 @@ export const item = async () => {
   if (!user) return {}
   const userDoc = usersCol.doc(user.uid)
   const userData = (await userDoc.get()).data()
-  const role = userData ? userData.role : 'guest'
   return {
     auth: true,
     account: {
-      uid: user.uid,
-      role: role
+      role: userData ? userData.role : 'guest'
     }
   }
 }

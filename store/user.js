@@ -12,7 +12,7 @@ export const mutations = {
   setAuth (state, auth) {
     state.auth = auth
   },
-  setAccount (state, { account }) {
+  setAccount (state, account) {
     state.account = account
   },
   setErrors (state, { errors }) {
@@ -25,7 +25,7 @@ export const actions = {
     commit('setAuth', auth)
   },
   setAccount ({ commit }, account) {
-    commit('setAccount', { account })
+    commit('setAccount', account)
   },
   /**
    * 各SNSアカウントを使用したログイン
@@ -53,6 +53,7 @@ export const actions = {
         commit('setErrors', error)
       })
     const result = await firebaseUsers.item()
+    console.log(result)
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
   },

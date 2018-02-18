@@ -5,18 +5,10 @@ div.btn-menu
   )
 </template>
 <script>
-  // import { createNamespacedHelpers } from 'vuex'
-  // const { mapGetters, mapActions } = createNamespacedHelpers('app')
   export default {
     props: {
       flg: Boolean
     }
-    // computed: {
-    //   ...mapGetters(['isDrawer'])
-    // },
-    // methods: {
-    //   ...mapActions(['toggleDrawer'])
-    // }
   }
 </script>
 <style scoped lang="scss">

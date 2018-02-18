@@ -92,7 +92,10 @@
 </template>
 <script>
 import * as firebaseWorks from '~/api/firebase/works'
+import * as helperAdmin from '~/helper/admin'
 import draggable from 'vuedraggable'
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('user')
 export default {
   transition: 'admin',
   layout: 'admin',
@@ -111,6 +114,7 @@ export default {
   },
   data () {
     return {
+      isOwner: helperAdmin.isOwner('guest'),
       isSend: false,
       dialog: {
         delete: false,
@@ -140,6 +144,9 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapGetters(['role'])
   },
   methods: {
     async remove (id) {
