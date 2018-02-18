@@ -41,15 +41,20 @@ export default {
 .list-works{
   display: flex;
   justify-content: space-between;
+  @include mq-sp{
+    flex-direction: column;
+  }
   &__item{
+    $gutter: 16px;
     height: auto;
+    margin-bottom: $gutter;
     opacity: 0;
     list-style-type: none;
     @include mq-tabl-pcl{
-      width: calc(100% / 3 - 16px);
+      width: calc(100% / 3 - #{$gutter* 2});
     }
     @include mq-tab{
-      width: calc(100% / 2 - 8px);
+      width: calc(100% / 2 - #{$gutter});
     }
     @include mq-sp{
       width: 100%;
