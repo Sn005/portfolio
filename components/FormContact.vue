@@ -38,43 +38,61 @@
             @click="check"
             :disabled="!valid"
           ) 確認
+          v-btn(
+            flat
+            large
+            @click="clear"
+          ) リセット
     v-dialog(
       v-model="checked"
       persistent
       scrollable
-      max-width="600"
+      max-width="720"
     )
-      v-card
-        v-card-title 下記内容でよろしいでしょうか？
-        v-card-text
-          div.pa-4
-            div.mb-4
-              p.title タイトル
-              p {{subject}}
-            div.mb-4
-              p.title メールアドレス
-              p {{email}}
-            div.mb-4
-              p.title 本文
-              p {{content}}
-        v-card-actions
-          v-spacer
-          v-btn(
-            flat
-            @click="checked = false"
-          ) いいえ
-          v-btn(
-            flat
-            @click="send"
-          ) はい
+      v-card.pa-4
+        div(
+          v-if="!sended"
+        )
+          v-card-title 下記内容でよろしいでしょうか？
+          v-card-text
+            div.check-content
+              div.mb-4
+                p.title タイトル
+                p {{subject}}
+              div.mb-4
+                p.title メールアドレス
+                p {{email}}
+              div.mb-4
+                p.title 本文
+                p {{content}}
+          v-card-actions
+            v-spacer
+            v-btn(
+              flat
+              @click="checked = false"
+            ) いいえ
+            v-btn(
+              flat
+              @click="send"
+            ) はい
+        div(v-if="sended && !error")
+          | 送信完了しました。
+          br
+          | 後ほど返信いたしますので、少々お待ちください。
+        div(v-if="sended && error")
+          | 送信できませんでした。
+          br
+          | 申し訳ありませんが、再送信お願い致します。
 </template>
 <script>
-import * as firebaseContacts from '~/api/firebase/contacts'
+// import * as firebaseContacts from '~/api/firebase/contacts'
 export default{
   data () {
     return {
       valid: true,
       checked: false,
+      sended: false,
+      error: false,
       subject: '',
       subjectRules: [
         (v) => !!v || '件名は必須です',
@@ -98,14 +116,33 @@ export default{
     }
   },
   methods: {
+    clear () {
+      console.log(this.$refs.form.reset)
+    },
     check () {
       if (!this.$refs.form.validate()) return
       this.checked = true
     },
     async send () {
-      const result = await firebaseContacts.send(this.formDatarmData)
-      if (result) this.checked = false
+      // const result = await firebaseContacts.send(this.formData)
+      const result = true
+      this.sended = true
+      if (!result) this.error = true
+      setTimeout(() => {
+        this.checked = false
+      }, 1000)
+      setTimeout(() => {
+        this.sended = false
+        this.error = false
+      }, 2000)
     }
   }
 }
 </script>
+<style lang="scss" scoped>
+.check-content{
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+</style>
+
