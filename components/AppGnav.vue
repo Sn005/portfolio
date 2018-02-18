@@ -57,10 +57,31 @@
     }
   }
   &__link{
+    position: relative;
     color: $true-white;
     font-size: 3.2rem;
     text-decoration: none;
+    transition: all .3s $easeOutQuad;
+    opacity: 1;
     @include text-title();
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width:0;
+      height: 1px;
+      background: $primary-white;
+      transition: all .3s $easeOutQuad;
+    }
+    &:hover{
+      opacity: .6;
+      &:before{
+        width: 100%;
+        left: 0;
+      }
+    }
   }
 }
 
