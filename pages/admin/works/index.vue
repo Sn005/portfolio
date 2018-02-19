@@ -1,5 +1,9 @@
 <template lang="pug">
   v-layout(column)
+    v-snackbar(
+      top
+      v-model="guest"
+    ) 変更権限がありません
     v-toolbar
       v-toolbar-title Works
       v-spacer
@@ -92,11 +96,12 @@
 </template>
 <script>
 import * as firebaseWorks from '~/api/firebase/works'
-// import * as helperAdmin from '~/helper/admin'
+import MyIsGuest from '~/mixin/MyIsGuest'
 import draggable from 'vuedraggable'
 import { createNamespacedHelpers } from 'vuex'
 const { mapGetters } = createNamespacedHelpers('user')
 export default {
+  mixins: [MyIsGuest],
   transition: 'admin',
   layout: 'admin',
   async asyncData () {
@@ -146,12 +151,13 @@ export default {
   },
   computed: {
     ...mapGetters(['account']),
-    permission () {
-      return this.account.permission
+    role () {
+      return this.account.role
     }
   },
   methods: {
     async remove (id) {
+      if (this.isGuest(this.role)) return
       const result = await firebaseWorks.remove(id)
       if (!result) return
       this.dialog.delete = false
@@ -160,6 +166,7 @@ export default {
       })
     },
     async dragEnd () {
+      if (this.isGuest(this.role)) return
       this.isSend = true
       const newItems = this.items.map((item, index) => {
         item.order = index + 1

@@ -1,12 +1,14 @@
 export default {
   data () {
     return {
-      isGuest: false
+      guest: false
     }
   },
   methods: {
-    isGuest (permission) {
-
+    isGuest (role) {
+      const result = role === 'guest'
+      this.guest = result
+      return result
     }
   }
 }
