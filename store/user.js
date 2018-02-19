@@ -21,12 +21,6 @@ export const mutations = {
 }
 
 export const actions = {
-  setAuth ({ commit }, auth) {
-    commit('setAuth', auth)
-  },
-  setAccount ({ commit }, account) {
-    commit('setAccount', account)
-  },
   /**
    * 各SNSアカウントを使用したログイン
    * @param {*} param0
@@ -43,7 +37,7 @@ export const actions = {
 
   /**
    * 各SNSアカウントを使用したログイン
-   * @param {*} param0
+   * @param {object} commit
    * @param {object} payload ログイン情報
    */
   async signInByEmail ({ commit }, payload) {
@@ -56,7 +50,10 @@ export const actions = {
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
   },
-
+  /**
+ * サインアウト処理を行う
+ * @param {object} commit
+ */
   async signOut ({ commit }) {
     await firebaseSignOut().catch(error => {
       commit('setErrors', error)
