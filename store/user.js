@@ -53,7 +53,6 @@ export const actions = {
         commit('setErrors', error)
       })
     const result = await firebaseUsers.item()
-    console.log(result)
     commit('setAuth', result.auth)
     commit('setAccount', result.account)
   },
@@ -68,7 +67,6 @@ export const actions = {
 }
 
 export const getters = {
-  test: state => state.test,
   auth: state => state.auth,
   account: state => state.account
 }
