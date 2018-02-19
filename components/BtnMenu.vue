@@ -1,13 +1,13 @@
 <template lang="pug">
 div.btn-menu
   span.btn-menu__icon(
-    :class="{ active: flg }"
+    :class="{ active: isActive }"
   )
 </template>
 <script>
   export default {
     props: {
-      flg: Boolean
+      isActive: Boolean
     }
   }
 </script>

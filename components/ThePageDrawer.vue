@@ -5,7 +5,7 @@
       :class="[status,this.$route.name]"
     )
       btn-menu(
-        :flg="isDrawer"
+        :isActive="isDrawer"
       )
     div.page-drawer(
       :class="{ active: isDrawer }"
