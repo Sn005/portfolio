@@ -1,12 +1,20 @@
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('user')
 export default {
   data () {
     return {
       guest: false
     }
   },
+  computed: {
+    ...mapGetters(['account']),
+    role () {
+      return this.account.role
+    }
+  },
   methods: {
-    isGuest (role) {
-      const result = role === 'guest'
+    isGuest () {
+      const result = this.role === 'guest'
       this.guest = result
       return result
     }

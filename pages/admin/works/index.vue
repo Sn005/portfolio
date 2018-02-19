@@ -98,8 +98,6 @@
 import * as firebaseWorks from '~/api/firebase/works'
 import MyIsGuest from '~/mixin/MyIsGuest'
 import draggable from 'vuedraggable'
-import { createNamespacedHelpers } from 'vuex'
-const { mapGetters } = createNamespacedHelpers('user')
 export default {
   mixins: [MyIsGuest],
   transition: 'admin',
@@ -149,15 +147,9 @@ export default {
       ]
     }
   },
-  computed: {
-    ...mapGetters(['account']),
-    role () {
-      return this.account.role
-    }
-  },
   methods: {
     async remove (id) {
-      if (this.isGuest(this.role)) return
+      if (this.isGuest()) return
       const result = await firebaseWorks.remove(id)
       if (!result) return
       this.dialog.delete = false
@@ -166,7 +158,7 @@ export default {
       })
     },
     async dragEnd () {
-      if (this.isGuest(this.role)) return
+      if (this.isGuest()) return
       this.isSend = true
       const newItems = this.items.map((item, index) => {
         item.order = index + 1
