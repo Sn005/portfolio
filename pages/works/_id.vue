@@ -4,7 +4,7 @@
     v-content
       v-container
         card-article
-          v-flex.mb-5(
+          v-flex.mb-5.clearfix(
             md6
             xs10
             offset-xs1

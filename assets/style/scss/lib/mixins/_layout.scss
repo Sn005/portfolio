@@ -13,3 +13,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+//-----------------------------------------------
+//clearfix
+//-----------------------------------------------
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
