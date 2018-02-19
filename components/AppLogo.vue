@@ -3,9 +3,7 @@
     transition(
       name="app-logo__title"
     )
-      h1.app-logo__title(
-        v-if="enter"
-      )
+      h1.app-logo__title
         span.app-logo__text.is-sp
           | narihara
           br
@@ -43,6 +41,8 @@ export default {
     position: relative;
     width: 95%;
     text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s $delay $easeOutQuad forwards;
     &:before,
     &:after{
       flex: 50%;
@@ -51,18 +51,6 @@ export default {
       border-top: solid 1px $hr-color;
       border-bottom: solid 1px $hr-color;
       z-index: index($z, index-title-border);
-    }
-    &-enter,
-    &-leave{
-      opacity: 0;
-      transform: translate3d(0, 20px, 0);
-    }
-    &-enter-to{
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-    &-enter-active{
-      transition: all 1s $delay $easeInQuad;
     }
   }
   &__text{
