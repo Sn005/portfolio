@@ -6,15 +6,15 @@
     nuxt
     the-page-border
     the-page-drawer
-    the-page-texture
+    the-texture
 </template>
 <script>
-import ThePageTexture from '~/components/ThePageTexture'
+import TheTexture from '~/components/TheTexture'
 import ThePageBorder from '~/components/ThePageBorder'
 import ThePageDrawer from '~/components/ThePageDrawer'
 export default {
   components: {
-    ThePageTexture,
+    TheTexture,
     ThePageBorder,
     ThePageDrawer
   }
