@@ -1,16 +1,16 @@
 <template lang="pug">
   div
-    div.page-drawer__trigger(
+    div.the-drawer__trigger(
       @click="toggleDrawer"
       :class="[status,this.$route.name]"
     )
       btn-menu(
         :isActive="isDrawer"
       )
-    div.page-drawer(
+    div.the-drawer(
       :class="{ active: isDrawer }"
     )
-      app-gnav.page-drawer__inner
+      app-gnav.the-drawer__inner
 </template>
 <script>
   import { createNamespacedHelpers } from 'vuex'
@@ -41,14 +41,14 @@
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 
-.page-drawer{
+.the-drawer{
   position: fixed;
   top: 0;
   right: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(darken($primary-color, 20%), 0.95);
-  z-index: index($z, the-page-drawer);
+  z-index: index($z, the-drawer);
   visibility: hidden;
   opacity: 0;
   transition: all 0.5s $easeInOutQuad;
@@ -60,13 +60,13 @@
     @include set-mid-mid();
   }
   &__trigger{
-    $delay: map-get($top-quee, pageDrawerTrigger);
+    $delay: map-get($top-quee, theDrawerTrigger);
 
     display: block;
     position: fixed;
     top: 24px;
     right: 24px;
-    z-index: index($z, the-page-drawer__trigger);
+    z-index: index($z, the-drawer__trigger);
     &.index{
       opacity: 0;
       transition: all 0.5s $delay $easeInOutQuad;
