@@ -2,29 +2,33 @@
   v-layout(column)
     v-toolbar
       v-toolbar-title Contacts
-    v-data-table(
-      :headers="headers"
-      :items="items"
-      class="elevation-4"
-    )
-      template(
-        slot="items"
-        slot-scope="props"
+    div(v-if="role !=='guest'")
+      v-data-table(
+        :headers="headers"
+        :items="items"
+        class="elevation-4"
       )
-        td {{ props.item.subject }}
-        td.text-xs-right {{ props.item.created }}
-        td.text-xs-right
-          v-btn(
-            flat
-            icon
-            color="purple lighten-3"
-            :to="'contacts/' + props.item.id"
-          )
-            v-icon redo
+        template(
+          slot="items"
+          slot-scope="props"
+        )
+          td {{ props.item.subject }}
+          td.text-xs-right {{ props.item.created }}
+          td.text-xs-right
+            v-btn(
+              flat
+              icon
+              color="purple lighten-3"
+              :to="'contacts/' + props.item.id"
+            )
+              v-icon redo
+    v-card.pa-4(v-else) 表示権限がありません
 </template>
 <script>
+import MyIsGuest from '~/mixin/MyIsGuest'
 import * as firebaseContacts from '~/api/firebase/contacts'
 export default {
+  mixins: [MyIsGuest],
   transition: 'admin',
   layout: 'admin',
   async asyncData () {
