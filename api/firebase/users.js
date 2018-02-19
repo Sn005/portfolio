@@ -14,6 +14,7 @@ export const item = async () => {
   return {
     auth: true,
     account: {
+      permission: userData ? userData.permission : false,
       role: userData ? userData.role : 'guest'
     }
   }

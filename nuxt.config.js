@@ -20,8 +20,8 @@ module.exports = {
   },
   plugins: [
     '~/plugins/vuetify.js',
-    '~/plugins/firebase.js',
-    '~/plugins/user.js'
+    '~/plugins/firebase.js'
+    // '~/plugins/user.js'
   ],
   css: [
     '~/assets/style/app.styl',
@@ -58,8 +58,7 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      'vue2-editor',
-      'moment'
+      'vue2-editor'
     ],
     extractCSS: true,
     /*
