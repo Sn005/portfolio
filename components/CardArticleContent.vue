@@ -8,8 +8,5 @@
   line-height: 1.65;
   white-space: pre-wrap;
   word-wrap: break-word;
-  // p + p {
-  //   margin-top: 16px;
-  // }
 }
 </style>
