@@ -2,6 +2,10 @@
   div
     v-snackbar(
       top
+      v-model="guest"
+    ) 変更権限がありません
+    v-snackbar(
+      top
       v-model="isPosted"
     ) 更新完了しました
     v-toolbar
@@ -58,7 +62,7 @@
       )
       v-text-field(
         label="担当領域"
-        v-model="role"
+        v-model="assign"
         required
       )
       v-text-field(
@@ -163,7 +167,9 @@ import {
   fetchs as storageFetchs
 } from '~/api/firebase/partial/storage'
 import { VueEditor } from 'vue2-editor'
+import MyIsGuest from '~/mixin/MyIsGuest'
 export default {
+  mixins: [MyIsGuest],
   components: {VueEditor},
   props: {
     item: Object,
@@ -179,7 +185,7 @@ export default {
       name: this.item.name || '',
       category: this.item.category ? Object.keys(this.item.category) : [],
       content: this.item.content || '',
-      role: this.item.role || '',
+      assign: this.item.assign || '',
       skill: this.item.skill || '',
       eyecatchs: this.item.eyecatchs || [],
       thumbnails: this.item.thumbnails || [],
@@ -212,7 +218,7 @@ export default {
         order: this.order,
         category: this.formatCategory(this.category),
         content: this.content,
-        role: this.role,
+        assign: this.assign,
         skill: this.skill,
         eyecatchs: this.eyecatchs,
         thumbnails: this.thumbnails,
@@ -222,6 +228,7 @@ export default {
   },
   methods: {
     async onFileChange (event, target) {
+      if (this.isGuest()) return
       this.isSend = true
       const files = event.target.files || event.dataTransfer.files
       if (!files.length) return
@@ -247,12 +254,14 @@ export default {
       )
     },
     async send () {
+      if (this.isGuest()) return
       if (this.isSend) return
       this.isSend = true
       await firebaseWorksSend(this.id, this.formData)
       this.isSend = false
     },
     async deleteImage (path) {
+      if (this.isGuest()) return
       if (this.isSend) return
       this.isSend = true
       await storageRemove(path)

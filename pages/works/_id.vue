@@ -29,7 +29,7 @@
           )
             card-article-content
               p {{ item.content }}
-              p 担当領域:{{ item.role }}
+              p 担当領域:{{ item.assign }}
               p 使用スキル,ツール:{{ item.skill }}
           v-flex(
             md6
