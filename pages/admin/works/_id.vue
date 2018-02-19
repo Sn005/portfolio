@@ -1,7 +1,7 @@
 <template lang="pug">
   v-layout(column)
     v-card
-      the-form-work(
+      form-work(
         :item="item"
         :definedCategory="definedCategory"
       )
@@ -9,12 +9,12 @@
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
 import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
-import TheFormWork from '~/components/admin/TheFormWork'
+import FormWork from '~/components/admin/FormWork'
 export default {
   transition: 'admin',
   layout: 'admin',
   components: {
-    TheFormWork
+    FormWork
   },
   async asyncData ({ params, error }) {
     const item = await firebaseWorksItem(params.id)
