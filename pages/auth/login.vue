@@ -15,7 +15,7 @@ div
       ) Googleでログイン/登録
 </template>
 <script>
-import FormSignIn from '~/components/FormSignIn'
+import FormSignIn from '~/components/auth/FormSignIn'
 export default {
   layout: 'auth',
   middleware: 'is-authed',
