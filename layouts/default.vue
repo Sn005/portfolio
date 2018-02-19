@@ -4,18 +4,18 @@
     :class="this.$route.name"
   )
     nuxt
-    the-page-border
+    the-border
     the-drawer
     the-texture
 </template>
 <script>
 import TheTexture from '~/components/TheTexture'
-import ThePageBorder from '~/components/ThePageBorder'
+import TheBorder from '~/components/TheBorder'
 import TheDrawer from '~/components/TheDrawer'
 export default {
   components: {
     TheTexture,
-    ThePageBorder,
+    TheBorder,
     TheDrawer
   }
 }

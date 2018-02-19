@@ -1,18 +1,14 @@
 <template lang="pug">
-  div.page-border(
+  div.the-border(
     :class="[status,this.$route.name]"
   )
 </template>
 <script>
-import AppLogo from '~/components/AppLogo'
 export default {
   data () {
     return {
       status: 'before'
     }
-  },
-  components: {
-    AppLogo
   },
   mounted () {
     this.status = 'enter'
@@ -23,8 +19,8 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 
-.page-border{
-  $delay: map-get($top-quee, pageBorder);
+.the-border{
+  $delay: map-get($top-quee, theBorder);
   $duration: $delay;
   $easing: $easeOutQuad;
   $borderValue: solid 1px $hr-color;
@@ -45,7 +41,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: index($z, the-page-border);
+    z-index: index($z, the-border);
     pointer-events: none;
   }
   &:before{

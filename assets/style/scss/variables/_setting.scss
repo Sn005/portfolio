@@ -18,13 +18,13 @@ $z:
   the-drawer,
   the-drawer__trigger,
   app-loading,
-  the-page-border,
+  the-border,
   the-texture,
 ;
 
 // topページアニメーションdelay設定
 $top-quee: (
-  pageBorder: 0.5s,
+  theBorder: 0.5s,
   appLogo: 1.8s,
   theDrawerTrigger: 1.5s,
 )
