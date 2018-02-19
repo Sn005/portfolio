@@ -62,23 +62,10 @@ export default {
     @for $i from 1 through 20 {
       &:nth-child(#{$i}){
         $delay: 1.5 + 0.4 * $i + s;
-        animation: listWorks .5s ($delay) $easeOutQuad forwards;
+        animation: fadeIn .5s ($delay) $easeOutQuad forwards;
       }
     }
   }
 }
-@keyframes listWorks {
-  0% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-    
-    visibility: visible;
-  }
-}
+
 </style>

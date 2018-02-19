@@ -5,19 +5,6 @@
     div.page-title-lower__arrow--left
     div.page-title-lower__arrow--right
 </template>
-<script>
-export default {
-  data () {
-    return {
-      status: 'before'
-    }
-  },
-  mounted () {
-    this.status = 'entry'
-  }
-}
-</script>
-
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
 .page-title-lower{
