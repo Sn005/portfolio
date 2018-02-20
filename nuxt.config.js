@@ -7,11 +7,12 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'ns-portfolio',
+    title: 'narihara-portfolio',
     meta: [
       { charset: 'utf-8' },
+      { name: 'robots', content: 'noindex,nofollow' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'ns-porfolio project' }
+      { hid: 'description', name: 'description', content: 'narihara-porfolio project' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -21,7 +22,6 @@ module.exports = {
   plugins: [
     '~/plugins/vuetify.js',
     '~/plugins/firebase.js'
-    // '~/plugins/user.js'
   ],
   css: [
     '~/assets/style/app.styl',
