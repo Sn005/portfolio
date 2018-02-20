@@ -76,8 +76,8 @@
         v-flex(
           xs8
           v-if="eyecatchs"
-          v-for="(eyecatch, index) in eyecatchs"
-          :key="index"
+          v-for="eyecatch in eyecatchs"
+          :key="eyecatch.url"
         )
           img(
             width="100%"
@@ -97,8 +97,8 @@
         v-flex(
           xs8
           v-if="thumbnails"
-          v-for="(thumbnail, i) in thumbnails"
-          :key="i"
+          v-for="thumbnail in thumbnails"
+          :key="thumbnail.url"
         )
           img(
             width="100%"
@@ -126,8 +126,8 @@
           v-flex(
             xs4
             v-if="images"
-            v-for="(image, index) in images"
-            :key="index"
+            v-for="image in images"
+            :key="image.url"
           )
             v-card(
               flat

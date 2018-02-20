@@ -13,8 +13,8 @@
         v-list-tile(
           router
           :to="item.to"
-          :key="i"
-          v-for="(item, i) in items"
+          v-for="item in items"
+          :key="item.title"
           exact
         )
           v-list-tile-action

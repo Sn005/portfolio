@@ -6,8 +6,8 @@
       v-container
         ul.list-works
           li.list-works__item(
-            v-for="(item, i) in items"
-            :key="i"
+            v-for="item in items"
+            :key="item.id"
           )
             card-work(:item="item")
 </template>

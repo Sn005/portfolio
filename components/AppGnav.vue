@@ -2,8 +2,8 @@
   nav.app-gnav
     ul
       li.app-gnav__item(
-        v-for="(item , i) in items"
-        :key="i"
+        v-for="item in items"
+        :key="item.to"
         :class="{ active: isDrawer }"
         @click="toggleDrawer"
       )

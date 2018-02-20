@@ -15,8 +15,8 @@
               :perPageCustom="[[1600, 1]]"
             )
               slide(
-                v-for="(image, i) in item.images"
-                :key="i"
+                v-for="image in item.images"
+                :key="image.url"
               )
                 img(
                   :src="image.url"

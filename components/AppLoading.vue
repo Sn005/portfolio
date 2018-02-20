@@ -13,9 +13,9 @@
         )
         p
           span.app-loading__text(
-            v-for="(text , i) in texts"
+            v-for="text in texts"
             :class="status"
-            :key="i"
+            :key="text"
           ) {{ text }}
 </template>
 
