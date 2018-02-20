@@ -28,7 +28,9 @@
             offset-md1
           )
             card-article-content
-              p {{ item.content }}
+              p(v-html="formattedContent")
+              p(v-if="formattedUrl") サイトURL:
+                span(v-html="formattedUrl")
               p 担当領域:{{ item.assign }}
               p 使用スキル,ツール:{{ item.skill }}
           v-flex(
@@ -48,6 +50,8 @@ import CardArticle from '~/components/CardArticle'
 import CardArticleContent from '~/components/CardArticleContent'
 import NavigationWork from '~/components/NavigationWork'
 import * as firebaseWorks from '~/api/firebase/works'
+import h from 'htmlspecialchars'
+import { link } from 'autolinker'
 export default {
   components: {
     Carousel,
@@ -69,7 +73,7 @@ export default {
   async asyncData ({ params, error }) {
     const item = await firebaseWorks.item(params.id)
     if (!item) {
-      error({ statusCode: 404, message: 'ページが見つかりません' })
+      error({ statusCode: 404 })
     }
     const [prev = {}] = await firebaseWorks.fetchItemByOrder(item.order - 1)
     const [next = {}] = await firebaseWorks.fetchItemByOrder(item.order + 1)
@@ -77,6 +81,15 @@ export default {
       item: item,
       prev: prev,
       next: next
+    }
+  },
+  computed: {
+    formattedContent () {
+      return link(h(this.item.content), {stripPrefix: false})
+    },
+    formattedUrl () {
+      if (!this.item.url) return false
+      return link(h(this.item.url), {stripPrefix: false})
     }
   }
 }
