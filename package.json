@@ -17,7 +17,6 @@
     "htmlspecialchars": "^1.0.5",
     "nuxt": "^1.0.0-rc11",
     "vue-carousel": "^0.6.5",
-    "vue2-editor": "^2.3.2",
     "vuedraggable": "^2.16.0",
     "vuetify": "^1.0.1"
   },

@@ -158,11 +158,9 @@ import {
   remove as storageRemove,
   fetchs as storageFetchs
 } from '~/api/firebase/partial/storage'
-import { VueEditor } from 'vue2-editor'
 import IsGuest from '~/mixin/IsGuest'
 export default {
   mixins: [IsGuest],
-  components: {VueEditor},
   props: {
     item: Object
   },
@@ -259,10 +257,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "../../assets/style/scss/modules/_m-editor.scss";
-.editor-wrapper{
-  @extend %m-editor-wrapper;
-}
 .file{
   &-btn{
     cursor: pointer;
