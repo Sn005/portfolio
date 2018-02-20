@@ -70,6 +70,10 @@
         v-model="skill"
         required
       )
+      v-text-field(
+        label="サイトURL"
+        v-model="url"
+      )
       div
         p.title アイキャッチ画像
         v-btn
@@ -187,6 +191,7 @@ export default {
       content: this.item.content || '',
       assign: this.item.assign || '',
       skill: this.item.skill || '',
+      url: this.item.url || '',
       eyecatchs: this.item.eyecatchs || [],
       thumbnails: this.item.thumbnails || [],
       images: this.item.images || [],
@@ -204,9 +209,6 @@ export default {
     }
   },
   computed: {
-    // isExits () {
-    //   return !!this.id
-    // },
     isPosted () {
       return !!this.sended
     },
@@ -220,6 +222,7 @@ export default {
         content: this.content,
         assign: this.assign,
         skill: this.skill,
+        url: this.url,
         eyecatchs: this.eyecatchs,
         thumbnails: this.thumbnails,
         images: this.images
