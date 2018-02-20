@@ -2,7 +2,7 @@
   div
     v-snackbar(
       top
-      v-model="guest"
+      v-model="$_IsGuest_result"
     ) 変更権限がありません
     v-snackbar(
       top
@@ -167,9 +167,9 @@ import {
   fetchs as storageFetchs
 } from '~/api/firebase/partial/storage'
 import { VueEditor } from 'vue2-editor'
-import MyIsGuest from '~/mixin/MyIsGuest'
+import IsGuest from '~/mixin/IsGuest'
 export default {
-  mixins: [MyIsGuest],
+  mixins: [IsGuest],
   components: {VueEditor},
   props: {
     item: Object,
@@ -228,7 +228,7 @@ export default {
   },
   methods: {
     async onFileChange (event, target) {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       this.sended = true
       const files = event.target.files || event.dataTransfer.files
       if (!files.length) return
@@ -254,14 +254,14 @@ export default {
       )
     },
     async send () {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       if (this.sended) return
       this.sended = true
       await firebaseWorksSend(this.id, this.formData)
       this.sended = false
     },
     async deleteImage (path) {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       if (this.sended) return
       this.sended = true
       await storageRemove(path)

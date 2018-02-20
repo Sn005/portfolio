@@ -2,7 +2,7 @@
   v-layout(column)
     v-snackbar(
       top
-      v-model="guest"
+      v-model="$_IsGuest_result"
     ) 変更権限がありません
     v-card
       v-toolbar
@@ -26,10 +26,10 @@
       ) 更新する
 </template>
 <script>
-import MyIsGuest from '~/mixin/MyIsGuest'
+import IsGuest from '~/mixin/IsGuest'
 import * as firebaseAbout from '~/api/firebase/about'
 export default {
-  mixins: [MyIsGuest],
+  mixins: [IsGuest],
   transition: 'admin',
   layout: 'admin',
   async asyncData ({ params, error }) {
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async send () {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       if (this.sended) return
       this.sended = true
       await firebaseAbout.send(this.item)

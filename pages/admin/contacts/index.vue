@@ -25,10 +25,10 @@
     v-card.pa-4(v-else) 表示権限がありません
 </template>
 <script>
-import MyIsGuest from '~/mixin/MyIsGuest'
+import IsGuest from '~/mixin/IsGuest'
 import * as firebaseContacts from '~/api/firebase/contacts'
 export default {
-  mixins: [MyIsGuest],
+  mixins: [IsGuest],
   transition: 'admin',
   layout: 'admin',
   async asyncData () {

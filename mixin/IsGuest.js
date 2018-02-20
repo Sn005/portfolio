@@ -3,18 +3,18 @@ const { mapGetters } = createNamespacedHelpers('user')
 export default {
   data () {
     return {
-      guest: false
+      $_IsGuest_result: false
     }
   },
   computed: {
     ...mapGetters(['account']),
-    role () {
+    $_IsGuest_role () {
       return this.account.role
     }
   },
   methods: {
-    isGuest () {
-      const result = this.role === 'guest'
+    $_IsGuest_define () {
+      const result = this.$_IsGuest_role === 'guest'
       this.guest = result
       return result
     }

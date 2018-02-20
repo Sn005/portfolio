@@ -2,7 +2,7 @@
   v-layout(column)
     v-snackbar(
       top
-      v-model="guest"
+      v-model="$_IsGuest_result"
     ) 変更権限がありません
     v-toolbar
       v-toolbar-title Works
@@ -96,10 +96,10 @@
 </template>
 <script>
 import * as firebaseWorks from '~/api/firebase/works'
-import MyIsGuest from '~/mixin/MyIsGuest'
+import IsGuest from '~/mixin/IsGuest'
 import draggable from 'vuedraggable'
 export default {
-  mixins: [MyIsGuest],
+  mixins: [IsGuest],
   transition: 'admin',
   layout: 'admin',
   async asyncData () {
@@ -149,7 +149,7 @@ export default {
   },
   methods: {
     async remove (id) {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       const result = await firebaseWorks.remove(id)
       if (!result) return
       this.dialog.delete = false
@@ -158,7 +158,7 @@ export default {
       })
     },
     async dragEnd () {
-      if (this.isGuest()) return
+      if (this.$_IsGuest_define()) return
       this.sended = true
       const newItems = this.items.map((item, index) => {
         item.order = index + 1
