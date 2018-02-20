@@ -42,18 +42,6 @@
         :counter="20"
         required
       )
-      v-layout(row)
-        v-flex(
-          xs6
-          md2
-          v-for="(value, key) in definedCategory"
-          :key="key"
-        )
-          v-checkbox(
-            :label="key"
-            v-model="category"
-            :value="key"
-          )
       v-text-field(
         label="本文"
         v-model="content"
@@ -176,8 +164,7 @@ export default {
   mixins: [IsGuest],
   components: {VueEditor},
   props: {
-    item: Object,
-    definedCategory: Object
+    item: Object
   },
   data () {
     return {
@@ -249,12 +236,6 @@ export default {
         this[target] = result ? await storageFetchs(datas) : []
       }
       this.sended = false
-    },
-    formatCategory (category) {
-      return category.reduce(
-        (object, item) => Object.assign(object, {[item]: true}),
-        {}
-      )
     },
     async send () {
       if (this.$_IsGuest_define()) return

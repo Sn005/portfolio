@@ -8,7 +8,6 @@
 </template>
 <script>
 import { item as firebaseWorksItem } from '~/api/firebase/works'
-import { items as firebaseDefinedCategoryItem } from '~/api/firebase/definedCategory'
 import FormWork from '~/components/admin/FormWork'
 export default {
   transition: 'admin',
@@ -23,19 +22,13 @@ export default {
         path: '/admin/works'
       })
     }
-    const definedCategory = await firebaseDefinedCategoryItem()
     return {
-      item: item,
-      definedCategory: definedCategory
+      item: item
     }
   },
   data () {
     return {
-      item: {
-        name: '',
-        category: [],
-        content: ''
-      }
+      item: {}
     }
   },
   computed: {
