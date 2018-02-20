@@ -36,11 +36,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    plugins: [
-      new webpack.ProvidePlugin({
-        '_': 'lodash'
-      })
-    ],
     postcss: [
       require('autoprefixer')({
         browsers: ['> 5%']
