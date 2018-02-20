@@ -40,6 +40,10 @@ export const fetchs = async (datas) => {
   return results
 }
 
+/**
+ * 引数で受け取ったパスのファイルを削除する
+ * @param {string} path ファイルパス
+ */
 export const remove = async (path) => {
   await storage.ref(path)
     .delete()
