@@ -10,10 +10,11 @@ export const send = async (datas) => {
   for (let data of datas) {
     const ref = storage.ref(data.path)
     const file = data.file
-    await ref.put(file).catch(error => {
+    const result = await ref.put(file).catch(error => {
       console.log(error)
       return false
     })
+    if (!result) return false
   }
   return true
 }
@@ -31,6 +32,7 @@ export const fetchs = async (datas) => {
         console.log(error)
         return false
       })
+    if (!url) return false
     const item = {
       path: data.path,
       url: url
