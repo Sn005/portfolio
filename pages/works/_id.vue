@@ -57,8 +57,6 @@ export default {
     CardArticleContent,
     NavigationWork
   },
-  watchQuery: ['page'],
-  key: (to) => to.fullPath,
   transition (to, from) {
     const direction = to.query.direction
     if (!direction) return 'page'
@@ -71,9 +69,7 @@ export default {
   async asyncData ({ params, error }) {
     const item = await firebaseWorks.item(params.id)
     if (!item) {
-      this.$router.push({
-        path: '/works'
-      })
+      error({ statusCode: 404, message: 'ページが見つかりません' })
     }
     const [prev = {}] = await firebaseWorks.fetchItemByOrder(item.order - 1)
     const [next = {}] = await firebaseWorks.fetchItemByOrder(item.order + 1)
