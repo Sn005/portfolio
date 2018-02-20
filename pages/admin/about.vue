@@ -8,7 +8,7 @@
       v-toolbar
         v-toolbar-title About
       v-progress-linear.mt-0(
-        v-if="isSend"
+        v-if="sended"
         :indeterminate="true"
       )
       v-form.pa-4
@@ -40,17 +40,17 @@ export default {
   },
   data () {
     return {
-      isSend: false,
+      sended: false,
       item: {}
     }
   },
   methods: {
     async send () {
       if (this.isGuest()) return
-      if (this.isSend) return
-      this.isSend = true
+      if (this.sended) return
+      this.sended = true
       await firebaseAbout.send(this.item)
-      this.isSend = false
+      this.sended = false
     }
   }
 }

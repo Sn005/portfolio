@@ -77,7 +77,7 @@
           )
             v-icon clear
         v-progress-linear.mt-0(
-          v-if="isSend"
+          v-if="sended"
           :indeterminate="true"
         )
         v-list
@@ -117,7 +117,7 @@ export default {
   },
   data () {
     return {
-      isSend: false,
+      sended: false,
       dialog: {
         delete: false,
         sort: false
@@ -159,7 +159,7 @@ export default {
     },
     async dragEnd () {
       if (this.isGuest()) return
-      this.isSend = true
+      this.sended = true
       const newItems = this.items.map((item, index) => {
         item.order = index + 1
         return item
@@ -167,7 +167,7 @@ export default {
       for (let item of newItems) {
         await firebaseWorks.send(item.id, item)
       }
-      this.isSend = false
+      this.sended = false
       this.items = newItems
     }
   }

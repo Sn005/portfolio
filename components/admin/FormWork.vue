@@ -13,7 +13,7 @@
         v-html="isExits ? name : '新規登録'"
       )
     v-progress-linear.mt-0(
-      v-if="isSend"
+      v-if="sended"
       :indeterminate="true"
     )
     v-form.pa-4(v-model="valid")
@@ -178,7 +178,7 @@ export default {
   data () {
     return {
       isExits: !!this.item.id,
-      isSend: false,
+      sended: false,
       valid: false,
       title: this.item.id ? this.item.name : '新規登録',
       id: this.item.id || '',
@@ -208,7 +208,7 @@ export default {
     //   return !!this.id
     // },
     isPosted () {
-      return !!this.isSend
+      return !!this.sended
     },
     formData () {
       return {
@@ -229,7 +229,7 @@ export default {
   methods: {
     async onFileChange (event, target) {
       if (this.isGuest()) return
-      this.isSend = true
+      this.sended = true
       const files = event.target.files || event.dataTransfer.files
       if (!files.length) return
       const datas = [...files].map((file, index) => {
@@ -245,7 +245,7 @@ export default {
       } else {
         this[target] = result ? await storageFetchs(datas) : []
       }
-      this.isSend = false
+      this.sended = false
     },
     formatCategory (category) {
       return category.reduce(
@@ -255,21 +255,21 @@ export default {
     },
     async send () {
       if (this.isGuest()) return
-      if (this.isSend) return
-      this.isSend = true
+      if (this.sended) return
+      this.sended = true
       await firebaseWorksSend(this.id, this.formData)
-      this.isSend = false
+      this.sended = false
     },
     async deleteImage (path) {
       if (this.isGuest()) return
-      if (this.isSend) return
-      this.isSend = true
+      if (this.sended) return
+      this.sended = true
       await storageRemove(path)
       this.images = this.images.filter(value => {
         return value.path !== path
       })
       await firebaseWorksSend(this.id, this.formData)
-      this.isSend = false
+      this.sended = false
     }
   }
 }
