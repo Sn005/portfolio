@@ -69,10 +69,7 @@
     z-index: index($z, the-drawer__trigger);
     &.index{
       opacity: 0;
-      transition: all 0.5s $delay $easeInOutQuad;
-      &.enter{
-        opacity: 1;
-      }
+      animation: fadeIn 0.5s $delay $easeOutQuad forwards;
     }
   }
 }
