@@ -10,7 +10,7 @@
     ) 更新完了しました
     v-toolbar
       v-toolbar-title(
-        v-html="isExits ? name : '新規登録'"
+        v-text="isExits ? name : '新規登録'"
       )
     v-progress-linear.mt-0(
       v-if="sended"
