@@ -18,12 +18,12 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/style/scss/_all";
-
+$borderValue: solid 1px $hr-color;
+  
 .the-border{
   $delay: map-get($top-quee, the-border);
-  $duration: $delay;
+  $duration: $delay * 3;
   $easing: $easeOutQuad;
-  $borderValue: solid 1px $hr-color;
   $root: &;
 
   position: absolute;
@@ -55,28 +55,66 @@ export default {
   &.index{
     &:before,
     &:after{
-      width: 0;
-      height: 0;
       border: none;
     }
-    &.enter{
-      &:before,
-      &:after{
-        width: 100%;
-        height: 100%;
-      }
-      &:before{
-        border-top: $borderValue;
-        border-right: $borderValue;
-        transition: width $duration $easing, height $duration $delay $easing;
-      }
-      &:after{
-        border-bottom: $borderValue;
-        border-left: $borderValue;
-        transition: height $duration $easing, width $duration $delay $easing;
-      }
+    &:before{
+      animation: borderTopRight $duration $delay $easeOutQuad forwards;
     }
+    &:after{
+      animation: borderBottomLeft $duration $delay $easeOutQuad forwards;
+    }
+    // &:before,
+    // &:after{
+    //   // width: 0;
+    //   // height: 0;
+    //   // border: none;
+    // }
+
+    // &.enter{
+    //   &:before,
+    //   &:after{
+    //     width: 100%;
+    //     height: 100%;
+    //   }
+    //   &:before{
+    //     border-top: $borderValue;
+    //     border-right: $borderValue;
+    //     transition: width $duration $easing, height $duration $delay $easing;
+    //   }
+    //   &:after{
+    //     border-bottom: $borderValue;
+    //     border-left: $borderValue;
+    //     transition: height $duration $easing, width $duration $delay $easing;
+    //   }
+    // }
   }
 }
-
+@keyframes borderTopRight {
+  0% {
+    width: 0;
+    height: 0;
+    border: transparent;
+  }
+  50% {
+    width: 100%;
+    height: 0;
+  }
+  100% {
+    height: 100%;
+    border: $borderValue;
+  }
+}
+@keyframes borderBottomLeft {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  50% {
+    height: 100%;
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 </style>

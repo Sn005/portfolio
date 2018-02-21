@@ -22,19 +22,11 @@
       AppGnav,
       BtnMenu
     },
-    data () {
-      return {
-        status: 'before'
-      }
-    },
     computed: {
       ...mapGetters(['isDrawer'])
     },
     methods: {
       ...mapActions(['toggleDrawer'])
-    },
-    mounted () {
-      this.status = 'enter'
     }
   }
 </script>
