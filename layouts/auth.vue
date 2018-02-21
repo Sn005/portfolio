@@ -15,8 +15,8 @@
 </template>
 
 <style lang="scss">
-@import "../assets/style/scss/modules/_m-app-body.scss";
+@import "../assets/style/scss/_all";
 .app-body{
-  @extend %m-app-body--is-admin;
+  font-family: $base-font;
 }
 </style>

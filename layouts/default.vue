@@ -23,7 +23,8 @@ export default {
 <style lang="scss">
 @import "../assets/style/scss/_all";
 #app{
-  @extend %m-app-body;
+  font-family: $font-min;
+  letter-spacing: 0.1em;
   background : $bg-body;
   &.index{
     animation: appBg 20s $easeInOut infinite;
