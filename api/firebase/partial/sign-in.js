@@ -4,6 +4,7 @@ const auth = firebase.auth()
 
 /**
  * 各SNSアカウントを使用したログイン
+ * @returns {Promise} signInWithPopup実行結果
  */
 export const bySns = async (sns) => {
   const providers = {
@@ -19,6 +20,7 @@ export const bySns = async (sns) => {
  * e-mailアカウントによるログイン
  * @param {string} email メールアドレス
  * @param {string} password パスワード
+ * @returns {Promise} signInWithEmailAndPassword実行結果
  */
 export const byEmail = async (email, password) => {
   const result = await auth.signInWithEmailAndPassword(email, password)

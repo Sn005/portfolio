@@ -32,6 +32,7 @@ export const item = async (id) => {
  * 情報をfirebaseに送信する
  * @param {string} id 対象記事のID
  * @param {objext} payload 送信情報
+ * @return {Object} 取得した情報
  */
 export const send = async (payload) => {
   payload.created = firebase.firestore.FieldValue.serverTimestamp()
@@ -56,6 +57,7 @@ export const update = async (id, payload) => {
 /**
  * 対象アイテムを削除する
  * @param {string} id 対象記事のID
+ * @return {boolean} 削除判定
  */
 export const remove = async (id) => {
   const doc = col.doc(id)

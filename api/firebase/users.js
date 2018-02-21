@@ -5,6 +5,7 @@ const usersCol = db.collection('users')
 
 /**
  * 単体ユーザー情報取得
+ * @return {object} ユーザー情報
  */
 export const item = async () => {
   const user = await auth()

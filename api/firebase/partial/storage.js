@@ -4,6 +4,7 @@ const storage = firebase.storage()
 /**
  * firebase storageへの画像アップロードを行う
  * @param {array} datas 対象の画像情報群
+ * @return {boolean} アップロード成功判定
  */
 
 export const send = async (datas) => {
@@ -22,6 +23,7 @@ export const send = async (datas) => {
 /**
  * 引数で受け取った画像情報群の表示URLを返す
  * @param {array} datas 対象の画像情報群
+ * @return {Object} 画像情報を格納したオブジェクト
  */
 export const fetchs = async (datas) => {
   let results = []

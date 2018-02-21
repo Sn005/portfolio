@@ -4,6 +4,7 @@ const doc = db.collection('about').doc('index')
 
 /**
  * 情報取得
+ * @return {Object} 取得した情報
  */
 export const item = async () => {
   const result = await doc.get().catch(error => {

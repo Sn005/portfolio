@@ -48,7 +48,7 @@ export const fetchItemByOrder = async (order) => {
 /**
  * 情報をfirebaseに送信する
  * @param {string} id 対象記事のID
- * @param {objext} payload 送信情報
+ * @param {object} payload 送信情報
  */
 export const send = async (id, payload) => {
   await col.doc(id).set(payload).catch(error => {
