@@ -31,7 +31,7 @@
       app
       clipped-left
     )
-      v-toolbar-title ns-port管理画面
+      v-toolbar-title narihara portfolio管理画面
     v-content
       v-container
         nuxt
@@ -52,8 +52,7 @@
           { icon: 'perm_identity', title: 'About', to: '/admin/about' },
           { icon: 'contacts', title: 'Contacts', to: '/admin/contacts' },
           { icon: 'home', title: 'Home', to: '/' }
-        ],
-        title: 'Vuetify.js'
+        ]
       }
     },
     methods: {
