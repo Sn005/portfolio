@@ -4,7 +4,7 @@
 
 ![narihara portfolio](https://user-images.githubusercontent.com/23160212/36414216-ddc89f28-1664-11e8-83cf-ee1baa266b00.png)
 
-[narihara portfolio]() is built width [Nuxt.js](https://ja.nuxtjs.org/) & [Cloud Firestore](https://firebase.google.com/docs/firestore/?hl=ja)
+[narihara portfolio]() は [Nuxt.js](https://ja.nuxtjs.org/) と [Cloud Firestore](https://firebase.google.com/docs/firestore/?hl=ja)で構築されています
 
 ## URL
 
