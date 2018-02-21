@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./.nuxt/dist",
+    "public": "./dist",
     "ignore": [
       "firebase.json",
       "database-rules.json",
@@ -11,7 +11,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.spa.html"
+        "destination": "/index.html"
       }
     ]
   },
