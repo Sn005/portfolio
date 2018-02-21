@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const resolve = (dir) => require('path').join(__dirname, dir)
 require('dotenv').config()
 module.exports = {
+  // mode: 'spa',
   /*
   ** Headers of the page
   */
