@@ -30,12 +30,10 @@ nuxt-link.card-work(
   height: 0;
   padding-top: 62%;
   background-size: cover;
-  box-shadow:0 3px 2px 1px rgba($true-black, 0.9);
+  box-shadow: $card-shadow;
   transition: all .5s $easeOutQuad;
   &:hover{
-    box-shadow:
-      0 3px 2px 1px rgba($true-black, 0.9),
-      0 1px 16px 0 rgba($true-black, 0.8);
+    box-shadow: $card-shadow-hover;
   }
   &__content{
     display: flex;

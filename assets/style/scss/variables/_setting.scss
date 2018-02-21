@@ -27,4 +27,10 @@ $top-quee: (
   the-border: .5s,
   app-logo: .8s,
   the-drawer-trigger: 1.5s,
-)
+);
+
+
+// cardのshadow値
+$card-shadow: 0 3px 2px 1px rgba(0,0,0, 0.9);
+$card-shadow-hover: 0 3px 2px 1px rgba(0,0,0, 0.9),
+                    0 1px 16px 0 rgba(0,0,0, 0.8);
