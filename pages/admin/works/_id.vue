@@ -29,11 +29,6 @@ export default {
     return {
       item: {}
     }
-  },
-  computed: {
-    isExits () {
-      return true
-    }
   }
 }
 </script>
