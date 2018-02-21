@@ -18,14 +18,14 @@
   import BtnMenu from '~/components/BtnMenu'
   const { mapGetters, mapActions } = createNamespacedHelpers('app')
   export default {
+    components: {
+      AppGnav,
+      BtnMenu
+    },
     data () {
       return {
         status: 'before'
       }
-    },
-    components: {
-      AppGnav,
-      BtnMenu
     },
     computed: {
       ...mapGetters(['isDrawer'])
