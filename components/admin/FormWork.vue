@@ -31,7 +31,7 @@
         label="ID"
         v-model="id"
         :rules="idRules"
-        :counter="20"
+        :counter="10"
         required
         v-else
       )
