@@ -21,8 +21,7 @@ export default {
 $borderValue: solid 1px $hr-color;
   
 .the-border{
-  $delay: map-get($top-quee, the-border);
-  $duration: $delay * 3;
+  $duration: map-get($top-quee, the-border);
   $easing: $easeOutQuad;
   $root: &;
 
@@ -58,42 +57,17 @@ $borderValue: solid 1px $hr-color;
       border: none;
     }
     &:before{
-      animation: borderTopRight $duration $delay $easeOutQuad forwards;
+      animation: borderTopRight $duration $easeOutQuad forwards;
     }
     &:after{
-      animation: borderBottomLeft $duration $delay $easeOutQuad forwards;
+      animation: borderBottomLeft $duration $easeOutQuad forwards;
     }
-    // &:before,
-    // &:after{
-    //   // width: 0;
-    //   // height: 0;
-    //   // border: none;
-    // }
-
-    // &.enter{
-    //   &:before,
-    //   &:after{
-    //     width: 100%;
-    //     height: 100%;
-    //   }
-    //   &:before{
-    //     border-top: $borderValue;
-    //     border-right: $borderValue;
-    //     transition: width $duration $easing, height $duration $delay $easing;
-    //   }
-    //   &:after{
-    //     border-bottom: $borderValue;
-    //     border-left: $borderValue;
-    //     transition: height $duration $easing, width $duration $delay $easing;
-    //   }
-    // }
   }
 }
 @keyframes borderTopRight {
   0% {
     width: 0;
     height: 0;
-    border: transparent;
   }
   50% {
     width: 100%;
@@ -101,7 +75,8 @@ $borderValue: solid 1px $hr-color;
   }
   100% {
     height: 100%;
-    border: $borderValue;
+    border-top: $borderValue;
+    border-right: $borderValue;
   }
 }
 @keyframes borderBottomLeft {
@@ -115,6 +90,8 @@ $borderValue: solid 1px $hr-color;
   }
   100% {
     width: 100%;
+    border-bottom: $borderValue;
+    border-left: $borderValue;
   }
 }
 </style>
