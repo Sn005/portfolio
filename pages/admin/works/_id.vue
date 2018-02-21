@@ -3,7 +3,6 @@
     v-card
       form-work(
         :item="item"
-        :definedCategory="definedCategory"
       )
 </template>
 <script>
