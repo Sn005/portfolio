@@ -4,8 +4,8 @@
     dark
   )
     v-navigation-drawer(
-      clipped
       v-model="drawer"
+      clipped
       fixed
       app
     )
@@ -31,6 +31,9 @@
       app
       clipped-left
     )
+      v-toolbar-side-icon(
+        @click="drawer = !drawer"
+      )
       v-toolbar-title narihara portfolio管理画面
     v-content
       v-container
@@ -42,10 +45,7 @@
     middleware: 'check-auth',
     data () {
       return {
-        clipped: false,
         drawer: true,
-        fixed: false,
-        miniVariant: false,
         items: [
           { icon: 'apps', title: 'Dashboard', to: '/admin' },
           { icon: 'build', title: 'Works', to: '/admin/works' },
