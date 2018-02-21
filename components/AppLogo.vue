@@ -36,7 +36,7 @@ export default {
   width: 100%;
   height: calc(96vh - 16px);
   &__title{
-    $delay: map-get($top-quee, appLogo);
+    $delay: map-get($top-quee, app-logo);
 
     display: flex;
     align-items: center;

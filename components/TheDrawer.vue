@@ -60,7 +60,7 @@
     @include set-mid-mid();
   }
   &__trigger{
-    $delay: map-get($top-quee, theDrawerTrigger);
+    $delay: map-get($top-quee, the-drawer-trigger);
 
     display: block;
     position: fixed;

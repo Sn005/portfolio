@@ -20,7 +20,7 @@ export default {
 @import "../assets/style/scss/_all";
 
 .the-border{
-  $delay: map-get($top-quee, theBorder);
+  $delay: map-get($top-quee, the-border);
   $duration: $delay;
   $easing: $easeOutQuad;
   $borderValue: solid 1px $hr-color;
