@@ -61,18 +61,4 @@
     animation: fadeInUp 1s 1s $easeOutQuad forwards;
     @include text-title();
   }
-
-  // @keyframes pageTitleText {
-  //   0% {
-  //     opacity: 0;
-  //     transform: translate3d(0, 20px, 0);
-  //   }
-  //   50% {
-  //     opacity: 0.3;
-  //   }
-  //   100% {
-  //     opacity: 1;
-  //     transform: translate3d(0, 0, 0);
-  //   }
-  // }
 }
