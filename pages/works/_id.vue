@@ -75,8 +75,8 @@ export default {
     if (!item) {
       error({ statusCode: 404 })
     }
-    const [prev = {}] = await firebaseWorks.fetchItemByOrder(item.order - 1)
-    const [next = {}] = await firebaseWorks.fetchItemByOrder(item.order + 1)
+    const prev = await firebaseWorks.fetchItemByOrder(item.order - 1)
+    const next = await firebaseWorks.fetchItemByOrder(item.order + 1)
     return {
       item: item,
       prev: prev,

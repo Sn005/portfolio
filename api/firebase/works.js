@@ -5,6 +5,7 @@ const col = db.collection('works')
 
 /**
  * 一覧情報取得
+ * @return {Object} 取得した情報
  */
 export const items = async () => {
   const results = await col.get()
@@ -18,6 +19,7 @@ export const items = async () => {
 /**
  * 単体情報取得
  * @param {string} id 対象記事のID
+ * @return {Object} 取得した情報
  */
 export const item = async (id) => {
   const item = await col.doc(id).get().catch(error => {
@@ -32,13 +34,15 @@ export const item = async (id) => {
 /**
  * 掲載順位を指定してアイテムを取得
  * @param {int} order 対象記事の掲載順位
+ * @return {Object} 取得した情報
  */
 export const fetchItemByOrder = async (order) => {
   const results = await col.where('order', '==', order).get()
-  return results.docs.map(doc => {
+  const [result = {}] = results.docs.map(doc => {
     if (!doc.exists) return {}
     return doc.data()
   })
+  return result
 }
 
 /**
@@ -55,6 +59,7 @@ export const send = async (id, payload) => {
 /**
  * 対象アイテムを削除する
  * @param {string} id 対象記事のID
+ * @return {boolean} 削除判定
  */
 export const remove = async (id) => {
   const doc = col.doc(id)
