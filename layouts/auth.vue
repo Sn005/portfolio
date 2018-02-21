@@ -3,9 +3,7 @@
     v-content
       v-container
         v-layout(
-          row 
           justify-center
-          align-center
         )
           v-flex(
             md8
