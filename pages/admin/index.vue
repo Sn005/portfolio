@@ -3,7 +3,10 @@
     v-toolbar
       v-toolbar-title Dashboard
     v-card
-      v-card-title.headline ログアウト
+      v-card-text(primary-title)
+        | narihara portfolioの管理画面です
+        br
+        | オーナー権限保有者のみ各種アイテム編集が可能です
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
