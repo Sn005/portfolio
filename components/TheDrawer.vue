@@ -2,7 +2,7 @@
   div
     div.the-drawer__trigger(
       @click="toggleDrawer"
-      :class="[status,this.$route.name]"
+      :class="[this.$route.name]"
     )
       btn-menu(
         :isActive="isDrawer"

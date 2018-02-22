@@ -3,7 +3,7 @@ const { mapGetters } = createNamespacedHelpers('user')
 export default {
   data () {
     return {
-      $_IsGuest_result: false
+      isGuest: false
     }
   },
   computed: {
@@ -14,9 +14,8 @@ export default {
   },
   methods: {
     $_IsGuest_define () {
-      const result = this.$_IsGuest_role === 'guest'
-      this.guest = result
-      return result
+      this.isGuest = this.$_IsGuest_role === 'guest'
+      return this.isGuest
     }
   }
 }

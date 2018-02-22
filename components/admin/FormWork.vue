@@ -2,7 +2,7 @@
   div
     v-snackbar(
       top
-      v-model="$_IsGuest_result"
+      v-model="isGuest"
     ) 変更権限がありません
     v-snackbar(
       top

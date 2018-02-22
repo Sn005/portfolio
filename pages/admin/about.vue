@@ -2,7 +2,7 @@
   v-layout(column)
     v-snackbar(
       top
-      v-model="$_IsGuest_result"
+      v-model="isGuest"
     ) 変更権限がありません
     v-card
       v-toolbar
