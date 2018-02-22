@@ -1,7 +1,7 @@
 service cloud.firestore {
   match /databases/{database}/documents {
     allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "owner";
-    match /{document=**} {
+    match /contacts {
       allow read, write;
     }
   }
