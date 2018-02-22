@@ -40,10 +40,6 @@ $borderValue: solid 1px $hr-color;
     border-left: $borderValue;
   }
   &.index{
-    &:before,
-    &:after{
-      border: none;
-    }
     &:before{
       animation: borderTopRight $duration $easeOutQuad forwards;
     }
