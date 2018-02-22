@@ -62,7 +62,7 @@ export default {
     }
     @for $i from 1 through 20 {
       &:nth-child(#{$i}){
-        $delay: 1.5 + 0.4 * $i + s;
+        $delay: 1.5 + 0.1 * $i + s;
         animation: fadeIn .5s ($delay) $easeOutQuad forwards;
       }
     }
