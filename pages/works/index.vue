@@ -41,7 +41,7 @@ export default {
 .list-works{
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   @include mq-sp{
     flex-direction: column;
   }
