@@ -6,7 +6,7 @@
     ) 変更権限がありません
     v-snackbar(
       top
-      v-model="isPosted"
+      v-model="posted"
     ) 更新完了しました
     v-toolbar
       v-toolbar-title(
@@ -166,6 +166,7 @@ export default {
   },
   data () {
     return {
+      posted: false,
       isExits: !!this.item.id,
       sended: false,
       valid: false,
@@ -194,16 +195,12 @@ export default {
     }
   },
   computed: {
-    isPosted () {
-      return !!this.sended
-    },
     formData () {
       return {
         id: this.id,
         name: this.name,
         isShow: this.isShow,
         order: this.order,
-        category: this.formatCategory(this.category),
         content: this.content,
         assign: this.assign,
         skill: this.skill,
@@ -239,19 +236,23 @@ export default {
       if (this.$_IsGuest_define()) return
       if (this.sended) return
       this.sended = true
+      this.posted = false
       await firebaseWorksSend(this.id, this.formData)
       this.sended = false
+      this.posted = true
     },
     async deleteImage (path) {
+      this.sended = true
+      this.posted = false
       if (this.$_IsGuest_define()) return
       if (this.sended) return
-      this.sended = true
       await storageRemove(path)
       this.images = this.images.filter(value => {
         return value.path !== path
       })
       await firebaseWorksSend(this.id, this.formData)
       this.sended = false
+      this.posted = true
     }
   }
 }
