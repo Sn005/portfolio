@@ -9,7 +9,16 @@ import {
   VBtn,
   VIcon,
   VGrid,
-  VToolbar
+  VToolbar,
+  VDataTable,
+  VDialog,
+  VForm,
+  VTextField,
+  VCheckbox,
+  VProgressLinear,
+  VSwitch,
+  VSnackbar,
+  VCarousel
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -31,6 +40,15 @@ Vue.use(Vuetify, {
     VBtn,
     VIcon,
     VGrid,
-    VToolbar
+    VToolbar,
+    VDataTable,
+    VDialog,
+    VForm,
+    VTextField,
+    VCheckbox,
+    VProgressLinear,
+    VSwitch,
+    VSnackbar,
+    VCarousel
   }
 })

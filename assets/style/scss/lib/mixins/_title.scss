@@ -1,0 +1,64 @@
+/**
+/ page-title
+/ page-title-lowerとpage-title-workにて使用
+*/
+@mixin page-title() {
+  $bg: darken($primary-color, 30%);
+  $arrowBg: $bg-body;
+  $headerHeight: 200px;
+  $arrowSize: 80px;
+  $textHeight: $headerHeight - $arrowSize;
+
+  $deg: 44deg;
+  $arrowSpacer: -3%;
+  position: relative;
+  width: 100%;
+  height: $headerHeight;
+  background: $bg;
+  @include mq-tabl-pcl{
+    margin-bottom: 16px;
+  }
+  @include mq-tab-sp{
+    margin-bottom: 0;
+  }
+  &__arrow--left,
+  &__arrow--right{
+    position: absolute;
+    bottom: 0;
+    width: calc(50% - #{$arrowSize});
+    height: $arrowSize;
+    background: $arrowBg;
+    z-index: index($z, lower-title-arrow);
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      border: $arrowSize / 2 solid transparent;
+    }
+  }
+  &__arrow--left{
+    left: 0;
+    &:after{
+      right: - $arrowSize;
+      border-left-color: $arrowBg;
+      border-bottom-color: $arrowBg;
+    }
+  }
+  &__arrow--right{
+    right: 0;
+    &:after{
+      left: - $arrowSize;
+      border-right-color: $arrowBg;
+      border-bottom-color: $arrowBg;
+    }
+  }
+  &__text{
+    text-align: center;
+    line-height: $textHeight;
+    color: $true-white;
+    z-index: index($z, lower-title);
+    opacity: 0;
+    animation: fadeInUp 1s 1s $easeOutQuad forwards;
+    @include text-title();
+  }
+}

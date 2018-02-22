@@ -11,10 +11,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "autolinker": "^1.6.2",
     "dotenv": "^4.0.0",
     "firebase": "^4.9.0",
+    "htmlspecialchars": "^1.0.5",
     "nuxt": "^1.0.0-rc11",
-    "vuetify": "^0.17.4"
+    "vue-carousel": "^0.6.5",
+    "vuedraggable": "^2.16.0",
+    "vuetify": "^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

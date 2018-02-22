@@ -1,12 +1,21 @@
-<template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      admin
-    </v-flex>
-  </v-layout>
+<template lang="pug">
+  v-layout(column)
+    v-toolbar
+      v-toolbar-title Dashboard
+    v-card
+      v-card-text(primary-title)
+        | narihara portfolioの管理画面です
+        br
+        | オーナー権限保有者のみ各種アイテム編集が可能です
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('user')
 export default {
-  middleware: 'check-auth'
+  transition: 'admin',
+  layout: 'admin',
+  computed: {
+    ...mapGetters(['auth'])
+  }
 }
 </script>

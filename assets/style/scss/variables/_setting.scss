@@ -1,0 +1,36 @@
+// ベースフォント
+$font-min: Georgia, '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E',
+  'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
+$base-font: "Helvetica", "Arial", YuGothic,"Yu Gothic","Hiragino Sans","ヒラギノ角ゴシック","メイリオ", Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif,;
+
+// 各種パス
+$dir-img: '/images/';
+
+// ページ全体の横幅
+$base-width: 1180px;
+
+// z-index設定
+$z: 
+  index-title-border,
+  lower-title,
+  lower-title-arrow,
+  index-title,
+  the-drawer,
+  the-drawer__trigger,
+  app-loading,
+  the-border,
+  the-texture,
+;
+
+// topページアニメーションdelay設定
+$top-quee: (
+  the-border: 1s,
+  app-logo: 1s,
+  the-drawer-trigger: 2s,
+);
+
+
+// cardのshadow値
+$card-shadow: 0 3px 2px 1px rgba(0,0,0, 0.9);
+$card-shadow-hover: 0 3px 2px 1px rgba(0,0,0, 0.9),
+                    0 1px 16px 0 rgba(0,0,0, 0.8);

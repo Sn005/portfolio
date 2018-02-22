@@ -1,8 +1,12 @@
 # dependencies
 node_modules
 
+# package-lock.json
+package-lock.json
+
 # logs
 npm-debug.log
+firebase-debug.log
 
 # Nuxt build
 .nuxt
@@ -12,3 +16,9 @@ dist
 
 # env
 .env
+
+# .vscode
+.vscode/
+
+# css
+static/css

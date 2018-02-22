@@ -1,0 +1,22 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "owner";
+    }
+    match /works/{worksID=**} {
+      allow read;
+      allow write: if isOwner();
+    }
+    match /about/index {
+      allow read;
+      allow write: if isOwner();
+    }
+    match /users/{userID=**} {
+      allow read;
+      allow write: if isOwner();
+    }
+    match /contacts/{contactID=**} {
+      allow read, write;
+    }
+  }
+}

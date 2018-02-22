@@ -1,38 +1,47 @@
 const nodeExternals = require('webpack-node-externals')
+const webpack = require('webpack')
 const resolve = (dir) => require('path').join(__dirname, dir)
 require('dotenv').config()
 module.exports = {
+  mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'ns-portfolio',
+    title: 'narihara-portfolio',
     meta: [
       { charset: 'utf-8' },
+      { name: 'robots', content: 'noindex,nofollow' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'ns-porfolio project' }
+      { hid: 'description', name: 'description', content: 'narihara-porfolio project' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', size: '152x152', href: '/apple-touch-icon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
   plugins: [
     '~/plugins/vuetify.js',
-    '~/plugins/firebase.js',
-    '~/plugins/user.js'
+    '~/plugins/firebase.js'
   ],
   css: [
-    '~/assets/style/app.styl'
+    '~/assets/style/app.styl',
+    '~/assets/style/scss/app.scss'
   ],
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#fcfcfc' },
   /*
   ** Build configuration
   */
   build: {
+    postcss: [
+      require('autoprefixer')({
+        browsers: ['> 5%']
+      })
+    ],
     babel: {
       plugins: [
         ['transform-imports', {

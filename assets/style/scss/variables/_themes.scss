@@ -1,0 +1,34 @@
+//白
+$primary-white: #fcfcfc;
+//黒
+$primary-black: #020202;
+//完全白
+$true-white: #fff;
+//完全黒
+$true-black: #000;
+
+// 基本色
+$primary-gray: #232323;
+$primary-red: #c50119;
+$primary-purple: #813891;
+$primary-color: $primary-purple;
+
+//明度低
+$darken-white: #f9f9f9;
+$darken-gray: #191919;
+$darken-red: #980002;
+$darken-purple: #410c52;
+
+// 背景色
+$bg-body: #0f0013;
+$bg-body-secondary: #130000;
+
+// sns別カラー
+$sns-twi: #55acee;
+$sns-fb: #3b5998;
+$sns-gplus: #dc4e41;
+$sns-insta: #3f729b;
+$sns-hatena: #008fde;
+
+// 罫線
+$hr-color: rgba($primary-white, 0.25);
