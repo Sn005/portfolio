@@ -8,7 +8,9 @@ const col = db.collection('works')
  * @return {Object} 取得した情報
  */
 export const items = async () => {
-  const results = await col.get()
+  const results = await col.get().catch(error => {
+    console.log(error)
+  })
   return results.docs.map(function (doc) {
     let data = doc.data()
     data['id'] = doc.id
