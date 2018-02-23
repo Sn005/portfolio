@@ -4,11 +4,6 @@
   "description": "narihara-portfolio",
   "author": "narihara",
   "private": true,
-  "config": {
-    "nuxt": {
-      "host": "192.168.0.14"
-    }
-  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
