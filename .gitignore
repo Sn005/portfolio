@@ -22,3 +22,6 @@ dist
 
 # css
 static/css
+
+# firebase
+.firebaserc
