@@ -28,9 +28,22 @@
   display: flex;
   justify-content: space-between;
   margin: 24px 0;
+  @include mq-sp{
+    flex-wrap: wrap-reverse;
+  }
   &__item{
     width: calc( 50% - 32px);
     list-style-type: none;
+    @include mq-sp{
+      width: 80%;
+      margin:0 auto;
+      text-align: center;
+    }
+    & + & {
+      @include mq-sp{
+        margin: 0 auto 24px;
+      }
+    }
   }
   &__prev,
   &__next{

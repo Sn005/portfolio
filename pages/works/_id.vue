@@ -34,9 +34,11 @@
               p 担当領域:{{ item.assign }}
               p 使用スキル,ツール:{{ item.skill }}
           v-flex(
-            md6
+            lg8
+            offset-lg2
+            sm10
+            offset-sm1
             xs12
-            offset-md3
           )
             navigation-work(
               :prev="prev"
