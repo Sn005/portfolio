@@ -62,27 +62,6 @@
         label="サイトURL"
         v-model="url"
       )
-      div
-        p.title アイキャッチ画像
-        v-btn
-          | upload
-          input.file-input(
-            type="file"
-            ref="image"
-            name="eyecatchs"
-            accept="*"
-            @change="onFileChange($event, 'eyecatchs')"
-          )
-        v-flex(
-          xs8
-          v-if="eyecatchs"
-          v-for="eyecatch in eyecatchs"
-          :key="eyecatch.url"
-        )
-          img(
-            width="100%"
-            :src="eyecatch.url"
-          )
       div.mt-4
         p.title サムネイル画像
         v-btn
@@ -178,7 +157,6 @@ export default {
       assign: this.item.assign || '',
       skill: this.item.skill || '',
       url: this.item.url || '',
-      eyecatchs: this.item.eyecatchs || [],
       thumbnails: this.item.thumbnails || [],
       images: this.item.images || [],
       isShow: this.item.isShow || false,
@@ -205,7 +183,6 @@ export default {
         assign: this.assign,
         skill: this.skill,
         url: this.url,
-        eyecatchs: this.eyecatchs,
         thumbnails: this.thumbnails,
         images: this.images
       }
@@ -219,7 +196,7 @@ export default {
       if (!files.length) return
       const datas = [...files].map((file, index) => {
         return {
-          path: `works/${this.id}/${file.name}`,
+          path: `works/${this.id}/${target}/${file.name}`,
           file: file
         }
       })

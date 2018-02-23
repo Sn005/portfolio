@@ -13,7 +13,7 @@ nuxt-link.card-work(
     data () {
       const thumbnail = !this.item.thumbnails.length ? '' : this.item.thumbnails[0].url
       return {
-        linkUrl: 'works/' + this.item.id,
+        linkUrl: '/works/' + this.item.id,
         styleObject: {
           backgroundImage: 'url(' + thumbnail + ')'
         }
