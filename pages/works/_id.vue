@@ -4,11 +4,10 @@
     v-content
       v-container
         card-article
-          v-flex.mb-5.clearfix(
-            md6
-            xs10
-            offset-xs1
-            offset-md3
+          v-flex.clearfix(
+            md8
+            offset-md2
+            xs12
           )
             carousel(
               :perPage="1"
