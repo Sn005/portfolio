@@ -31,7 +31,7 @@
               p(v-if="formattedUrl") サイトURL:
                 span(v-html="formattedUrl")
               p 担当領域:{{ item.assign }}
-              p 使用スキル,ツール:{{ item.skill }}
+              p 使用スキル・ツール:{{ item.skill }}
           v-flex(
             lg8
             offset-lg2
