@@ -32,11 +32,10 @@
                 span(v-html="formattedUrl")
               p 担当領域:{{ item.assign }}
               p 使用スキル・ツール:{{ item.skill }}
-          v-flex(
+          v-flex.mx-auto(
+            xl6
             lg8
-            offset-lg2
-            sm10
-            offset-sm1
+            md10
             xs12
           )
             navigation-work(
