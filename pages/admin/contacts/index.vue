@@ -19,7 +19,7 @@
               flat
               icon
               color="purple lighten-3"
-              :to="'contacts/' + props.item.id"
+              :to="'/admin/contacts/' + props.item.id"
             )
               v-icon redo
     v-card.pa-4(v-else) 表示権限がありません

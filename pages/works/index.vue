@@ -40,7 +40,8 @@ export default {
 @import "../../assets/style/scss/_all";
 .list-works{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   @include mq-sp{
     flex-direction: column;
   }
@@ -51,7 +52,7 @@ export default {
     opacity: 0;
     list-style-type: none;
     @include mq-tabl-pcl{
-      width: calc(100% / 3 - #{$gutter* 2});
+      width: calc(100% / 3 - #{$gutter});
     }
     @include mq-tab{
       width: calc(100% / 2 - #{$gutter});
@@ -61,7 +62,7 @@ export default {
     }
     @for $i from 1 through 20 {
       &:nth-child(#{$i}){
-        $delay: 1.5 + 0.4 * $i + s;
+        $delay: 1.5 + 0.1 * $i + s;
         animation: fadeIn .5s ($delay) $easeOutQuad forwards;
       }
     }

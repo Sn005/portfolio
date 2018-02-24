@@ -4,11 +4,10 @@
     v-content
       v-container
         card-article
-          v-flex.mb-5.clearfix(
-            md6
-            xs10
-            offset-xs1
-            offset-md3
+          v-flex.clearfix.mx-auto(
+            lg5
+            md8
+            xs12
           )
             carousel(
               :perPage="1"
@@ -32,11 +31,12 @@
               p(v-if="formattedUrl") サイトURL:
                 span(v-html="formattedUrl")
               p 担当領域:{{ item.assign }}
-              p 使用スキル,ツール:{{ item.skill }}
-          v-flex(
-            md6
+              p 使用スキル・ツール:{{ item.skill }}
+          v-flex.mx-auto(
+            xl6
+            lg8
+            md10
             xs12
-            offset-md3
           )
             navigation-work(
               :prev="prev"

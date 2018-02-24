@@ -14,7 +14,7 @@
         v-icon sort
       v-btn(
         icon
-        to="works/create"
+        to="/admin/works/create"
       )
         v-icon note_add
     v-data-table(
@@ -35,7 +35,7 @@
             flat
             icon
             color="purple lighten-3"
-            :to="'works/' + props.item.id"
+            :to="'/admin/works/' + props.item.id"
           )
             v-icon edit
           v-btn(

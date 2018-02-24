@@ -11,10 +11,11 @@ nuxt-link.card-work(
       item: Object
     },
     data () {
+      const thumbnail = !this.item.thumbnails.length ? '' : this.item.thumbnails[0].url
       return {
-        linkUrl: 'works/' + this.item.id,
+        linkUrl: '/works/' + this.item.id,
         styleObject: {
-          backgroundImage: 'url(' + this.item.thumbnails[0].url + ')'
+          backgroundImage: 'url(' + thumbnail + ')'
         }
       }
     }
@@ -39,23 +40,29 @@ nuxt-link.card-work(
     display: flex;
     align-items:center;
     justify-content: center;
+    overflow-x: hidden;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 8px;
     background: rgba($true-black, 0.4);
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: $primary-white;
     font-size: 2rem;
     transition: all .5s $easeOutQuad;
     opacity: 0;
     @include text-title();
+    @include mq-tabl-pc{
+      font-size: 1.6rem;
+    }
     &:hover{
       opacity: 1;
     }
   }
 }
-
 
 
 </style>
