@@ -25,6 +25,12 @@ module.exports = {
     '~/plugins/vuetify.js',
     '~/plugins/firebase.js'
   ],
+  modules: [
+    // Simple usage
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-76817633-1'
+    }]
+  ],
   css: [
     '~/assets/style/app.styl',
     '~/assets/style/scss/app.scss'
