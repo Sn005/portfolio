@@ -4,9 +4,9 @@
     v-content
       v-container
         card-article
-          v-flex.clearfix(
+          v-flex.clearfix.mx-auto(
+            lg5
             md8
-            offset-md2
             xs12
           )
             carousel(
